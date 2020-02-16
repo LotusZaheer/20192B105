@@ -80,6 +80,10 @@ if($_POST){
         <div class="float-right">
           <ul class="navbar-nav mr-auto">
             <?php
+
+//Manejo de SING UP AND LOG IN
+
+
             if ($mode) {
               echo ('
               <li class="nav-item ">
