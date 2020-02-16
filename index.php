@@ -11,13 +11,6 @@ if ($sesion != null || $sesion != '') {
   $mode = true;
 }
 
-
-?>
-<?php
-include_once "php-objects/repositorio.php";
-include_once "php-objects/usuario.inc.php";
-include_once "php-objects/conexion.inc.php";
-
 if($_POST){
   Conexion::abrir();
   $email=$_POST['email'];
