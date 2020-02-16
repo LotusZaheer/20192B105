@@ -11,6 +11,13 @@ if ($sesion != null || $sesion != '') {
   $mode = true;
 }
 
+
+?>
+<?php
+include_once "php-objects/repositorio.php";
+include_once "php-objects/usuario.inc.php";
+include_once "php-objects/conexion.inc.php";
+
 if($_POST){
   Conexion::abrir();
   $email=$_POST['email'];
@@ -37,25 +44,29 @@ if($_POST){
 <html lang="es">
 
 <head>
-  <link rel="stylesheet" href="css/lux1.css">
+  <!-- Bootstrap 4 -->
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Inicio</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600|Open+Sans" rel="stylesheet"> 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-	<link rel="stylesheet" href="css/estilos.css">
-  <title>Inicio</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/lux1.css">
+  <!-- Scrool reveal -->
+  <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 
 <body >
-  <nav style="z-index:40!important;" class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="index.php">Narcos</a>
+  <!-- Navbar -->
+  <nav style="z-index:40!important;" class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <a class="navbar-brand" href="index.php">Punto Qualité</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarColor01">
-
       <div class="col-8">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item ">
@@ -73,10 +84,6 @@ if($_POST){
         <div class="float-right">
           <ul class="navbar-nav mr-auto">
             <?php
-
-//Manejo de SING UP AND LOG IN
-
-
             if ($mode) {
               echo ('
               <li class="nav-item ">
@@ -98,7 +105,7 @@ if($_POST){
 			<div class="popup" id="popup">
 				<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
 				<h1 class="h3 mb-3 font-weight-normal">Iniciar Sesion</h1>
-				<form class="form-signin" method="POST" action="'.$_SERVER['PHP-SELF'].'">
+				<form class="form-signin" method="POST" action="">
 					<div class="contenedor-inputs">
 						<input type="email" name="email" id="inputEmail" class="form-control" placeholder="Correo electronico" required autofocus>
 						<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
@@ -123,8 +130,52 @@ if($_POST){
     </div>
   </nav>
 
-  
+  <!-- Fin navbar -->
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-top: 80px">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="img/carousel1.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="img/carousel2.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="img/carousel3.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="img/carousel4.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<!-- Carousel -->
+<!-- Fin Carousel -->
+
+
+
+
+
+<!-- Bootstrap 4 scripts -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
+
+<!-- Inicio footer -->
+
 <footer class="container py-5">
     <div class="row">
       <div class="col-12 col-md">
@@ -154,7 +205,7 @@ if($_POST){
         </p>
       </div>
       <div class="col-6 col-md">
-        <h5>Acerca de Narcos</h5>
+        <h5>Acerca de Punto Qualité</h5>
         <ul class="list-unstyled text-small">
           <li><a class="text-muted" href="our.php#vision">Vision</a></li>
           <li><a class="text-muted" href="our.php#mision">Mision</a></li>
@@ -164,8 +215,5 @@ if($_POST){
       </div>
     </div>
   </footer>
-	<script src="js/popup.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="js/popup.js"></script>
 </html>
