@@ -40,7 +40,7 @@ body {
   text-align: center;
   width: 600px;
   
-  transition: .3s ease all;
+  transition: .1s ease all;
   transform: scale(0.7);
   opacity: 0;
 }
@@ -50,7 +50,7 @@ body {
   line-height: 16px;
   display: block;
   text-align: right;
-  transition: .3s ease all;
+  transition: .1s ease all;
   color: #BBBBBB;
 }
 
@@ -97,7 +97,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   cursor: pointer;
-  transition: .3s ease all;
+  transition: .1s ease all;
 }
 
 .popup form .btn-submit:hover {
