@@ -105,7 +105,7 @@ if($_POST){
 			<div class="popup" id="popup">
 				<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
 				<h1 class="h3 mb-3 font-weight-normal">Iniciar Sesion</h1>
-				<form class="form-signin" method="POST" action="">
+				<form class="form-signin" method="POST" action="'.$_SERVER['PHP-SELF'].'">
 					<div class="contenedor-inputs">
 						<input type="email" name="email" id="inputEmail" class="form-control" placeholder="Correo electronico" required autofocus>
 						<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
