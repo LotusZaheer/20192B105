@@ -87,8 +87,8 @@ if ($sesion != null || $sesion != '') {
               <title>Placeholder</title>
               <rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em"></text>
             </svg>
-            <h4 style="padding-top:5px"><?php echo ($sesion->getNombre()) ?></h4>
-            <h5 style="padding-top:5px; color:#13284a"><?php echo ($sesion->getEmail()) ?></h5>
+            <h4 style="padding-top:5px; color:white"><?php echo ($sesion->getNombre()) ?></h4>
+            <h5 style="padding-top:5px; color:white"><?php echo ($sesion->getEmail()) ?></h5>
           </div>
         </div>
         <blockquote class="blockquote text-right">
