@@ -48,8 +48,6 @@ if ($_POST) {
   <meta name="viewport" content="width=device-width">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Inicio</title>
-  <!-- Esto es necesario para cerrar la ventana de inicio de sesión -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600|Open+Sans" rel="stylesheet">
   <!-- Bootstrap -->
