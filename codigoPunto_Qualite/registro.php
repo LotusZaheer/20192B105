@@ -65,9 +65,13 @@ if ($_POST) {
 
 
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item ">
-                    <a class="nav-link" href="shop.php">Productos</a>
-                </li>
+            <li class="nav-item dropdown show ">
+                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Productos</a>
+                <div class="dropdown-menu" style="">
+                    <a class="dropdown-item" href="#">Bebé y maternidad</a>
+                    <a class="dropdown-item" href="#">Fitness</a>
+                    <a class="dropdown-item" href="#">Cuidado personal</a>
+              </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="our.php">Nosotros</a>
                 </li>
@@ -136,6 +140,7 @@ if ($_POST) {
                                     ¿Aceptas los terminos y condiciones?
                                 </label>
                             </div>
+                            <div class="g-recaptcha" data-sitekey="6LdXy9kUAAAAAMZ5yYyXFHz3lixoI1RCk5AlAEnk"></div>
                             <button type="submit" class="btn btn-primary" id="topper" onclick="equalpass()" name="commit">Registrarse</button>
                             <form>
             </div>
@@ -146,6 +151,7 @@ if ($_POST) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/security.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </body>
 
 </html>

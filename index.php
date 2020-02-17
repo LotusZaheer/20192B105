@@ -71,14 +71,21 @@ if ($_POST) {
     <div class="collapse navbar-collapse" id="navbarColor01">
 
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item ">
-          <a class="nav-link" href="codigoPunto_Qualite/shop.php">Productos</a>
+        <li class="nav-item dropdown show ">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Productos</a>
+            <div class="dropdown-menu" style="">
+              <a class="dropdown-item" href="#">Bebé y maternidad</a>
+              <a class="dropdown-item" href="#">Fitness</a>
+              <a class="dropdown-item" href="#">Cuidado personal</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link" href="codigoPunto_Qualite/our.php">Nosotros</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link" href="#contacto">Contactanos</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="#Encuesta">Encuesta</a>
         </li>
       </ul>
 

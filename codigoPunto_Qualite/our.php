@@ -35,9 +35,13 @@ if ($sesion != null || $sesion != '') {
 
             <div class="col-8">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item ">
-                        <a class="nav-link" href="shop.php">Productos</a>
-                    </li>
+                <li class="nav-item dropdown show ">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Productos</a>
+                <div class="dropdown-menu" style="">
+                    <a class="dropdown-item" href="#">Bebé y maternidad</a>
+                    <a class="dropdown-item" href="#">Fitness</a>
+                    <a class="dropdown-item" href="#">Cuidado personal</a>
+                </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="our.php">Nosotros</a>
                     </li>
@@ -85,13 +89,13 @@ if ($sesion != null || $sesion != '') {
             <div class="mision">
             <h2 id="type-blockquotes">Misión</h2>
              <blockquote class="blockquote">
-            <p class="mb-0">Generar dentro de la cadena de distribución de productos farmacéuticos, una entidad enfocada a lo social, disponiendo de un variado y excelente stock de productos, con precios altamente competitivos, almacenados eficientemente, dando la tranquilidad de poder acceder a medicamentos de calidad y respetar la formulación dada por los profesionales de la salud. Preservar la ética, servicio y cortesía tanto interna como con nuestros clientes. Esforzarnos por mantener clientes y trabajadores satisfechos en equilibrio con el entorno social.</p>
-            </blockquote>
+                <p class="mb-0">Generar dentro de la cadena de distribución de productos farmacéuticos, una entidad enfocada a lo social, disponiendo de un variado y excelente stock de productos, con precios altamente competitivos, almacenados eficientemente, dando la tranquilidad de poder acceder a medicamentos de calidad y respetar la formulación dada por los profesionales de la salud. Preservar la ética, servicio y cortesía tanto interna como con nuestros clientes. Esforzarnos por mantener clientes y trabajadores satisfechos en equilibrio con el entorno social.</p>
+                </blockquote>
             </div>
           </div>
           <div class="col-md-6">
             <div class = "imagen-vision">
-            <img src="datosPunto_Qualite/img/vision.jpg" style="width: 100%;">
+                <img src="../datosPunto_Qualite/img/vision.jpg" style="width: 100%;">
             </div>
           </div>
         </div>
