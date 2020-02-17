@@ -1,7 +1,7 @@
 <?php
-include_once('php-objects/conexion.inc.php');
-include_once "php-objects/usuario.inc.php";
-include_once "php-objects/repositorio.php";
+include_once('codigoPunto_Qualite/php-objects/conexion.inc.php');
+include_once "codigoPunto_Qualite/php-objects/usuario.inc.php";
+include_once "codigoPunto_Qualite/php-objects/repositorio.php";
 $mode = false;
 session_start();
 error_reporting(0);
@@ -55,8 +55,8 @@ if ($_POST) {
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <!-- CSS -->
-  <link rel="stylesheet" href="css/estilos.css">
-  <link rel="stylesheet" href="css/lux1.css">
+  <link rel="stylesheet" href="codigoPunto_Qualite/css/estilos.css">
+  <link rel="stylesheet" href="codigoPunto_Qualite/css/lux1.css">
   <!-- Scrool reveal -->
   <script src="https://unpkg.com/scrollreveal"></script>
 </head>
@@ -72,10 +72,10 @@ if ($_POST) {
 
       <ul class="navbar-nav mr-auto">
         <li class="nav-item ">
-          <a class="nav-link" href="shop.php">Productos</a>
+          <a class="nav-link" href="codigoPunto_Qualite/shop.php">Productos</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="our.php">Nosotros</a>
+          <a class="nav-link" href="codigoPunto_Qualite/our.php">Nosotros</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link" href="#contacto">Contactanos</a>
@@ -89,10 +89,10 @@ if ($_POST) {
         if ($mode) {
           echo ('
               <li class="nav-item ">
-                  <a class="nav-link" href="cuenta.php">Cuenta</a>
+                  <a class="nav-link" href="codigoPunto_Qualite/cuenta.php">Cuenta</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="cerrar.php">Cerrar Sesion</a>
+                  <a class="nav-link" href="codigoPunto_Qualite/cerrar.php">Cerrar Sesion</a>
                 </li>
               ');
         } else {
@@ -119,7 +119,7 @@ if ($_POST) {
             
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="registro.php">Registrate</a>
+              <a class="nav-link" href="codigoPunto_Qualite/registro.php">Registrate</a>
             </li>
           ');
         }
@@ -141,16 +141,16 @@ if ($_POST) {
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="img/carousel1.png" class="d-block w-100" alt="">
+        <img src="datosPunto_Qualite/img/carousel1.png" class="d-block w-100" alt="">
       </div>
       <div class="carousel-item">
-        <img src="img/carousel2.jpg" class="d-block w-100" alt="">
+        <img src="datosPunto_Qualite/img/carousel2.jpg" class="d-block w-100" alt="">
       </div>
       <div class="carousel-item">
-        <img src="img/carousel3.jpg" class="d-block w-100" alt="">
+        <img src="datosPunto_Qualite/img/carousel3.jpg" class="d-block w-100" alt="">
       </div>
       <div class="carousel-item">
-        <img src="img/carousel4.jpg" class="d-block w-100" alt="">
+        <img src="datosPunto_Qualite/img/carousel4.jpg" class="d-block w-100" alt="">
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -169,22 +169,22 @@ if ($_POST) {
         <div class="row">
           <div class="col-md-3 col-sm-6">
             <div class="header-content-left">
-              <a href=""><img src="img/gripa.png" style="width: 100%;"></a>
+              <a href=""><img src="datosPunto_Qualite/img/gripa.png" style="width: 100%;"></a>
             </div>  
           </div>
           <div class="col-md-3 col-sm-6">
             <div class="header-content-left">
-              <a href=""><img src="img/vitamina.png" style="width: 100%;"></a>
+              <a href=""><img src="datosPunto_Qualite/img/vitamina.png" style="width: 100%;"></a>
             </div>  
           </div>
           <div class="col-md-3 col-sm-6">
             <div class="header-content-left">
-              <a href=""><img src="img/maternidad.png" style="width: 100%;"></a>
+              <a href=""><img src="datosPunto_Qualite/img/maternidad.png" style="width: 100%;"></a>
             </div>  
           </div>
           <div class="col-md-3 col-sm-6">
             <div class="header-content-left">
-              <a href=""><img src="img/bienestar.png" style="width: 100%;"></a>
+              <a href=""><img src="datosPunto_Qualite/img/bienestar.png" style="width: 100%;"></a>
             </div>  
           </div>
           
@@ -225,10 +225,10 @@ if ($_POST) {
       <div class="col-6 col-md">
         <h5>Acerca de Punto Qualité</h5>
         <ul class="list-unstyled text-small">
-          <li><a class="text-muted" href="our.php#vision">Vision</a></li>
-          <li><a class="text-muted" href="our.php#mision">Mision</a></li>
-          <li><a class="text-muted" href="our.php#marca">Nuestra marca</a></li>
-          <li><a class="text-muted" href="our.php#trabajo">Unetenos</a></li>
+          <li><a class="text-muted" href="codigoPunto_Qualite/our.php#vision">Vision</a></li>
+          <li><a class="text-muted" href="codigoPunto_Qualite/our.php#mision">Mision</a></li>
+          <li><a class="text-muted" href="codigoPunto_Qualite/our.php#marca">Nuestra marca</a></li>
+          <li><a class="text-muted" href="codigoPunto_Qualite/our.php#trabajo">Unetenos</a></li>
         </ul>
       </div>
     </div>
@@ -248,6 +248,6 @@ if ($_POST) {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
-<script src="js/popup.js"></script>
+<script src="codigoPunto_Qualite/js/popup.js"></script>
 
 </html>
