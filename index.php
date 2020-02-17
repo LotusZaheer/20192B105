@@ -209,8 +209,24 @@ if ($_POST) {
         </div>
       </div>
     </section>
-    <!-- Final sección sub catgorias -->
+    <!-- Final sección sub categorias -->
     
+    <!-- iframe red social -->
+    <section id="info-one">
+      <div class="container">
+        <div class="row mt-5">
+          <div class="col-md-6">
+            <blockquote class="twitter-tweet"><p lang="es" dir="ltr">En Punto Qualité tenemos los mejores productos a los mejores precios, ven y disfruta de los descuentos que tenemos en diferentes categorías a diario, ¿Que esperas?</p>&mdash; Droguería Punto Qualité (@PuntoQualite) <a href="https://twitter.com/PuntoQualite/status/1229427162765238272?ref_src=twsrc%5Etfw">February 17, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </div>
+          <div class="col-md-6 my-auto">
+            <div class="info-right">
+              <h2>Siguenos en nuestras redes sociales.</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Final iframe -->
     <!-- Acordeon -->
     <!-- Fin del acordeon -->
 
@@ -231,9 +247,10 @@ if ($_POST) {
       <div class="col-6 col-md" id="contacto">
         <h5>Contacto</h5>
         <p class="text-muted">
-          Para mas informacion:
-          <br>
-          +57 317 6513196
+              Andrés Santiago Castro Duitama
+              Fredy Alejandro Mendoza López
+              Orlando Alberto Moncada Rodriguez
+              Andres Felipe Uribe
         </p>
       </div>
       <div class="col-6 col-md">
@@ -252,7 +269,7 @@ if ($_POST) {
           <circle cx="12" cy="12" r="10" />
           <path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" />
         </svg>
-        <small class="d-block mb-3 text-muted">&copy; 2017-2020</small>
+        <small class="d-block mb-3 text-muted">&copy; 2020</small>
         <div class = "row">
           <div class ="col-3 col-md">
           <a href="https://www.facebook.com/" target="_blank"><img src="datosPunto_Qualite/img/facebook1.png" style="width: 100%;"></a>

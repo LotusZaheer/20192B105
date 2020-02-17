@@ -78,11 +78,26 @@ if ($sesion != null || $sesion != '') {
         </div>
     </nav>
 
-    <div class="container" id="mision"  style="margin-top: 100px">
-        <h2 id="type-blockquotes">Misión</h2>
-        <blockquote class="blockquote">
+    <section id="info-two">
+      <div class="container" style="margin-top: 100px">
+        <div class="row my-5">
+          <div class="col-md-6">
+            <div class="mision">
+            <h2 id="type-blockquotes">Misión</h2>
+             <blockquote class="blockquote">
             <p class="mb-0">Generar dentro de la cadena de distribución de productos farmacéuticos, una entidad enfocada a lo social, disponiendo de un variado y excelente stock de productos, con precios altamente competitivos, almacenados eficientemente, dando la tranquilidad de poder acceder a medicamentos de calidad y respetar la formulación dada por los profesionales de la salud. Preservar la ética, servicio y cortesía tanto interna como con nuestros clientes. Esforzarnos por mantener clientes y trabajadores satisfechos en equilibrio con el entorno social.</p>
-        </blockquote>
+            </blockquote>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class = "imagen-vision">
+            <img src="datosPunto_Qualite/img/vision.jpg" style="width: 100%;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+        
     </div>
     <hr class="my-4">
     <div class="container" id="vision">
