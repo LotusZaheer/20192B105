@@ -18,7 +18,7 @@ if ($_POST) {
         $usuario = new usuario('', $nombre, $new, $email, $pass, $dir, $ciu);
         $newuser = repositorioFunciones::insertar_usuarios(Conexion::obtener(), $usuario);
         Conexion::cerrar();
-        header('Location: login.php');
+        header('Location: ../index.php');
     } else {
         $emailused = true;
     }
