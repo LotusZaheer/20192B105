@@ -144,7 +144,7 @@ if ($_POST) {
         <img src="datosPunto_Qualite/img/carousel1.png" class="d-block w-100" alt="">
       </div>
       <div class="carousel-item">
-        <img src="datosPunto_Qualite/img/carousel2.jpg" class="d-block w-100" alt="">
+        <img src="datosPunto_Qualite/img/carousel6.jpg" class="d-block w-100" alt="">
       </div>
       <div class="carousel-item">
         <img src="datosPunto_Qualite/img/carousel3.jpg" class="d-block w-100" alt="">
@@ -163,27 +163,45 @@ if ($_POST) {
     </a>
   </div>
   <!-- Fin Carousel -->
+  <!-- Iniciar sección imágenes -->
+  <section id="info-two">
+      <div class="container">
+        <div class="row my-5">
+          <div class="col-md-6">
+            <div class="imagen1-categoria1">
+              <a href="#"><img src="datosPunto_Qualite/img/deporte.jpg" style="width: 100%;"></a>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class = "imagen2-categoria1">
+            <a href="#"><img src="datosPunto_Qualite/img/hogar.jpg" style="width: 100%;"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  <!-- Fin sección imágenes -->
     <!-- SECTION -->
     <section id="info-one" style = "background: #f1f1f1;">
       <div class="container mt-2">
         <div class="row">
           <div class="col-md-3 col-sm-6">
-            <div class="header-content-left">
+            <div class="categoria-2">
               <a href="#"><img src="datosPunto_Qualite/img/gripa.png" style="width: 100%;"></a>
             </div>  
           </div>
           <div class="col-md-3 col-sm-6">
-            <div class="header-content-left">
+            <div class="categoria-2">
               <a href="#"><img src="datosPunto_Qualite/img/vitamina.png" style="width: 100%;"></a>
             </div>  
           </div>
           <div class="col-md-3 col-sm-6">
-            <div class="header-content-left">
+            <div class="categoria-2">
               <a href="#"><img src="datosPunto_Qualite/img/maternidad.png" style="width: 100%;"></a>
             </div>  
           </div>
           <div class="col-md-3 col-sm-6">
-            <div class="header-content-left">
+            <div class="categoria-2">
               <a href="#"><img src="datosPunto_Qualite/img/bienestar.png" style="width: 100%;"></a>
             </div>  
           </div>
@@ -192,24 +210,8 @@ if ($_POST) {
       </div>
     </section>
     <!-- Final sección sub catgorias -->
+    
     <!-- Acordeon -->
-    <div id="accordion">
-      <div class="card">
-        <div class="card-header" id="headingOne">
-          <h5 class="mb-0">
-            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Collapsible Group Item #1
-            </button>
-          </h5>
-        </div>
-
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-          <div class="card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- Fin del acordeon -->
 
 <!-- Inicio footer -->
@@ -244,7 +246,7 @@ if ($_POST) {
         </ul>
       </div>
       <!-- Redes cociales -->
-      <div class="col-12 col-md">
+      <div class="col-3 col-md">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24" focusable="false">
           <title>Product</title>
           <circle cx="12" cy="12" r="10" />
@@ -274,7 +276,17 @@ if ($_POST) {
   <script>
       window.sr = ScrollReveal();
 
-    sr.reveal('.header-content-left', {
+    sr.reveal('.categoria-2', {
+      duration: 2000,
+      origin: 'left',
+      distance: '300px'
+    });
+    sr.reveal('.imagen1-categoria1', {
+      duration: 2000,
+      origin: 'bottom',
+      distance: '300px'
+    });
+    sr.reveal('.imagen2-categoria1', {
       duration: 2000,
       origin: 'bottom',
       distance: '300px'

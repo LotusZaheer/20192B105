@@ -25,7 +25,7 @@ if ($sesion != null || $sesion != '') {
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav style="z-index:40!important;" class=" navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
         <a class="navbar-brand" href="../index.php">Punto Qualité</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -78,7 +78,7 @@ if ($sesion != null || $sesion != '') {
         </div>
     </nav>
 
-    <div class="container" id="mision" style="padding-top: 3rem;">
+    <div class="container" id="mision"  style="margin-top: 100px">
         <h2 id="type-blockquotes">Misión</h2>
         <blockquote class="blockquote">
             <p class="mb-0">Generar dentro de la cadena de distribución de productos farmacéuticos, una entidad enfocada a lo social, disponiendo de un variado y excelente stock de productos, con precios altamente competitivos, almacenados eficientemente, dando la tranquilidad de poder acceder a medicamentos de calidad y respetar la formulación dada por los profesionales de la salud. Preservar la ética, servicio y cortesía tanto interna como con nuestros clientes. Esforzarnos por mantener clientes y trabajadores satisfechos en equilibrio con el entorno social.</p>
