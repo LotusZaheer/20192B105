@@ -57,6 +57,8 @@ if ($_POST) {
   <link rel="stylesheet" href="codigoPunto_Qualite/css/lux1.css">
   <!-- Scrool reveal -->
   <script src="https://unpkg.com/scrollreveal"></script>
+  <!-- NO TOCAR -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
 </head>
 
 <body>
