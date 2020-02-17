@@ -1,10 +1,11 @@
 var security=true;
 
 function equalpass(){
-    var pass1 = $('password1').val();
-    var pass2 = $('password2').val();
+    var pass1 = document.getElementById("password1").value;
+    var pass2 = document.getElementById("password2").value;
+    
     //Get the date from the form
-    var dat= $('dat').val();
+    var dat= document.getElementById("dat").value;
     
     //Format dates d:NowDate c:inputDate
     var d=new Date();
@@ -25,19 +26,19 @@ function equalpass(){
     //document.getElementById("demo").innerHTML = age; This is the best for watch errors
 
     if(age<18){
-        $('dat').setCustomValidity("No tienes la edad necesaria");
+        document.getElementById("dat").setCustomValidity("No tienes la edad necesaria");
         this.security=false;
     }else{
-        $('dat').setCustomValidity("");
+        document.getElementById("dat").setCustomValidity("");
     }
 
     if(pass1!=pass2){
-        $('dat').setCustomValidity("Las contraseñas no coinciden");
+        document.getElementById("password2").setCustomValidity("Las contraseñas no coinciden");
         this.security=false;
      
     }else{
         this.security=true;
-        $('dat').setCustomValidity("");
+        document.getElementById("password2").setCustomValidity("");
     }
     
     if(this.security==false){
@@ -47,22 +48,22 @@ function equalpass(){
 }
 
 function emailAE(){
-    $('email').setCustomValidity("El email ya esta en uso");
+    document.getElementById("email").setCustomValidity("El email ya esta en uso");
 }
 
 
 function chan(){
-    $('email').setCustomValidity("");
+    document.getElementById("email").setCustomValidity("");
 }
 
 function equalpassword(){
-    var pass1 = $('pass1').val();
-    var pass2 = $('pass2').val();
+    var pass1 = document.getElementById("pass1").value;
+    var pass2 = document.getElementById("pass2").value;
     if(pass1!=pass2){
-        $('pass2').setCustomValidity("Las contraseñas no coinciden");
+        document.getElementById("pass2").setCustomValidity("Las contraseñas no coinciden");
     
     }else{
-        $('pass2').setCustomValidity("");
+        document.getElementById("pass2").setCustomValidity("");
     }
 }
 
