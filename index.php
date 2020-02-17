@@ -169,28 +169,48 @@ if ($_POST) {
         <div class="row">
           <div class="col-md-3 col-sm-6">
             <div class="header-content-left">
-              <a href=""><img src="datosPunto_Qualite/img/gripa.png" style="width: 100%;"></a>
+              <a href="#"><img src="datosPunto_Qualite/img/gripa.png" style="width: 100%;"></a>
             </div>  
           </div>
           <div class="col-md-3 col-sm-6">
             <div class="header-content-left">
-              <a href=""><img src="datosPunto_Qualite/img/vitamina.png" style="width: 100%;"></a>
+              <a href="#"><img src="datosPunto_Qualite/img/vitamina.png" style="width: 100%;"></a>
             </div>  
           </div>
           <div class="col-md-3 col-sm-6">
             <div class="header-content-left">
-              <a href=""><img src="datosPunto_Qualite/img/maternidad.png" style="width: 100%;"></a>
+              <a href="#"><img src="datosPunto_Qualite/img/maternidad.png" style="width: 100%;"></a>
             </div>  
           </div>
           <div class="col-md-3 col-sm-6">
             <div class="header-content-left">
-              <a href=""><img src="datosPunto_Qualite/img/bienestar.png" style="width: 100%;"></a>
+              <a href="#"><img src="datosPunto_Qualite/img/bienestar.png" style="width: 100%;"></a>
             </div>  
           </div>
           
         </div>
       </div>
     </section>
+    <!-- Final sección sub catgorias -->
+    <!-- Acordeon -->
+    <div id="accordion">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Collapsible Group Item #1
+            </button>
+          </h5>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+          <div class="card-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fin del acordeon -->
 
 <!-- Inicio footer -->
 
@@ -233,16 +253,16 @@ if ($_POST) {
         <small class="d-block mb-3 text-muted">&copy; 2017-2020</small>
         <div class = "row">
           <div class ="col-3 col-md">
-          <a href=""><img src="datosPunto_Qualite/img/facebook.png" style="width: 100%;"></a>
+          <a href="https://www.facebook.com/" target="_blank"><img src="datosPunto_Qualite/img/facebook.png" style="width: 100%;"></a>
           </div>
           <div class ="col-3 col-md">
-          <a href=""><img src="datosPunto_Qualite/img/instagram.png" style="width: 100%;"></a>
+          <a href="https://www.instagram.com/" target="_blank"><img src="datosPunto_Qualite/img/instagram.png" style="width: 100%;"></a>
           </div>
           <div class ="col-3 col-md">
-          <a href=""><img src="datosPunto_Qualite/img/twitter.png" style="width: 100%;"></a>
+          <a href="https://twitter.com/PuntoQualite/" target="_blank"><img src="datosPunto_Qualite/img/twitter.png" style="width: 100%;"></a>
           </div>
           <div class ="col-3 col-md">
-          <a href=""><img src="datosPunto_Qualite/img/youtube.png" style="width: 100%;"></a>
+          <a href="https://www.youtube.com/" target="_blank"><img src="datosPunto_Qualite/img/youtube.png" style="width: 100%;"></a>
           </div>
         </div>
       </div>
