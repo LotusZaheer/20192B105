@@ -49,13 +49,12 @@ if($_POST){
 
 
 <body onload="<?php if($emailused==true) { echo("emailAE()"); } ?> ">
-<<<<<<< HEAD
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-=======
+
+
     <!--NAVBAR-->
     
     <nav style="z-index:40!important;" class=" navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
->>>>>>> master
+
         <a class="navbar-brand" href="index.php">Punto Qualité</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
