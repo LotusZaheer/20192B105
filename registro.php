@@ -30,17 +30,33 @@ if($_POST){
 <html lang="es">
 
 <head>
-    <link rel="stylesheet" href="css/lux1.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Registro</title>
+  <!-- Bootstrap 4 -->
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600|Open+Sans" rel="stylesheet"> 
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/lux1.css">
+  <title>Registro</title>
     <script type="text/javascript" src="js/security.js"></script>
+  <!-- Scrool reveal -->
+  <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 
+
+
 <body onload="<?php if($emailused==true) { echo("emailAE()"); } ?> ">
+<<<<<<< HEAD
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="index.php">Narcos</a>
+=======
+    <!--NAVBAR-->
+    
+    <nav style="z-index:40!important;" class=" navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+>>>>>>> master
+        <a class="navbar-brand" href="index.php">Punto Qualité</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -75,11 +91,17 @@ if($_POST){
 
         </div>
     </nav>
-
-    <h1 id="titles1">Se parte de nuestra gran comunidad</h1>
-    <div class="container">
-        <hr>
-        <h4>Datos personales</h4>
+    <!--FIN NAVBAR-->
+  <div class="container-registro">
+    <div class="row">
+        <div class="col-5">
+            <div class="wall">
+                
+            </div>
+        </div>
+        <div class="col-7" >
+    
+        <h4 id="titles1">Datos personales</h4>
         <form method="POST" action="<?php echo ($_SERVER['PHP_SELF']); ?>">
             <div class="form-group">
                 <label for="exampleInputEmail1">Correo Electronico</label>
@@ -123,6 +145,9 @@ if($_POST){
             </div>
             <button type="submit" class="btn btn-primary" id="topper" onclick="equalpass()" name="commit">Registrarse</button>
             <form>
+    </div>
+        </div>
+        
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

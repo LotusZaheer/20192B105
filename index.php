@@ -131,6 +131,7 @@ if($_POST){
   </nav>
 
   <!-- Fin navbar -->
+  
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-top: 80px">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

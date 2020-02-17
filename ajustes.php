@@ -39,7 +39,7 @@ if($_POST){
 <body <?php if($dont==3){ echo('onload="alertas()"'); }?>>
 
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
-    <a class="navbar-brand" href="index.php">Narcos</a>
+    <a class="navbar-brand" href="index.php">Punto Qualité</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

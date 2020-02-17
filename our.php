@@ -26,7 +26,7 @@ if ($sesion != null || $sesion != '') {
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="index.php">Narcos</a>
+        <a class="navbar-brand" href="index.php">Punto Qualité</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -95,15 +95,15 @@ if ($sesion != null || $sesion != '') {
     <div class="container" id="marca">
         <h2 id="type-blockquotes">Nuestra marca</h2>
         <blockquote class="blockquote">
-            <p class="mb-0">En el 2019 nace por primera vez drogueria Narcos, la cual llega a cambiar el alto costo de las drogas tradicionales usadas en una familia del bien comun, por ende su presidente, Santiago Duitama decide crear la primera drogueria para el bien de las familias pobres donde productos como dolex, crema numero 4, entre otras sean de forma mas accesible a la mayoria de personas, esta idea fue realizada despues que el presidenta resultara con 1444 votos para el consejo de Bucaramanga y no le alcanzara. </p>
-            <p class="mb-0">En la actualidad drogueria Narcos ha ayudado en gran manera a aquellas personas con problemas economicos y actualemnte cuenta con varias sedes a nivel de Colombia, llevando felicidad y alegria para aquellos que estan enfermos y no tienen como costear algunas drogas para mejorar su salud.</p>
+            <p class="mb-0">En el 2019 nace por primera vez drogueria Punto Qualité, la cual llega a cambiar el alto costo de las drogas tradicionales usadas en una familia del bien comun, por ende su presidente, Santiago Duitama decide crear la primera drogueria para el bien de las familias pobres donde productos como dolex, crema numero 4, entre otras sean de forma mas accesible a la mayoria de personas, esta idea fue realizada despues que el presidenta resultara con 1444 votos para el consejo de Bucaramanga y no le alcanzara. </p>
+            <p class="mb-0">En la actualidad drogueria Punto Qualité ha ayudado en gran manera a aquellas personas con problemas economicos y actualemnte cuenta con varias sedes a nivel de Colombia, llevando felicidad y alegria para aquellos que estan enfermos y no tienen como costear algunas drogas para mejorar su salud.</p>
         </blockquote>
     </div>
     <hr class="my-4">
     <div class="container" id="trabajo">
         <h2 id="type-blockquotes">Unetenos</h2>
         <blockquote class="blockquote">
-            <p class="mb-0">Actualmente la drogueria Narcos necesita de un vasto personal para la entrega de domicilios y gente con estudios en farmacia para la correcta entrega de productos en las distintas sedes, si requieres mas informacion ve el apartado de contactanos y alli podras obtener acesoria para la entrega de documentos y empleacion. El personal de domicilios requerimos a gente con vehiculo propio, como nuestra filosofia es drogas por gente para la gente, tambien se puede usar bicicleta para envios.</p>
+            <p class="mb-0">Actualmente la drogueria Punto Qualité necesita de un vasto personal para la entrega de domicilios y gente con estudios en farmacia para la correcta entrega de productos en las distintas sedes, si requieres mas informacion ve el apartado de contactanos y alli podras obtener acesoria para la entrega de documentos y empleacion. El personal de domicilios requerimos a gente con vehiculo propio, como nuestra filosofia es drogas por gente para la gente, tambien se puede usar bicicleta para envios.</p>
         </blockquote>
     </div>
     <footer class="container py-5">
@@ -135,7 +135,7 @@ if ($sesion != null || $sesion != '') {
                 </p>
             </div>
             <div class="col-6 col-md">
-                <h5>Acerca de Narcos</h5>
+                <h5>Acerca de Punto Qualité</h5>
                 <ul class="list-unstyled text-small">
                     <li><a class="text-muted" href="#vision">Vision</a></li>
                     <li><a class="text-muted" href="#mision">Mision</a></li>

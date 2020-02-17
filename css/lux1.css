@@ -9776,8 +9776,8 @@ th {
 }
 
 #titles1 {
-  margin-top: 4rem;
-  margin-left: 4rem;
+  margin-top: 7rem;
+ 
 }
 
 #topper{
@@ -9829,4 +9829,16 @@ background-size: cover;
 #ajustes{
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+.wall{
+  background-image: url("../assets/colorwall.jpg");
+  height: 100vh;
+}
+
+.container-registro{
+  width: 100%;
+  padding-right: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
