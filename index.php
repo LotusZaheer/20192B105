@@ -98,8 +98,8 @@ if($_POST){
 
               echo ('
           <li class="nav-item ">
-			<a class="nav-link" id="btn-abrir-popup" class="btn-abrir-popup" >Iniciar Sesion</a>
-
+			<a class="nav-link" id="btn-abrir-popup" class="btn-abrir-popup nav-link" href="#" >Iniciar Sesion</a>
+              </li>
 		<div class="overlay" id="overlay">
 			
 			<div class="popup" id="popup">
