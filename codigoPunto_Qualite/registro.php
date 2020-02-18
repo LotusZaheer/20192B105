@@ -90,12 +90,12 @@ if ($_POST) {
     <!--FIN NAVBAR-->
     <div class="container-registro">
         <div class="row">
-            <div class="col-5">
+            <div class="col-3">
                 <div class="wall">
 
                 </div>
             </div>
-            <div class="col-7">
+            <div class="col-9">
 
                 <h4 id="titles1">Datos personales</h4>
                 <form method="POST" id="formregister" action="<?php echo ($_SERVER['PHP_SELF']); ?>">
@@ -116,11 +116,12 @@ if ($_POST) {
                         <label for="exampleInputEmail1">Nombre y Apellidos</label>
                         <input name="nombre" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Juan Rodriguez" required>
                     </div>
-                    <div class="form-group" id="dataform">
+                    <div  id="dataform">
                         <label for="fecha">Fecha de nacimiento</label>
                         <input type="date" class="form-control" name="fecha_nacimiento" id="dat" name="dat" onclick="equalpass()" value="<?php echo date('Y-m-d'); ?>" required>
+                    <label id="elementico" ></label>
                     </div>
-                    <p id="demo"></p>
+                    
                     <label for="exampleInputEmail1">Ciudad</label>
                     <select class="form-control" id="ciudad" name="ciudad" required>
                         <option value=""></option>
@@ -142,7 +143,7 @@ if ($_POST) {
                     </div>
                     <br>
                     <div class="g-recaptcha" data-sitekey="6LdXy9kUAAAAAMZ5yYyXFHz3lixoI1RCk5AlAEnk"></div>
-                    <button type="submit" class="btn btn-primary" id="topper" name="commit">Registrarse</button>
+                    <button type="submit" class="btn btn-primary form-group" id="topper" name="commit">Registrarse</button>
                     <form>
             </div>
         </div>
