@@ -40,7 +40,7 @@ if ($_POST) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="css/lux1.css">
     <title>Registro</title>
-    
+
     <!-- Scrool reveal -->
     <script src="https://unpkg.com/scrollreveal"></script>
 </head>
@@ -65,13 +65,13 @@ if ($_POST) {
 
 
             <ul class="navbar-nav mr-auto">
-            <li class="nav-item dropdown show ">
-                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Productos</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Bebé y maternidad</a>
-                    <a class="dropdown-item" href="#">Fitness</a>
-                    <a class="dropdown-item" href="#">Cuidado personal</a>
-              </li>
+                <li class="nav-item dropdown show ">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Productos</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Bebé y maternidad</a>
+                        <a class="dropdown-item" href="#">Fitness</a>
+                        <a class="dropdown-item" href="#">Cuidado personal</a>
+                </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="our.php">Nosotros</a>
                 </li>
@@ -105,44 +105,45 @@ if ($_POST) {
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Contraseña</label>
-                        <input type="password" name="password1" id="password1"  class="form-control"  placeholder="Password" required>
+                        <input type="password" name="password1" id="password1" class="form-control" placeholder="Password" required>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Confirmar contraseña</label>
                         <input type="password" name="password2" id="password2" class="form-control" placeholder="Password" required>
                     </div>
                     <p id="demo"></p>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Nombre y Apellidos</label>
-                                <input name="nombre" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Juan Rodriguez" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="fecha">Fecha de nacimiento</label>
-                                <input type="date" class="form-control" name="fecha_nacimiento" id="dat" name="dat" onclick="equalpass()" value="<?php echo date('Y-m-d'); ?>" required>
-                            </div>
-                            <label for="exampleInputEmail1">Ciudad</label>
-                            <select class="form-control" id="ciudad" name="ciudad" required>
-                                <option value=""></option>
-                                <option value="1">Bucaramanga</option>
-                                <option value="2">Giron</option>
-                                <option value="3">Floridablanca</option>
-                                <option value="4">Duitama</option>
-                                <option value="5">Yopal</option>
-                            </select>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Direccion</label>
-                                <input name="direccion" class="form-control" id="direccion" aria-describedby="emailHelp" placeholder="Bogota, Calle 53 # 27 - 08" required>
-                            </div>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" value="" checked="" required>
-                                    ¿Aceptas los terminos y condiciones?
-                                </label>
-                            </div>
-                            <br>
-                            <div class="g-recaptcha" data-sitekey="6LdXy9kUAAAAAMZ5yYyXFHz3lixoI1RCk5AlAEnk"></div>
-                            <button type="submit" class="btn btn-primary" id="topper"  name="commit">Registrarse</button>
-                            <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nombre y Apellidos</label>
+                        <input name="nombre" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Juan Rodriguez" required>
+                    </div>
+                    <div class="form-group" id="dataform">
+                        <label for="fecha">Fecha de nacimiento</label>
+                        <input type="date" class="form-control" name="fecha_nacimiento" id="dat" name="dat" onclick="equalpass()" value="<?php echo date('Y-m-d'); ?>" required>
+                    </div>
+                    <p id="demo"></p>
+                    <label for="exampleInputEmail1">Ciudad</label>
+                    <select class="form-control" id="ciudad" name="ciudad" required>
+                        <option value=""></option>
+                        <option value="1">Bucaramanga</option>
+                        <option value="2">Giron</option>
+                        <option value="3">Floridablanca</option>
+                        <option value="4">Duitama</option>
+                        <option value="5">Yopal</option>
+                    </select>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Direccion</label>
+                        <input name="direccion" class="form-control" id="direccion" aria-describedby="emailHelp" placeholder="Bogota, Calle 53 # 27 - 08" required>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="" checked="" required>
+                            ¿Aceptas los terminos y condiciones?
+                        </label>
+                    </div>
+                    <br>
+                    <div class="g-recaptcha" data-sitekey="6LdXy9kUAAAAAMZ5yYyXFHz3lixoI1RCk5AlAEnk"></div>
+                    <button type="submit" class="btn btn-primary" id="topper" name="commit">Registrarse</button>
+                    <form>
             </div>
         </div>
 

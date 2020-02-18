@@ -73,7 +73,7 @@ if ($_POST) {
       <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown show ">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Productos</a>
-            <div class="dropdown-menu" style="">
+            <div class="dropdown-menu">
               <a class="dropdown-item" href="#">Bebé y maternidad</a>
               <a class="dropdown-item" href="#">Fitness</a>
               <a class="dropdown-item" href="#">Cuidado personal</a>
