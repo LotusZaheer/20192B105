@@ -84,7 +84,11 @@ if ($_POST) {
         <li class="nav-item ">
           <a class="nav-link" href="#contacto">Contactanos</a>
         </li>
+<<<<<<< HEAD
         <li class="nav-item dropdown">
+=======
+
+>>>>>>> 6c797ba2d718df34eac1d60bc6cf4d83b6892b73
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Formularios</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="codigoPunto_Qualite/encuesta.php">Encuesta</a>
