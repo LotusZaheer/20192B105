@@ -79,12 +79,6 @@ if ($_POST) {
                     <a class="nav-link" href="our.php">Contactanos</a>
                 </li>
             </ul>
-
-
-
-
-
-
         </div>
     </nav>
     <!--FIN NAVBAR-->
@@ -150,68 +144,170 @@ if ($_POST) {
         <p></p>
       </div>
     </section>
-    <!--  PREGUNTA 1  -->
+    <!--  Pregunta 1  -->
     <section class="row">
-      <div class="col-md-6">
-        <p>1- ¿Usted tiene celular?</p>
-      </div>
-      <div class="col-md-2">
-        <label class="radio">
-        <input type="radio" name="pregunta1" id="pregunta1a" value="SI"> Si
-      </label>
-      </div>
-      <div class="col-md-2">
-        <label class="radio">
-        <input type="radio" name="pregunta1" id="preguntab" value="NO"> No
-      </label>
-      </div>
-      <div class="col-md-2">
-        <label class="radio">
-        <input type="radio" name="pregunta1" id="preguntac" value="NA"> N/A
-      </label>
-      </div>
-    </section>
-    <!--  PREGUNTA 2  -->
-    <section class="row">
-      <div class="col-md-6">
-        <p>2- Marque las funciones con las que cuenta </p>
-      </div>
-      <div class="col-md-2">
-      <label><input type="checkbox" id="cbox1" value="first_checkbox"> Cámara</label><br>
-
-<input type="checkbox" id="cbox2" value="second_checkbox"> <label for="cbox2">Bluetooth</label>
-      </div>
-      <div class="col-md-2">
-      <label><input type="checkbox" id="cbox1" value="first_checkbox"> WiFi</label><br>
-
-<input type="checkbox" id="cbox2" value="second_checkbox"> <label for="cbox2">Grabadora</label>
-      </label>
-      </div>
-      <div class="col-md-2">
-      <label><input type="checkbox" id="cbox1" value="first_checkbox"> NFC </label><br>
-        <input type="checkbox" id="cbox2" value="second_checkbox"> <label for="cbox2">Cable tipo C</label>
-      </label>
-      </div>
-    </section>
-    <!--  PREGUNTA 13  -->
-    <section class="row">
-      <div class="col-md-12">
-        <section class="row">
-          <div class="col-md-8">
-            <p>3- ¿Hace cuanto tiene el celular?</p>
-          </div>
-          <div class="col-md-4">
-            <select class="form-control" id="pregunta13">
-            <option value="5">Menos de 6 meses</option>
-            <option value="4">Más de 6 meses y menos de un años</option>
-            <option value="3">Más de un año</option>
-            <option value="2">Más de 2 años</option>
-            <option value="0">No Responde</option>
-             </select>
+          <div class="col-md-12">
+            <label for="tipoAtencion">1. Con que frecuencia usas el internet a la semana:</label>
+            <select class="form-control" id="tipoAtencion">
+            <option value="ce">Un día a la semana</option>
+            <option value="farm">Dos días a la semana</option>
+            <option value="farm">Tres días a la semana</option>
+            <option value="farm">Cuatro días a la semana</option>
+            <option value="farm">Todos los días</option>
+          </select>
           </div>
         </section>
+        <br>
+    <!--  Pregunta 2  -->
+    <section class="row">
+      <div class="col-md-6">
+        <p>2. Cual es el lugar habitual del uso de internet </p>
       </div>
-    </section><br />
+      <div class="col-md-2">
+      <label><input type="checkbox" id="cbox1" value="first_checkbox"> Casa</label><br>
+
+      <input type="checkbox" id="cbox2" value="second_checkbox"> <label for="cbox2">Café-ciber</label>  
+      </div>
+      <div class="col-md-2">
+      <label><input type="checkbox" id="cbox1" value="first_checkbox"> Vecino</label><br>
+
+          <input type="checkbox" id="cbox2" value="second_checkbox"> <label for="cbox2">Universidad</label>
+      </label>
+      </div>
+      <div class="col-md-2">
+      <label><input type="checkbox" id="cbox1" value="first_checkbox"> Oficina </label><br>
+        <input type="checkbox" id="cbox2" value="second_checkbox"> <label for="cbox2">Otra</label>
+      </label>
+      </div>
+    </section>
+    <br>
+    <!--  Pregunta 3  -->
+    <section class="row">
+      <div class="col-md-6">
+          <label for="tipoAtencion">3. ¿Alguna vez ha hecho compras por internet?</label>
+            <select class="form-control" id="tipoAtencion">
+              <option value="ce">Sí</option>
+              <option value="farm">No</option>
+            </select>
+      </div>
+      <!-- Pregunta 4 -->
+      <div class="col-md-6">
+        <label for="tipoAtencion">4. ¿Crees que tu información en internet es confidencial?</label>
+          <select class="form-control" id="tipoAtencion">
+            <option value="ce">Sí</option>
+            <option value="farm">No</option>
+            <option value="farm">A veces</option>
+           </select>
+      </div>
+    </section>
+    <!-- Pregunta 5 -->
+    <section class="row">
+      <div class="col-md-6">
+        <p>5. Cual es el lugar habitual del uso de internet </p>
+      </div>
+      <div class="col-md-2">
+      <label><input type="checkbox" id="cbox1" value="first_checkbox"> Laptop</label><br>
+
+      <input type="checkbox" id="cbox2" value="second_checkbox"> <label for="cbox2">Escritorio</label>  
+      </div>
+      <div class="col-md-2">
+      <label><input type="checkbox" id="cbox1" value="first_checkbox"> Mini-laptop</label><br>
+
+          <input type="checkbox" id="cbox2" value="second_checkbox"> <label for="cbox2">Universidad</label>
+      </label>
+      </div>
+    </section>
+    <br> 
+    <!-- Pregunta 6 -->
+    <section class="row">
+      <div class="col-md-6">
+          <label for="tipoAtencion">6. ¿Que hora prefieres para usar el internet?</label>
+            <select class="form-control" id="tipoAtencion">
+              <option value="ce">Mañana</option>
+              <option value="farm">Tarde</option>
+              <option value="farm">Noche</option>
+            </select>
+      </div>
+      <!-- Pregunta 7 -->
+      <div class="col-md-6">
+        <label for="tipoAtencion">7. ¿Consideras que tú le das un buen uso al internet?</label>
+          <select class="form-control" id="tipoAtencion">
+            <option value="ce">Sí</option>
+            <option value="farm">No</option>
+            <option value="farm">No estoy seguro</option>
+          </select>
+      </div>
+    </section>
+    <br>
+    <!-- Pregunta 8 -->
+    <section>
+    <section class="row">
+      <div class="col-md-6">
+          <label for="tipoAtencion">8. ¿Consideras que todos hacen buen uso del internet?</label>
+            <select class="form-control" id="tipoAtencion">
+              <option value="ce">Sí</option>
+              <option value="farm">No</option>
+              <option value="farm">No estoy seguro</option>
+            </select>
+      </div>
+      <!-- Pregunta 9 -->
+      <div class="col-md-6">
+        <label for="tipoAtencion">9. ¿Confías en la información que usas en internet?</label>
+          <select class="form-control" id="tipoAtencion">
+            <option value="ce">Sí</option>
+            <option value="farm">No</option>
+            <option value="farm">Más o menos</option>
+          </select>
+      </div>
+    </section>
+    <br>
+    <!-- Pregunta 10 -->
+    <section class="row">
+      <div class="col-md-4">
+        <p>10. ¿Cual es el uso que más le das a internet? </p>
+      </div>
+      <div class="col-md-2">
+      <label><input type="checkbox" id="cbox1" value="first_checkbox"> Chat</label><br>
+      <input type="checkbox" id="cbox2" value="second_checkbox"> <label for="cbox2">Vídeo</label>  
+      </div>
+      <div class="col-md-2">
+      <label><input type="checkbox" id="cbox1" value="first_checkbox"> Música</label><br>
+      <input type="checkbox" id="cbox2" value="second_checkbox"> <label for="cbox2">Deportes</label>
+      </label>
+      </div>
+      <div class="col-md-2">
+      <label><input type="checkbox" id="cbox1" value="first_checkbox"> Ocio</label><br>
+          <input type="checkbox" id="cbox2" value="second_checkbox"> <label for="cbox2">Estudio</label>
+      </label>
+      </div>
+      <div class="col-md-2">
+      <label><input type="checkbox" id="cbox1" value="first_checkbox"> Otro</label><br>
+      </label>
+      <!-- Pregunta 11 -->
+    </section>
+    <br> 
+    <section class="row">
+      <div class="col-md-4">
+        <p>11. ¿Que crees que se descarga más en internet? </p>
+      </div>
+      <div class="col-md-2">
+      <label><input type="checkbox" id="cbox1" value="first_checkbox"> Juegos</label><br>
+      <input type="checkbox" id="cbox2" value="second_checkbox"> <label for="cbox2">Vídeos</label>  
+      </div>
+      <div class="col-md-2">
+      <label><input type="checkbox" id="cbox1" value="first_checkbox"> Música</label><br>
+      <input type="checkbox" id="cbox2" value="second_checkbox"> <label for="cbox2">Deportes</label>
+      </label>
+      </div>
+      <div class="col-md-2">
+      <label><input type="checkbox" id="cbox1" value="first_checkbox"> Estudio</label><br>
+          <input type="checkbox" id="cbox2" value="second_checkbox"> <label for="cbox2">Otros</label>
+      </label>
+      </div>
+    </section>
+    <br> 
+    <button type="submit" class="btn btn-primary mb-3">Enviar  </button>
+  
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

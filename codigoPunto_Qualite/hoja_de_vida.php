@@ -166,7 +166,7 @@ if ($_POST) {
                 </div>
                 <br>
                 <br>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary mb-3">Subir</button>
             </form>
         </div>
     </div>
