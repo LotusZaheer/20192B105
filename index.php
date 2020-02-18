@@ -123,8 +123,10 @@ if ($_POST) {
 				<h1 class="h3 mb-3 font-weight-normal">Iniciar Sesion</h1>
 				<form class="form-signin" method="POST" action="' . $_SERVER['PHP-SELF'] . '">
 					<div class="contenedor-inputs">
-						<input type="email" name="email" id="inputEmail" class="form-control" placeholder="Correo electronico" required autofocus>
-						<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
+          <input id="password-field1" type="password" class="form-control" name="password">
+          <span toggle="#password-field1" class="fa fa-fw fa-eye field-icon toggle-password1"></span>
+						<input id="password-field2" type="password" class="form-control" name="password">
+              <span toggle="#password-field2" class="fa fa-fw fa-eye field-icon toggle-password2"></span>
 					</div>
 					<button class="btn btn-primary btn-block" type="submit">Entrar</button>
 					</form>
