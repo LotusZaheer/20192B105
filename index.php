@@ -73,10 +73,10 @@ if ($_POST) {
       <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown show ">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Productos</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Bebé y maternidad</a>
-              <a class="dropdown-item" href="#">Fitness</a>
-              <a class="dropdown-item" href="#">Cuidado personal</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Bebé y maternidad</a>
+            <a class="dropdown-item" href="#">Fitness</a>
+            <a class="dropdown-item" href="#">Cuidado personal</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link" href="codigoPunto_Qualite/our.php">Nosotros</a>
@@ -84,11 +84,12 @@ if ($_POST) {
         <li class="nav-item ">
           <a class="nav-link" href="#contacto">Contactanos</a>
         </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="codigoPunto_Qualite/encuesta.php">Encuesta</a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="codigoPunto_Qualite/hoja_de_vida.php">Hoja de Vida</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Formularios</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="codigoPunto_Qualite/encuesta.php">Encuesta</a>
+            <a class="dropdown-item" href="codigoPunto_Qualite/hoja_de_vida.php">Hoja de Vida</a>
+            
         </li>
       </ul>
 
@@ -141,7 +142,7 @@ if ($_POST) {
   </nav>
 
   <!-- Fin navbar -->
- <!-- Carousel -->
+  <!-- Carousel -->
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-top: 80px">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -175,72 +176,75 @@ if ($_POST) {
   <!-- Fin Carousel -->
   <!-- Iniciar sección imágenes -->
   <section id="info-two">
-      <div class="container">
-        <div class="row my-5">
-          <div class="col-md-6">
-            <div class="imagen1-categoria1">
-              <a href="#"><img src="datosPunto_Qualite/img/deporte.jpg" style="width: 100%;"></a>
-            </div>
+    <div class="container">
+      <div class="row my-5">
+        <div class="col-md-6">
+          <div class="imagen1-categoria1">
+            <a href="#"><img src="datosPunto_Qualite/img/deporte.jpg" style="width: 100%;"></a>
           </div>
-          <div class="col-md-6">
-            <div class = "imagen2-categoria1">
+        </div>
+        <div class="col-md-6">
+          <div class="imagen2-categoria1">
             <a href="#"><img src="datosPunto_Qualite/img/hogar.jpg" style="width: 100%;"></a>
-            </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
   <!-- Fin sección imágenes -->
-    <!-- SECTION -->
-    <section id="info-one" style = "background: #f1f1f1;">
-      <div class="container mt-2">
-        <div class="row">
-          <div class="col-md-3 col-sm-6">
-            <div class="categoria-2">
-              <a href="#"><img src="datosPunto_Qualite/img/gripa.png" style="width: 100%;"></a>
-            </div>  
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="categoria-2">
-              <a href="#"><img src="datosPunto_Qualite/img/vitamina.png" style="width: 100%;"></a>
-            </div>  
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="categoria-2">
-              <a href="#"><img src="datosPunto_Qualite/img/maternidad.png" style="width: 100%;"></a>
-            </div>  
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="categoria-2">
-              <a href="#"><img src="datosPunto_Qualite/img/bienestar.png" style="width: 100%;"></a>
-            </div>  
-          </div>
-          
-        </div>
-      </div>
-    </section>
-    <!-- Final sección sub categorias -->
-    
-    <!-- iframe red social -->
-    <section id="info-one">
-      <div class="container">
-        <div class="row mt-5">
-          <div class="col-md-6">
-            <blockquote class="twitter-tweet"><p lang="es" dir="ltr">En Punto Qualité tenemos los mejores productos a los mejores precios, ven y disfruta de los descuentos que tenemos en diferentes categorías a diario, ¿Que esperas?</p>&mdash; Droguería Punto Qualité (@PuntoQualite) <a href="https://twitter.com/PuntoQualite/status/1229427162765238272?ref_src=twsrc%5Etfw">February 17, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          </div>
-          <div class="col-md-6 my-auto">
-            <div class="info-right">
-              <h2>Siguenos en nuestras redes sociales.</h2>
-            </div>
+  <!-- SECTION -->
+  <section id="info-one" style="background: #f1f1f1;">
+    <div class="container mt-2">
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <div class="categoria-2">
+            <a href="#"><img src="datosPunto_Qualite/img/gripa.png" style="width: 100%;"></a>
           </div>
         </div>
-      </div>
-    </section>
-    <!-- Final iframe -->
-    <!-- Acordeon -->
-    <!-- Fin del acordeon -->
+        <div class="col-md-3 col-sm-6">
+          <div class="categoria-2">
+            <a href="#"><img src="datosPunto_Qualite/img/vitamina.png" style="width: 100%;"></a>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="categoria-2">
+            <a href="#"><img src="datosPunto_Qualite/img/maternidad.png" style="width: 100%;"></a>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="categoria-2">
+            <a href="#"><img src="datosPunto_Qualite/img/bienestar.png" style="width: 100%;"></a>
+          </div>
+        </div>
 
-<!-- Inicio footer -->
+      </div>
+    </div>
+  </section>
+  <!-- Final sección sub categorias -->
+
+  <!-- iframe red social -->
+  <section id="info-one">
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-md-6">
+          <blockquote class="twitter-tweet">
+            <p lang="es" dir="ltr">En Punto Qualité tenemos los mejores productos a los mejores precios, ven y disfruta de los descuentos que tenemos en diferentes categorías a diario, ¿Que esperas?</p>&mdash; Droguería Punto Qualité (@PuntoQualite) <a href="https://twitter.com/PuntoQualite/status/1229427162765238272?ref_src=twsrc%5Etfw">February 17, 2020</a>
+          </blockquote>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+        <div class="col-md-6 my-auto">
+          <div class="info-right">
+            <h2>Siguenos en nuestras redes sociales.</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Final iframe -->
+  <!-- Acordeon -->
+  <!-- Fin del acordeon -->
+
+  <!-- Inicio footer -->
 
   <footer class="container py-5">
     <div class="row">
@@ -257,10 +261,10 @@ if ($_POST) {
       <div class="col-6 col-md" id="contacto">
         <h5>Contacto</h5>
         <p class="text-muted">
-              Andrés Santiago Castro Duitama
-              Fredy Alejandro Mendoza López
-              Orlando Alberto Moncada Rodriguez
-              Andres Felipe Uribe
+          Andrés Santiago Castro Duitama
+          Fredy Alejandro Mendoza López
+          Orlando Alberto Moncada Rodriguez
+          Andres Felipe Uribe
         </p>
       </div>
       <div class="col-6 col-md">
@@ -280,28 +284,28 @@ if ($_POST) {
           <path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" />
         </svg>
         <small class="d-block mb-3 text-muted">&copy; 2020</small>
-        <div class = "row">
-          <div class ="col-3 col-md">
-          <a href="https://www.facebook.com/" target="_blank"><img src="datosPunto_Qualite/img/facebook1.png" style="width: 100%;"></a>
+        <div class="row">
+          <div class="col-3 col-md">
+            <a href="https://www.facebook.com/" target="_blank"><img src="datosPunto_Qualite/img/facebook1.png" style="width: 100%;"></a>
           </div>
-          <div class ="col-3 col-md">
-          <a href="https://www.instagram.com/" target="_blank"><img src="datosPunto_Qualite/img/instagram1.png" style="width: 100%;"></a>
+          <div class="col-3 col-md">
+            <a href="https://www.instagram.com/" target="_blank"><img src="datosPunto_Qualite/img/instagram1.png" style="width: 100%;"></a>
           </div>
-          <div class ="col-3 col-md">
-          <a href="https://twitter.com/PuntoQualite/" target="_blank"><img src="datosPunto_Qualite/img/twitter1.png" style="width: 100%;"></a>
+          <div class="col-3 col-md">
+            <a href="https://twitter.com/PuntoQualite/" target="_blank"><img src="datosPunto_Qualite/img/twitter1.png" style="width: 100%;"></a>
           </div>
-          <div class ="col-3 col-md">
-          <a href="https://www.youtube.com/" target="_blank"><img src="datosPunto_Qualite/img/youtube1.png" style="width: 100%;"></a>
+          <div class="col-3 col-md">
+            <a href="https://www.youtube.com/" target="_blank"><img src="datosPunto_Qualite/img/youtube1.png" style="width: 100%;"></a>
           </div>
         </div>
       </div>
       <!-- Fin redes -->
     </div>
-    
+
   </footer>
   <!-- Animaciones -->
   <script>
-      window.sr = ScrollReveal();
+    window.sr = ScrollReveal();
 
     sr.reveal('.categoria-2', {
       duration: 2000,
@@ -318,7 +322,7 @@ if ($_POST) {
       origin: 'bottom',
       distance: '300px'
     });
-    </script> 
+  </script>
   <!-- Bootstrap 4 scripts -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

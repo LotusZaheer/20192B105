@@ -51,12 +51,12 @@ if ($_POST) {
                 // habilitamos
                 document.getElementById("universidad").disabled = false;
                 document.getElementById("carrera").disabled = false;
-                decumen.getElementById("promedio").disabled = false;
+                document.getElementById("promedio").disabled = false;
             } else if (value == false) {
                 // deshabilitamos
                 document.getElementById("universidad").disabled = true;
-                decumen.getElementById("carrera").disabled = true;
-                decumen.getElementById("promedio").disabled = true;
+                document.getElementById("carrera").disabled = true;
+                document.getElementById("promedio").disabled = true;
             }
         }
     </script>
@@ -146,7 +146,7 @@ if ($_POST) {
                     </div>
                     <div>
 
-                        <input type="checkbox" id="check" onchange="habilitar(this.checked);" checked> Tiene formación profecional
+                        <input type="checkbox" id="check" onchange="habilitar(this.checked);" checked> Tiene formación profesional
 
                     </div>
 
