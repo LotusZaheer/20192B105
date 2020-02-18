@@ -140,3 +140,11 @@ body {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+.field-icon {
+  float: right;
+  margin-left: -50px;
+  margin-top: -51px;
+  position: relative;
+  z-index: 2;
+}
