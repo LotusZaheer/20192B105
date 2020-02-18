@@ -22,6 +22,7 @@ if ($sesion != null || $sesion != '') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nosotros</title>
+    <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 
 <body>
@@ -101,16 +102,27 @@ if ($sesion != null || $sesion != '') {
         </div>
       </div>
     </section>
-        
-    </div>
-    <hr class="my-4">
-    <div class="container" id="vision">
-        <h2 id="type-blockquotes">Visión</h2>
-        <blockquote class="blockquote">
-            <p class="mb-0">Crear Confianza garantizándote productos óptimos a los mejores precios del mercado, Asesorándote en tus dudas y búsqueda de medicamentos. Siempre a tu Servicio</p>
-        </blockquote>
-    </div>
-    <hr class="my-4">
+
+    <section id="info-two">
+      <div class="container" style="margin-top: 100px">
+        <div class="row my-5">
+         <div class="col-md-6">
+            <div class = "imagen-vision">
+                <img src="../datosPunto_Qualite/img/mision.jpg" style="width: 100%;">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mision">
+            <h2 id="type-blockquotes">Visión</h2>
+             <blockquote class="blockquote">
+             <p class="mb-0">Crear Confianza garantizándote productos óptimos a los mejores precios del mercado, Asesorándote en tus dudas y búsqueda de medicamentos. Siempre a tu Servicio</p>
+                </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div class="container" id="marca">
         <h2 id="type-blockquotes">Nuestra marca</h2>
         <blockquote class="blockquote">

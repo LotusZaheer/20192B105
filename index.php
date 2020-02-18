@@ -85,7 +85,7 @@ if ($_POST) {
           <a class="nav-link" href="#contacto">Contactanos</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="#Encuesta">Encuesta</a>
+          <a class="nav-link" href="codigoPunto_Qualite/encuesta.php">Encuesta</a>
         </li>
       </ul>
 
