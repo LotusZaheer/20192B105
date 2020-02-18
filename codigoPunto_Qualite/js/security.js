@@ -1,8 +1,6 @@
 var security=true;
 
 function equalpass(){
-    var pass1 = document.getElementById("password1").value;
-    var pass2 = document.getElementById("password2").value;
     
     //Get the date from the form
     var dat= document.getElementById("dat").value;
@@ -23,26 +21,15 @@ function equalpass(){
         age=yearCom-1;
     }
 
-    //document.getElementById("demo").innerHTML = age; This is the best for watch errors
+    
 
     if(age<18){
+        document.getElementById("demo").innerHTML = age; 
         document.getElementById("dat").setCustomValidity("No tienes la edad necesaria");
-        this.security=false;
+        //falta algo aqui
+        
     }else{
         document.getElementById("dat").setCustomValidity("");
-    }
-
-    if(pass1!=pass2){
-        document.getElementById("password2").setCustomValidity("Las contraseñas no coinciden");
-        this.security=false;
-     
-    }else{
-        this.security=true;
-        document.getElementById("password2").setCustomValidity("");
-    }
-    
-    if(this.security==false){
-        alert("No es posible registrarse, hay errores en algunas casillas");
     }
     
 }
