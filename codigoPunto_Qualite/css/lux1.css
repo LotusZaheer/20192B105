@@ -9833,7 +9833,7 @@ background-size: 100%;
 
 .wall{
   background-image: url("../../datosPunto_Qualite/img/colorwall.jpg");
-  height: 100vh;
+  height: 100%;
 }
 
 .container-registro{

@@ -1,13 +1,13 @@
 var security=true;
+var k=0;
 
 function equalpass(){
     
     //Get the date from the form
     var dat= document.getElementById("dat").value;
-    var foru=document.getElementById("dataform");
-    var p=document.createElement("label");
-    var node=document.createTextNode("No tiene la edad necesaria");
-    document.getElementById("demo").innerHTML=p.hasChildNodes;
+    var p=document.getElementById("elementico");
+    
+    
     //Format dates d:NowDate c:inputDate
     var d=new Date();
     var c=new Date(dat);
@@ -28,16 +28,13 @@ function equalpass(){
 
     if(age<18){
         document.getElementById("dat").setCustomValidity("No tienes la edad necesaria");
+        document.getElementById("elementico").innerHTML="No tienes la edad necesaria";
         
-        if(!p.hasChildNodes){
-        foru.appendChild(p);
-        p.appendChild(node);
-        }
         
     }else{
         document.getElementById("dat").setCustomValidity("");
-       
-        foru.removeChild(p);
+        document.getElementById("elementico").innerHTML="";
+        
     }
     
 }
