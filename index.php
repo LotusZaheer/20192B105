@@ -93,7 +93,7 @@ if ($_POST) {
           <div class="dropdown-menu">
             <a class="dropdown-item" href="codigoPunto_Qualite/encuesta.php">Encuesta</a>
             <a class="dropdown-item" href="codigoPunto_Qualite/hoja_de_vida.php">Hoja de Vida</a>
-            
+
         </li>
       </ul>
 
@@ -267,10 +267,10 @@ if ($_POST) {
       <div class="col-6 col-md" id="contacto">
         <h5>Contacto</h5>
         <p class="text-muted">
-          Andrés Santiago Castro Duitama
-          Fredy Alejandro Mendoza López
-          Orlando Alberto Moncada Rodriguez
-          Andres Felipe Uribe
+          Andrés Santiago Castro<br>
+          Fredy Alejandro Mendoza<br>
+          Orlando Alberto Moncada<br>
+          Andres Felipe Uribe<br>
         </p>
       </div>
       <div class="col-6 col-md">
