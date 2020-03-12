@@ -8,8 +8,8 @@ if($_POST){
   $email=$_POST['email'];
   $pass=$_POST['password'];
   $usuario=repositorioFunciones::obtener_usuario_email(Conexion::obtener(),$email);
-  
-  if($usuario->getContrasena()==$pass){
+  $contras=base64_decode($usuario->getContrasena());
+  if($pass==$contras){
     session_start();
     $_SESSION['cliente']=$usuario;
     header("Location: index.php");

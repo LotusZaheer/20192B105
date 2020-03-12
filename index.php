@@ -11,12 +11,9 @@ if ($sesion != null || $sesion != '') {
   $mode = true;
 }
 
-
 ?>
 <?php
-include_once "php-objects/repositorio.php";
-include_once "php-objects/usuario.inc.php";
-include_once "php-objects/conexion.inc.php";
+
 
 if ($_POST) {
   Conexion::abrir();
@@ -24,12 +21,11 @@ if ($_POST) {
   $pass = $_POST['password'];
   $usuario = repositorioFunciones::obtener_usuario_email(Conexion::obtener(), $email);
 
-  if ($usuario->getContrasena() == $pass) {
+  if (password_verify($pass,$usuario->getContrasena())) {
     session_start();
     $_SESSION['cliente'] = $usuario;
+    //$_SESSION['tiempo']=time();
     header("Location: index.php");
-  } else {
-    echo "La contraseña o el email no coinciden";
   }
 
   Conexion::cerrar();
@@ -123,7 +119,7 @@ if ($_POST) {
 				<h1 class="h3 mb-3 font-weight-normal">Iniciar Sesion</h1>
 				<form class="form-signin" method="POST" action="' . $_SERVER['PHP-SELF'] . '">
 					<div class="contenedor-inputs">
-          <input id="password-field1" type="password" class="form-control" name="password">
+          <input  name="email" id="password-field1" type="password"  class="form-control">
           <span toggle="#password-field1" class="fa fa-fw fa-eye field-icon toggle-password1"></span>
 						<input id="password-field2" type="password" class="form-control" name="password">
               <span toggle="#password-field2" class="fa fa-fw fa-eye field-icon toggle-password2"></span>

@@ -18,18 +18,17 @@ class repositorioFunciones
     //FUNCION PARA CREAR LA BASE DE DATOS
     public static function crearbase()
     {
-        try{
-            $conexion=new PDO('mysql:host='.NOMBRE_SERVER.';', NOMBRE_USER, PASSWORD);
-            $conexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $conexion -> exec("SET CHARACTER SET utf8");
-
-        } catch (exception $ex){
-            print "ERROR: ".$ex->getMessage()."<br>";
+        try {
+            $conexion = new PDO('mysql:host=' . NOMBRE_SERVER . ';', NOMBRE_USER, PASSWORD);
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $conexion->exec("SET CHARACTER SET utf8");
+        } catch (exception $ex) {
+            print "ERROR: " . $ex->getMessage() . "<br>";
             die();
         }
         if (isset($conexion)) {
             try {
-                include_once "usuario.inc.php";
+                
                 $sql = "create database 20192B105;";
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->execute();
@@ -43,7 +42,7 @@ class repositorioFunciones
     {
         if (isset($conexion)) {
             try {
-                include_once "usuario.inc.php";
+                
                 $sql = "use 20192B105;
                     create table ciudad(
                     id_ciudad int not null auto_increment,
@@ -64,7 +63,7 @@ class repositorioFunciones
                     nombre varchar(60) not null,
                     fecha_nacimiento date not null,
                     email varchar(60) not null,
-                    contrasena varchar(20) not null,
+                    contrasena varchar(60) not null,
                     direccion varchar(60) not null,
                     fk_id_ciudad int not null,
                     PRIMARY KEY(id_cliente),
@@ -99,6 +98,32 @@ class repositorioFunciones
         }
     }
 
+    //INSERCION DE DATOS
+
+    public static function insertar($conexion)
+    {
+
+        if (isset($conexion)) {
+            try {
+
+                $sql = 'use 20192B105;
+
+                insert into ciudad
+                Values
+                (1,"Bucaramanga"),
+                (2,"Giron"),
+                (3,"Floridablanca"),
+                (4,"Duitama"),
+                (5,"Yopal");';
+                $sentencia = $conexion->prepare($sql);
+
+                $sentencia->execute();
+            } catch (Exception $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+    }
+
     //FUNCION PARA OBTENER EL NUMERO DE USUARIOS
 
     public static function obtener_usuarios($conexion)
@@ -125,7 +150,7 @@ class repositorioFunciones
             }
         }
     }
-    
+
     //FUNCION PARA INSERTAR USUARIOS
 
     public static function insertar_usuarios($conexion, $usuario)
@@ -223,7 +248,7 @@ class repositorioFunciones
         return $usuario;
     }
 
-   // FUNCION PARA OBTENER LA CIUDAD
+    // FUNCION PARA OBTENER LA CIUDAD
 
     public static function obtener_ciudad($conexion, $id)
     {

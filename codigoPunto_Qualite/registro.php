@@ -15,7 +15,7 @@ if ($_POST) {
     $real = repositorioFunciones::obtener_usuario_email(Conexion::obtener(), $email);
     if ($real == null) {
         $new = date('Y-m-d', strtotime($_POST['fecha_nacimiento']));
-        $usuario = new usuario('', $nombre, $new, $email, $pass, $dir, $ciu);
+        $usuario = new usuario('', $nombre, $new, $email, password_hash($pass, PASSWORD_DEFAULT), $dir, $ciu);
         $newuser = repositorioFunciones::insertar_usuarios(Conexion::obtener(), $usuario);
         Conexion::cerrar();
         header('Location: ../index.php');
