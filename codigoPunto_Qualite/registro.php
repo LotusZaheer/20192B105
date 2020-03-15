@@ -1,21 +1,37 @@
 <?php
+//INVOCAMOS LAS LIBRERIAS
+
 include_once "php-objects/conexion.inc.php";
-include_once("php-objects/repositorio.php");
+include_once "php-objects/repositorio.php";
 include_once "php-objects/usuario.inc.php";
+
+//Creamos una variable global para saber si el email ya fue usado
 $emailused = false;
+
+//METODO POST DEL FORMULARIO DE REGISTRO
 if ($_POST) {
+
+    //VARIABLES TOMADADAS POR EL METODO POST
     $nombre = $_POST['nombre'];
     $email = $_POST['email'];
     $pass = $_POST['password1'];
     $dir = $_POST['direccion'];
     $ciu = $_POST['ciudad'];
+    $ctipo = $_POST['ctipo'];
 
 
     Conexion::abrir();
+    //VERIFICACION DEL CORREO EXISTENTE
     $real = repositorioFunciones::obtener_usuario_email(Conexion::obtener(), $email);
     if ($real == null) {
+        //TIPO DE USUARIO REGISTRADO CON UNA CONTRASEÑA ESPECIAL PARA AQUELLA GENTE QUE SERA ADMINISTRADORA
+        if ($ctipo == "puntoQualite8934") {
+            $ctipoes = 'a';
+        } else {
+            $ctipoes = 'c';
+        }
         $new = date('Y-m-d', strtotime($_POST['fecha_nacimiento']));
-        $usuario = new usuario('', $nombre, $new, $email, password_hash($pass, PASSWORD_DEFAULT), $dir, $ciu);
+        $usuario = new usuario('', $nombre, $new, $email, $pass, $dir, $ciu, $ctipoes);
         $newuser = repositorioFunciones::insertar_usuarios(Conexion::obtener(), $usuario);
         Conexion::cerrar();
         header('Location: ../index.php');
@@ -47,9 +63,7 @@ if ($_POST) {
 
 
 
-<body onload="<?php if ($emailused == true) {
-                    echo ("emailAE()");
-                } ?> ">
+<body>
 
 
     <!--NAVBAR-->
@@ -96,8 +110,14 @@ if ($_POST) {
                 </div>
             </div>
             <div class="col-9">
-
-                <h4 id="titles1">Datos personales</h4>
+                
+                <h4 id="titles1" >Datos personales </h4>
+                <?php if ($emailused == true) {
+                    echo ('<div id="alertas">
+                
+                    </div>');
+                } ?> 
+                
                 <form method="POST" id="formregister" action="<?php echo ($_SERVER['PHP_SELF']); ?>">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Correo Electronico</label>
@@ -116,12 +136,12 @@ if ($_POST) {
                         <label for="exampleInputEmail1">Nombre y Apellidos</label>
                         <input name="nombre" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Juan Rodriguez" required>
                     </div>
-                    <div  id="dataform">
+                    <div id="dataform">
                         <label for="fecha">Fecha de nacimiento</label>
                         <input type="date" class="form-control" name="fecha_nacimiento" id="dat" name="dat" onclick="equalpass()" value="<?php echo date('Y-m-d'); ?>" required>
-                    <label id="elementico" ></label>
+                        <label id="elementico"></label>
                     </div>
-                    
+
                     <label for="exampleInputEmail1">Ciudad</label>
                     <select class="form-control" id="ciudad" name="ciudad" required>
                         <option value=""></option>
@@ -134,6 +154,10 @@ if ($_POST) {
                     <div class="form-group">
                         <label for="exampleInputEmail1">Direccion</label>
                         <input name="direccion" class="form-control" id="direccion" aria-describedby="emailHelp" placeholder="Bogota, Calle 53 # 27 - 08" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Contraseña especial</label>
+                        <input type="password" name="ctipo" class="form-control" id="ctipo" aria-describedby="emailHelp" placeholder="Este campo no es necesario para clientes">
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">

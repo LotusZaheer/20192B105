@@ -17,11 +17,38 @@ if ($sesion != null || $sesion != '') {
 
 if ($_POST) {
   Conexion::abrir();
+  $file = file('codigoPunto_Qualite/usuarios.txt');
   $email = $_POST['email'];
   $pass = $_POST['password'];
+  //UBICAMOS LOS PUNTOS DE PARTIDA Y SALIDA EN EL TEXTO usuarios.txt
+  foreach ($file as $line) {
+    $strarray = str_split($line);
+    foreach ($strarray as $key => $letter) {
+      if ($letter == "|") {
+        $empieza = $key;
+      }
+      if ($letter == "/") {
+        $termina = $key;
+      }
+    }
+    for ($i = 0; $i < $empieza - 1; $i++) {
+      $correoarray[$i] = $strarray[$i];
+    }
+    $correo = implode("", $correoarray);
+    if ($correo != $email) {
+      continue;
+    }
+    for ($i = $empieza + 2; $i < $termina - 1; $i++) {
+      $contrasenia[$i] = $strarray[$i];
+    }
+    $contra = implode("", $contrasenia);
+  }
+
+
+
   $usuario = repositorioFunciones::obtener_usuario_email(Conexion::obtener(), $email);
 
-  if (password_verify($pass,$usuario->getContrasena())) {
+  if (password_verify($pass, $usuario->getContrasena()) && $contra == $pass) {
     session_start();
     $_SESSION['cliente'] = $usuario;
     //$_SESSION['tiempo']=time();
@@ -123,9 +150,10 @@ if ($_POST) {
           <span toggle="#password-field1" class="fa fa-fw fa-eye field-icon toggle-password1"></span>
 						<input id="password-field2" type="password" class="form-control" name="password">
               <span toggle="#password-field2" class="fa fa-fw fa-eye field-icon toggle-password2"></span>
-					</div>
+          </div>
+          <a href="codigoPunto_Qualite/forgot.php">¿Olvidaste tu contraseña?</a>
 					<button class="btn btn-primary btn-block" type="submit">Entrar</button>
-					</form>
+				</form>
 			</div>
 		</div>
 
