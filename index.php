@@ -9,6 +9,14 @@ error_reporting(0);
 $sesion = $_SESSION['cliente'];
 if ($sesion != null || $sesion != '') {
   $mode = true;
+  //if((time() - $_SESSION['tiempo']) > 60) // 900 = 15 * 60  
+  //         {  
+  //              header("location:cerrar.php");  
+  //         }  
+  //         else  
+  //         {  
+  //              $_SESSION['tiempo'] = time(); 
+  //         }  
 }
 
 ?>
@@ -23,35 +31,38 @@ if ($_POST) {
   //UBICAMOS LOS PUNTOS DE PARTIDA Y SALIDA EN EL TEXTO usuarios.txt
   foreach ($file as $line) {
     $strarray = str_split($line);
-    foreach ($strarray as $key => $letter) {
+    foreach($strarray as $key => $letter) {
+      $correoarray=null;
       if ($letter == "|") {
         $empieza = $key;
+        
       }
       if ($letter == "/") {
         $termina = $key;
+      break;
       }
+      
     }
     for ($i = 0; $i < $empieza - 1; $i++) {
       $correoarray[$i] = $strarray[$i];
     }
     $correo = implode("", $correoarray);
-    if ($correo != $email) {
-      continue;
+    
+    if ($correo == $email) {
+      for ($i = $empieza + 2; $i < $termina - 1; $i++) {
+        $contrasenia[$i] = $strarray[$i];
+      }
+      $contra = implode("", $contrasenia);
     }
-    for ($i = $empieza + 2; $i < $termina - 1; $i++) {
-      $contrasenia[$i] = $strarray[$i];
-    }
-    $contra = implode("", $contrasenia);
+    
   }
-
-
 
   $usuario = repositorioFunciones::obtener_usuario_email(Conexion::obtener(), $email);
 
   if (password_verify($pass, $usuario->getContrasena()) && $contra == $pass) {
     session_start();
     $_SESSION['cliente'] = $usuario;
-    //$_SESSION['tiempo']=time();
+    $_SESSION['tiempo']=time();
     header("Location: index.php");
   }
 
@@ -152,7 +163,8 @@ if ($_POST) {
               <span toggle="#password-field2" class="fa fa-fw fa-eye field-icon toggle-password2"></span>
           </div>
           <a href="codigoPunto_Qualite/forgot.php">¿Olvidaste tu contraseña?</a>
-					<button class="btn btn-primary btn-block" type="submit">Entrar</button>
+          
+					<button class="btn btn-primary btn-block" type="submit" style="margin-top: 10px">Entrar</button>
 				</form>
 			</div>
 		</div>
