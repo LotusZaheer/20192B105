@@ -40,12 +40,15 @@ function equalpass(){
 }
 
 function emailAE(){
-    document.getElementById("email").setCustomValidity("El email ya esta en uso");
+    
+    
 }
 
 
 function chan(){
-    document.getElementById("email").setCustomValidity("");
+    var p=document.getElementById("alertas");
+    var c=document.getElementById("alerta");
+    p.removeChild(c);
 }
 
 function equalpassword(){
@@ -63,3 +66,10 @@ function alertas(){
     alert("La contraseña no es la indicada");
 }
 
+$().ready(function () {
+
+    
+
+    $("#alertas").append('<div class="alert alert-warning" id="alerta" role="alert">El correo ya existe</div>')
+    
+    });

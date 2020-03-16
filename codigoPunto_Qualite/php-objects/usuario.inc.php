@@ -1,4 +1,6 @@
 <?php
+    
+    //OBJETO USUARIO
     class usuario{
        
         private $id_cliente;
@@ -8,8 +10,9 @@
         private $contrasena;
         private $direccion;
         private $fk_id_ciudad;
+        private $ctipado;
 
-        public function __construct($id_cliente,$nombre,$fecha_nacimiento,$email,$contrasena,$direccion,$fk_id_ciudad)
+        public function __construct($id_cliente,$nombre,$fecha_nacimiento,$email,$contrasena,$direccion,$fk_id_ciudad,$ctipado)
         {
             $this->id_cliente=$id_cliente;
             $this->nombre=$nombre;
@@ -18,9 +21,10 @@
             $this->contrasena=$contrasena;
             $this->direccion=$direccion;
             $this->fk_id_ciudad=$fk_id_ciudad;
+            $this->ctipado=$ctipado;
         }
 
-        public function getId_cliente(){
+        public function getId(){
             return $this->id_cliente;
         }
         public function getNombre(){
@@ -41,8 +45,12 @@
         public function getFk_id_ciudad(){
             return $this->fk_id_ciudad;
         }
+        public function getCtipado(){
+            return $this->ctipado;
+        }
+        
 
-        public function setId_nombre($new){
+        public function setId($new){
             $this->id_cliente=$new;
         }
         public function setNombre($new){
@@ -62,6 +70,9 @@
         }
         public function setFk_id_ciudad($new){
             $this->fk_id_ciudad=$new;
+        }
+        public function setCtipado($ctipado){
+            $this->ctipado=$ctipado;
         }
     }
 ?>

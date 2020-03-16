@@ -2,27 +2,6 @@
 include_once "php-objects/conexion.inc.php";
 include_once("php-objects/repositorio.php");
 include_once "php-objects/usuario.inc.php";
-$emailused = false;
-if ($_POST) {
-    $nombre = $_POST['nombre'];
-    $email = $_POST['email'];
-    $pass = $_POST['password1'];
-    $dir = $_POST['direccion'];
-    $ciu = $_POST['ciudad'];
-
-
-    Conexion::abrir();
-    $real = repositorioFunciones::obtener_usuario_email(Conexion::obtener(), $email);
-    if ($real == null) {
-        $new = date('Y-m-d', strtotime($_POST['fecha_nacimiento']));
-        $usuario = new usuario('', $nombre, $new, $email, $pass, $dir, $ciu);
-        $newuser = repositorioFunciones::insertar_usuarios(Conexion::obtener(), $usuario);
-        Conexion::cerrar();
-        header('Location: ../index.php');
-    } else {
-        $emailused = true;
-    }
-}
 
 ?>
 <!DOCTYPE html>
@@ -47,11 +26,7 @@ if ($_POST) {
 
 
 
-<body onload="<?php if ($emailused == true) {
-                    echo ("emailAE()");
-                } ?> ">
-
-
+<body>
     <!--NAVBAR-->
 
     <nav style="z-index:40!important;" class=" navbar navbar-expand-lg navbar-dark bg-primary fixed-top">

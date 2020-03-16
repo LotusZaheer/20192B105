@@ -6,9 +6,17 @@ $mode = false;
 session_start();
 error_reporting(0);
 
+//FREDY DE AQUI HASTA DONDE LE DIGA HACE UN MODULO QUE SE INCORPORE EN LAS DEMAS PAGINAS
+
 $sesion = $_SESSION['cliente'];
 if ($sesion != null || $sesion != '') {
   $mode = true;
+  if ((time() - $_SESSION['tiempo']) > 300) // 300 = 5 * 60  
+  {
+    header("location:codigoPunto_Qualite/cerrar.php");
+  } else {
+    $_SESSION['tiempo'] = time();
+  }
 }
 
 ?>
@@ -17,14 +25,41 @@ if ($sesion != null || $sesion != '') {
 
 if ($_POST) {
   Conexion::abrir();
+  $file = file('codigoPunto_Qualite/usuarios.txt');
   $email = $_POST['email'];
   $pass = $_POST['password'];
+  //UBICAMOS LOS PUNTOS DE PARTIDA Y SALIDA EN EL TEXTO usuarios.txt
+  foreach ($file as $line) {
+    $strarray = str_split($line);
+    foreach ($strarray as $key => $letter) {
+      $correoarray = null;
+      if ($letter == "|") {
+        $empieza = $key;
+      }
+      if ($letter == "/") {
+        $termina = $key;
+        break;
+      }
+    }
+    for ($i = 0; $i < $empieza - 1; $i++) {
+      $correoarray[$i] = $strarray[$i];
+    }
+    $correo = implode("", $correoarray);
+
+    if ($correo == $email) {
+      for ($i = $empieza + 2; $i < $termina - 1; $i++) {
+        $contrasenia[$i] = $strarray[$i];
+      }
+      $contra = implode("", $contrasenia);
+    }
+  }
+
   $usuario = repositorioFunciones::obtener_usuario_email(Conexion::obtener(), $email);
 
-  if (password_verify($pass,$usuario->getContrasena())) {
+  if (password_verify($pass, $usuario->getContrasena()) && $contra == $pass) {
     session_start();
     $_SESSION['cliente'] = $usuario;
-    //$_SESSION['tiempo']=time();
+    $_SESSION['tiempo'] = time();
     header("Location: index.php");
   }
 
@@ -123,9 +158,11 @@ if ($_POST) {
           <span toggle="#password-field1" class="fa fa-fw fa-eye field-icon toggle-password1"></span>
 						<input id="password-field2" type="password" class="form-control" name="password">
               <span toggle="#password-field2" class="fa fa-fw fa-eye field-icon toggle-password2"></span>
-					</div>
-					<button class="btn btn-primary btn-block" type="submit">Entrar</button>
-					</form>
+          </div>
+          <a href="codigoPunto_Qualite/forgot.php">¿Olvidaste tu contraseña?</a>
+          
+					<button class="btn btn-primary btn-block" type="submit" style="margin-top: 10px">Entrar</button>
+				</form>
 			</div>
 		</div>
 
@@ -144,6 +181,9 @@ if ($_POST) {
   </nav>
 
   <!-- Fin navbar -->
+
+  <!--FREDY HASTA AQUI HACE EL MODULO LLAMADO SESIONNVABAR-->
+
   <!-- Carousel -->
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-top: 80px">
     <ol class="carousel-indicators">

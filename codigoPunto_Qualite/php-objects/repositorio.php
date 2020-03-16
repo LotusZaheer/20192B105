@@ -65,6 +65,7 @@ class repositorioFunciones
                     email varchar(60) not null,
                     contrasena varchar(60) not null,
                     direccion varchar(60) not null,
+                    ctipado char(1) not null,
                     fk_id_ciudad int not null,
                     PRIMARY KEY(id_cliente),
                     Constraint fk_ciudad foreign key(fk_id_ciudad)
@@ -89,7 +90,17 @@ class repositorioFunciones
                         references droga(id_droga),
                     Constraint fk_factura foreign  key(fk_id_factura)
                         references factura(id_factura)
-                    );";
+                    );
+                    
+                    CREATE TABLE archivos (
+                        id int(11) NOT NULL,
+                        name varchar(200) NOT NULL,
+                        description varchar(200) NOT NULL,
+                        ruta varchar(200) NOT NULL,
+                        tipo varchar(200) NOT NULL,
+                        size int(50) NOT NULL
+                      )
+                    ";
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->execute();
             } catch (PDOException $ex) {
@@ -140,7 +151,7 @@ class repositorioFunciones
 
                 if (count($res) > 0) {
                     foreach ($res as $fila) {
-                        $usuarios[] = new usuario($fila['id_cliente'], $fila['nombre'], $fila['fecha_nacimiento'], $fila['email'], $fila['contrasena'], $fila['direccion'], $fila['fk_id_ciudad']);
+                        $usuarios[] = new usuario($fila['id_cliente'], $fila['nombre'], $fila['fecha_nacimiento'], $fila['email'], $fila['contrasena'], $fila['direccion'], $fila['fk_id_ciudad'],$fila['ctipado']);
                     }
                 } else {
                     print "No hay usuarios";
@@ -151,23 +162,47 @@ class repositorioFunciones
         }
     }
 
+    //FUNCION PARA CAMBIAR CONTRSEÑA
+
+    public static function olvidar_contra($email)
+    {
+        Conexion::abrir();
+        $conexion=Conexion::obtener();
+        $usuario=repositorioFunciones::obtener_usuario_email($conexion ,$email);
+        $contranew=substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 15); 
+        $texto="Sr/a ".$usuario->getNombre()."\n"."Generamos una nueva contraseña para usted en caso de perdida\n"."Contraseña: ".$contranew;
+        mail($usuario->getEmail(),"Cambio de contraseña",$texto);
+        repositorioFunciones::update_contrasena($conexion, $usuario->getId(),$contranew);
+        
+
+        Conexion::cerrar();
+    }
+
     //FUNCION PARA INSERTAR USUARIOS
 
     public static function insertar_usuarios($conexion, $usuario)
     {
         $newuser = false;
-
+        $archivo=fopen("usuarios.txt","a");
         if (isset($conexion)) {
             try {
                 include_once "usuario.inc.php";
-
-                $sql = "INSERT INTO cliente(nombre,fecha_nacimiento,email,contrasena,direccion,fk_id_ciudad) VALUES(:nombre,:fecha_nacimiento,:email,:contrasena,:direccion,:fk_id_ciudad)";
+                //AGREGANDO USUARIOS AL DOCUMENTO usuarios.txt
+                if($usuario->getCtipado()=="a"){
+                    $tipo="administrador el cual puede ver que usuarios se encuentran registrados";
+                }else{
+                    $tipo="cliente el cual solo puede comprar cosas de la pagina";
+                }
+                fwrite($archivo,$usuario->getEmail().' | '.$usuario->getContrasena().' //Es una cuenta tipo '.$tipo."\n");
+                fclose($archivo);
+                $sql = "INSERT INTO cliente(nombre,fecha_nacimiento,email,contrasena,direccion,ctipado,fk_id_ciudad) VALUES(:nombre,:fecha_nacimiento,:email,:contrasena,:direccion,:ctipado,:fk_id_ciudad)";
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->BindParam(':nombre', $usuario->getNombre(), PDO::PARAM_STR);
                 $sentencia->BindParam(':fecha_nacimiento', $usuario->getFecha_nacimiento(), PDO::PARAM_STR);
                 $sentencia->BindParam(':email', $usuario->getEmail(), PDO::PARAM_STR);
-                $sentencia->BindParam(':contrasena', $usuario->getContrasena(), PDO::PARAM_STR);
+                $sentencia->BindParam(':contrasena', password_hash($usuario->getContrasena(),PASSWORD_DEFAULT), PDO::PARAM_STR);
                 $sentencia->BindParam(':direccion', $usuario->getDireccion(), PDO::PARAM_STR);
+                $sentencia->BindParam(':ctipado', $usuario->getCtipado(), PDO::PARAM_STR);
                 $sentencia->BindParam(':fk_id_ciudad', $usuario->getFk_id_ciudad(), PDO::PARAM_INT);
 
                 $newuser = $sentencia->execute();
@@ -200,7 +235,8 @@ class repositorioFunciones
                         $resultado['email'],
                         $resultado['contrasena'],
                         $resultado['direccion'],
-                        $resultado['fk_id_ciudad']
+                        $resultado['fk_id_ciudad'],
+                        $resultado['ctipado']
 
                     );
                 }
@@ -235,7 +271,8 @@ class repositorioFunciones
                         $resultado['email'],
                         $resultado['contrasena'],
                         $resultado['direccion'],
-                        $resultado['fk_id_ciudad']
+                        $resultado['fk_id_ciudad'],
+                        $resultado['ctipado']
 
                     );
                 }
@@ -415,12 +452,23 @@ class repositorioFunciones
 
         if (isset($conexion)) {
             try {
+                $archivo=fopen("usuarios.txt","a");
+                $usuario=repositorioFunciones::obtener_usuario_id($conexion,$id);
+                if($usuario->getCtipado()=="a"){
+                    $tipo="administrador el cual puede ver que usuarios se encuentran registrados";
+                }else{
+                    $tipo="cliente el cual solo puede comprar cosas de la pagina";
+                }
+                fwrite($archivo,$usuario->getEmail().' | '.$usuario->getContrasena().' //Es una cuenta tipo '.$tipo."\n");
+                fclose($archivo);
 
                 $sql = "UPDATE cliente SET contrasena = :contrasena  WHERE id_cliente = :id";
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->bindParam(':id', $id, PDO::PARAM_INT);
                 $sentencia->bindParam(':contrasena', $contrasena, PDO::PARAM_STR);
                 $resultado = $sentencia->execute();
+                
+
             } catch (PDOException $ex) {
                 print "ERROR" . $ex->getMessage();
             }
