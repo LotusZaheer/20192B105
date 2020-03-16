@@ -6,17 +6,17 @@ $mode = false;
 session_start();
 error_reporting(0);
 
+//FREDY DE AQUI HASTA DONDE LE DIGA HACE UN MODULO QUE SE INCORPORE EN LAS DEMAS PAGINAS
+
 $sesion = $_SESSION['cliente'];
 if ($sesion != null || $sesion != '') {
   $mode = true;
-  //if((time() - $_SESSION['tiempo']) > 60) // 900 = 15 * 60  
-  //         {  
-  //              header("location:cerrar.php");  
-  //         }  
-  //         else  
-  //         {  
-  //              $_SESSION['tiempo'] = time(); 
-  //         }  
+  if ((time() - $_SESSION['tiempo']) > 300) // 300 = 5 * 60  
+  {
+    header("location:codigoPunto_Qualite/cerrar.php");
+  } else {
+    $_SESSION['tiempo'] = time();
+  }
 }
 
 ?>
@@ -31,30 +31,27 @@ if ($_POST) {
   //UBICAMOS LOS PUNTOS DE PARTIDA Y SALIDA EN EL TEXTO usuarios.txt
   foreach ($file as $line) {
     $strarray = str_split($line);
-    foreach($strarray as $key => $letter) {
-      $correoarray=null;
+    foreach ($strarray as $key => $letter) {
+      $correoarray = null;
       if ($letter == "|") {
         $empieza = $key;
-        
       }
       if ($letter == "/") {
         $termina = $key;
-      break;
+        break;
       }
-      
     }
     for ($i = 0; $i < $empieza - 1; $i++) {
       $correoarray[$i] = $strarray[$i];
     }
     $correo = implode("", $correoarray);
-    
+
     if ($correo == $email) {
       for ($i = $empieza + 2; $i < $termina - 1; $i++) {
         $contrasenia[$i] = $strarray[$i];
       }
       $contra = implode("", $contrasenia);
     }
-    
   }
 
   $usuario = repositorioFunciones::obtener_usuario_email(Conexion::obtener(), $email);
@@ -62,7 +59,7 @@ if ($_POST) {
   if (password_verify($pass, $usuario->getContrasena()) && $contra == $pass) {
     session_start();
     $_SESSION['cliente'] = $usuario;
-    $_SESSION['tiempo']=time();
+    $_SESSION['tiempo'] = time();
     header("Location: index.php");
   }
 
@@ -184,6 +181,9 @@ if ($_POST) {
   </nav>
 
   <!-- Fin navbar -->
+
+  <!--FREDY HASTA AQUI HACE EL MODULO LLAMADO SESIONNVABAR-->
+
   <!-- Carousel -->
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-top: 80px">
     <ol class="carousel-indicators">
