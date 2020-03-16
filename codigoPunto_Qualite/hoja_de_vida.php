@@ -1,6 +1,6 @@
 <?php
 include_once "php-objects/conexion.inc.php";
-include_once("php-objects/repositorio.php");
+include_once "php-objects/repositorio.php";
 include_once "php-objects/usuario.inc.php";
 $emailused = false;
 if ($_POST) {
@@ -45,8 +45,7 @@ if ($_POST) {
     <script src="https://unpkg.com/scrollreveal"></script>
 
     <script>
-        function habilitar(value)
-        {
+        function habilitar(value) {
             if (value == true) {
                 // habilitamos
                 document.getElementById("universidad").disabled = false;
@@ -141,6 +140,12 @@ if ($_POST) {
                 </div>
                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-4">
                     <div class="form-group col-md-9">
+                        <label for='cargo'>Ultimo Cargo o cargo Actual</label>
+                        <input type="text" class="form-control" id="cargo" placeholder="Ingrese su cargo actual o ultimo cargo que ha tenido" name="cargo">
+                    </div>
+                </div>
+                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-4">
+                    <div class="form-group col-md-9">
                         <label for="universidad">Universidad</label>
                         <input type="text" class="form-control" id="universidad" placeholder="Ingrese la universidad donde estudio" name="universidad">
                     </div>
@@ -162,7 +167,7 @@ if ($_POST) {
                         <label for="promedio">Promedio</label>
                         <input type="text" class="form-control" id="promedio" placeholder="Ingrese su promedio" name="promedio">
                     </div>
-                    
+
                 </div>
                 <br>
                 <br>
