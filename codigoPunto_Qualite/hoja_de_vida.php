@@ -89,7 +89,7 @@ include_once "php-objects/usuario.inc.php";
 
         <!-- Código hoja vida integrantes -->
         <div class="marco-form">
-            <h1 class="display-3 text-center">Hoja de vida</h1>
+            <h2 class="display-4 text-center">Hoja de vida</h2>
             <hr class="my-3">
             <br>
 
