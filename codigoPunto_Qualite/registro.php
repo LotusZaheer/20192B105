@@ -166,7 +166,7 @@ if ($_POST) {
                         </label>
                     </div>
                     <br>
-                    <div class="g-recaptcha" data-sitekey="6LdXy9kUAAAAAMZ5yYyXFHz3lixoI1RCk5AlAEnk"></div>
+                    <div class="g-recaptcha" data-sitekey="6LewsuEUAAAAAMjgmQb7iibwZfL8kYVAS5Ono_5e"></div>
                     <button type="submit" class="btn btn-primary form-group" id="topper" name="commit">Registrarse</button>
                     <form>
             </div>

@@ -9,6 +9,14 @@ include_once "pedido.inc.php";
 include_once "factura.inc.php";
 include_once "conexion.inc.php";
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+require 'PHPMailer/Exception.php';
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
+
 // FUNCIONES QUE INTERACTUAN CON LA BASE DE DATOS
 
 
@@ -28,7 +36,7 @@ class repositorioFunciones
         }
         if (isset($conexion)) {
             try {
-                
+
                 $sql = "create database 20192B105;";
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->execute();
@@ -42,7 +50,7 @@ class repositorioFunciones
     {
         if (isset($conexion)) {
             try {
-                
+
                 $sql = "use 20192B105;
                     create table ciudad(
                     id_ciudad int not null auto_increment,
@@ -151,7 +159,7 @@ class repositorioFunciones
 
                 if (count($res) > 0) {
                     foreach ($res as $fila) {
-                        $usuarios[] = new usuario($fila['id_cliente'], $fila['nombre'], $fila['fecha_nacimiento'], $fila['email'], $fila['contrasena'], $fila['direccion'], $fila['fk_id_ciudad'],$fila['ctipado']);
+                        $usuarios[] = new usuario($fila['id_cliente'], $fila['nombre'], $fila['fecha_nacimiento'], $fila['email'], $fila['contrasena'], $fila['direccion'], $fila['fk_id_ciudad'], $fila['ctipado']);
                     }
                 } else {
                     print "No hay usuarios";
@@ -167,13 +175,44 @@ class repositorioFunciones
     public static function olvidar_contra($email)
     {
         Conexion::abrir();
-        $conexion=Conexion::obtener();
-        $usuario=repositorioFunciones::obtener_usuario_email($conexion ,$email);
-        $contranew=substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 15); 
-        $texto="Sr/a ".$usuario->getNombre()."\n"."Generamos una nueva contraseña para usted en caso de perdida\n"."Contraseña: ".$contranew;
-        mail($usuario->getEmail(),"Cambio de contraseña",$texto);
-        repositorioFunciones::update_contrasena($conexion, $usuario->getId(),$contranew);
+        $conexion = Conexion::obtener();
+        $usuario = repositorioFunciones::obtener_usuario_email($conexion, $email);
+        $contranew = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 15);
+        $texto = "Sr/a " . $usuario->getNombre() . "<br>" . "Generamos una nueva contraseña para usted en caso de perdida. <br>" . "Contraseña: " . $contranew;
+        //mail($usuario->getEmail(), "Cambio de contraseña", $texto);
+
+        //ENVIAR EL CORREO
+        $mail = new PHPMailer(true);
+
+        try {
+            //Server settings
+            $mail->SMTPDebug = 0;                      // Enable verbose debug output
+            $mail->isSMTP();                                            // Send using SMTP
+            $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+            $mail->Username   = 'puntoQualite@gmail.com';                     // SMTP username
+            $mail->Password   = 'puntoQualite2019';                               // SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+            $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+
+            //Recipients
+            $mail->setFrom('puntoQualite@gmail.com', 'Punto Qualite');
+            $mail->addAddress($usuario->getEmail(), $usuario->getNombre());     // Add a recipient
+
+            // Content
+            $mail->isHTML(true);                                  // Set email format to HTML
+            $mail->Subject = 'Cambio de contraseña';
+            $mail->Body    = $texto;
         
+
+            $mail->send();
+            echo 'El mensaje se ha  enviado';
+        } catch (Exception $e) {
+            echo "Hubo un error al enviar: {$mail->ErrorInfo}";
+        }
+
+        repositorioFunciones::update_contrasena($conexion, $usuario->getId(), $contranew);
+
 
         Conexion::cerrar();
     }
@@ -183,24 +222,24 @@ class repositorioFunciones
     public static function insertar_usuarios($conexion, $usuario)
     {
         $newuser = false;
-        $archivo=fopen("usuarios.txt","a");
+        $archivo = fopen("usuarios.txt", "a");
         if (isset($conexion)) {
             try {
                 include_once "usuario.inc.php";
                 //AGREGANDO USUARIOS AL DOCUMENTO usuarios.txt
-                if($usuario->getCtipado()=="a"){
-                    $tipo="administrador el cual puede ver que usuarios se encuentran registrados";
-                }else{
-                    $tipo="cliente el cual solo puede comprar cosas de la pagina";
+                if ($usuario->getCtipado() == "a") {
+                    $tipo = "administrador el cual puede ver que usuarios se encuentran registrados";
+                } else {
+                    $tipo = "cliente el cual solo puede comprar cosas de la pagina";
                 }
-                fwrite($archivo,$usuario->getEmail().' | '.$usuario->getContrasena().' //Es una cuenta tipo '.$tipo."\n");
+                fwrite($archivo, $usuario->getEmail() . ' | ' . $usuario->getContrasena() . ' //Es una cuenta tipo ' . $tipo . "\n");
                 fclose($archivo);
                 $sql = "INSERT INTO cliente(nombre,fecha_nacimiento,email,contrasena,direccion,ctipado,fk_id_ciudad) VALUES(:nombre,:fecha_nacimiento,:email,:contrasena,:direccion,:ctipado,:fk_id_ciudad)";
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->BindParam(':nombre', $usuario->getNombre(), PDO::PARAM_STR);
                 $sentencia->BindParam(':fecha_nacimiento', $usuario->getFecha_nacimiento(), PDO::PARAM_STR);
                 $sentencia->BindParam(':email', $usuario->getEmail(), PDO::PARAM_STR);
-                $sentencia->BindParam(':contrasena', password_hash($usuario->getContrasena(),PASSWORD_DEFAULT), PDO::PARAM_STR);
+                $sentencia->BindParam(':contrasena', password_hash($usuario->getContrasena(), PASSWORD_DEFAULT), PDO::PARAM_STR);
                 $sentencia->BindParam(':direccion', $usuario->getDireccion(), PDO::PARAM_STR);
                 $sentencia->BindParam(':ctipado', $usuario->getCtipado(), PDO::PARAM_STR);
                 $sentencia->BindParam(':fk_id_ciudad', $usuario->getFk_id_ciudad(), PDO::PARAM_INT);
@@ -452,23 +491,21 @@ class repositorioFunciones
 
         if (isset($conexion)) {
             try {
-                $archivo=fopen("usuarios.txt","a");
-                $usuario=repositorioFunciones::obtener_usuario_id($conexion,$id);
-                if($usuario->getCtipado()=="a"){
-                    $tipo="administrador el cual puede ver que usuarios se encuentran registrados";
-                }else{
-                    $tipo="cliente el cual solo puede comprar cosas de la pagina";
+                $archivo = fopen("usuarios.txt", "a");
+                $usuario = repositorioFunciones::obtener_usuario_id($conexion, $id);
+                if ($usuario->getCtipado() == "a") {
+                    $tipo = "administrador el cual puede ver que usuarios se encuentran registrados";
+                } else {
+                    $tipo = "cliente el cual solo puede comprar cosas de la pagina";
                 }
-                fwrite($archivo,$usuario->getEmail().' | '.$usuario->getContrasena().' //Es una cuenta tipo '.$tipo."\n");
+                fwrite($archivo, $usuario->getEmail() . ' | ' . $contrasena . ' //Es una cuenta tipo ' . $tipo . "\n");
                 fclose($archivo);
 
                 $sql = "UPDATE cliente SET contrasena = :contrasena  WHERE id_cliente = :id";
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->bindParam(':id', $id, PDO::PARAM_INT);
-                $sentencia->bindParam(':contrasena', $contrasena, PDO::PARAM_STR);
+                $sentencia->bindParam(':contrasena', password_hash($contrasena,PASSWORD_DEFAULT), PDO::PARAM_STR);
                 $resultado = $sentencia->execute();
-                
-
             } catch (PDOException $ex) {
                 print "ERROR" . $ex->getMessage();
             }
