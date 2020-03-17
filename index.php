@@ -133,6 +133,11 @@ if ($_POST) {
       <ul class="navbar-nav">
         <?php
         if ($mode) {
+          if($sesion->getCtipado()=='a'){
+            echo '<li class="nav-item ">
+                  <a class="nav-link" href="codigoPunto_Qualite/admin.php">admin</a>
+                </li>';
+          }
           echo ('
               <li class="nav-item ">
                   <a class="nav-link" href="codigoPunto_Qualite/cuenta.php">Cuenta</a>

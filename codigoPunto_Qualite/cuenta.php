@@ -33,7 +33,7 @@ if ($sesion != null || $sesion != '') {
 
     <div class="collapse navbar-collapse" id="navbarColor01">
 
-      <div class="col-8">
+      <div class="col-7">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item ">
             <a class="nav-link" href="shop.php">Productos</a>
@@ -46,11 +46,16 @@ if ($sesion != null || $sesion != '') {
           </li>
         </ul>
       </div>
-      <div class="col-4">
+      <div class="col-5">
         <div class="float-right">
           <ul class="navbar-nav mr-auto">
             <?php
             if ($mode) {
+              if($sesion->getCtipado()=='a'){
+                echo '<li class="nav-item ">
+                      <a class="nav-link" href="codigoPunto_Qualite/admin.php">admin</a>
+                    </li>';
+              }
               echo ('
               <li class="nav-item ">
                   <a class="nav-link" href="cuenta.php">Cuenta</a>
