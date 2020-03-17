@@ -117,10 +117,46 @@ include_once "php-objects/usuario.inc.php";
                 </div>
                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-4">
                     <div class="form-group col-md-9">
-                        <label for='cargo'>Ultimo Cargo o cargo Actual</label>
-                        <input type="text" class="form-control" id="cargo" placeholder="Ingrese su cargo actual o ultimo cargo que ha tenido" name="cargo">
+                        <label for='cargo'>Cargo/puesto</label>
+                        <input type="text" class="form-control" id="cargo" placeholder="Ingrese su cargo/puesto actual o ultimo cargo que ha tenido" name="cargo">
                     </div>
                 </div>
+                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-4">
+                    <div class="form-group col-md-9">
+                        <label for='Experiencia laboral'>Experiencia Laboral</label>
+                    </div>
+                </div>
+                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-4">
+                    <div class="form-group col-md-8">
+                        <label for='Organización'>Organización</label>
+                        <input type="text" class="form-control" id="organizacion" placeholder="Ingrese la organización donde trabajó" name="experiencia">
+
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="Fecha cuando inicio">Fecha de inicio</label>
+                        <input type="number" placeholder="YYYY" min="1990" max="2100">
+                        <script>
+                            document.querySelector("input[type=number]")
+                                .oninput = e => console.log(new Date(e.target.valueAsNumber, 0, 1))
+                        </script>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="Fecha cuando fin">Fecha de Fin</label>
+                        <input type="number" placeholder="YYYY" min="1990" max="2100">
+                    </div>
+                    <div class="form-group col-md-9">
+                        <label for="info_empleo">Cuentanos sobre ese empleo</label>
+                        <textarea class="form-control" id="text_area_empleo" rows="3"></textarea>
+                    </div>
+
+                </div>
+               
+                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-8">
+                    <div class="form-group col-md-2">
+                        <button type="button" class="btn btn-info btn-sm">Añadir</button>
+                    </div>
+                </div>
+                <br>
                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-4">
                     <div class="form-group col-md-9">
                         <label for="universidad">Universidad</label>
