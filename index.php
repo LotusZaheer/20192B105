@@ -133,7 +133,7 @@ if ($_POST) {
       <ul class="navbar-nav">
         <?php
         if ($mode) {
-          if($sesion->getCtipado()=='a'){
+          if ($sesion->getCtipado() == 'a') {
             echo '<li class="nav-item ">
                   <a class="nav-link" href="codigoPunto_Qualite/admin.php">admin</a>
                 </li>';
@@ -188,6 +188,8 @@ if ($_POST) {
   <!-- Fin navbar -->
 
   <!--FREDY HASTA AQUI HACE EL MODULO LLAMADO SESIONNVABAR-->
+ 
+
 
   <!-- Carousel -->
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-top: 80px">

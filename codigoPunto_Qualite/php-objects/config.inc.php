@@ -6,7 +6,7 @@
 
 define('NOMBRE_SERVER', 'localhost');
 define('NOMBRE_USER','20192B105');
-define('PASSWORD', '');
+define('PASSWORD', 'vRYcsY25MN');
 define('NOMBRE_BD', '20192B105');
 //Rutas
 define('SERVER',"http://localhost/PFW");

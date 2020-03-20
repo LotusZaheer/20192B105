@@ -145,29 +145,138 @@ class repositorioFunciones
 
     //FUNCION PARA OBTENER EL NUMERO DE USUARIOS
 
-    public static function obtener_usuarios($conexion)
-    {
+    public static function obtener_usuarios($conexion){
+
         $usuarios = array();
 
-        if (isset($conexion)) {
-            try {
-                include_once "usuario.inc.php";
+        if(isset($conexion)){
+            try{
+                $sql = "SELECT * FROM cliente";
 
-                $sql = "SELECT * from cliente";
-                $sentencia = $conexion->prepare($sql);
-                $res = $sentencia->fetchAll();
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetchAll();
 
-                if (count($res) > 0) {
-                    foreach ($res as $fila) {
-                        $usuarios[] = new usuario($fila['id_cliente'], $fila['nombre'], $fila['fecha_nacimiento'], $fila['email'], $fila['contrasena'], $fila['direccion'], $fila['fk_id_ciudad'], $fila['ctipado']);
+                if(count($resultado)){
+                    foreach ($resultado as $fila){
+                    
+                            $usuarios[] = new usuario($fila['id_cliente'], $fila['nombre'], $fila['fecha_nacimiento'], $fila['email'], $fila['contrasena'], $fila['direccion'], $fila['fk_id_ciudad'], $fila['ctipado']);
+
+                        
+
                     }
-                } else {
-                    print "No hay usuarios";
+                }else{
+                    print "NO HAY DATOS";
                 }
-            } catch (PDOException $ex) {
-                print "ERROR" . $ex->getMessage();
+
+            } catch(PDOException $ex){
+                print "ERROR".$ex -> getMessage();
             }
         }
+
+        return $usuarios;
+    }
+
+    //FUNCION PARA VER CIUDADES
+
+    public static function obtener_ciudades($conexion){
+
+        $ciudades = array();
+
+        if(isset($conexion)){
+            try{
+                $sql = "SELECT * FROM ciudad";
+
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetchAll();
+
+                if(count($resultado)){
+                    foreach ($resultado as $fila){
+                    
+                            $ciudades[] = new ciudad($fila['id_ciudad'], $fila['nombre']);
+
+                        
+
+                    }
+                }else{
+                    print "NO HAY DATOS";
+                }
+
+            } catch(PDOException $ex){
+                print "ERROR".$ex -> getMessage();
+            }
+        }
+
+        return $ciudades;
+    }
+
+    //FUNCION PARA LOS PEDIDOS
+
+    public static function obtener_pedidos($conexion){
+
+        $pedidos = array();
+
+        if(isset($conexion)){
+            try{
+                $sql = "SELECT * FROM pedido";
+
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetchAll();
+
+                if(count($resultado)){
+                    foreach ($resultado as $fila){
+                    
+                            $pedidos[] = new pedido($fila['id_pedido'], $fila['fk_id_factura'],$fila['fk_id_droga']);
+
+                        
+
+                    }
+                }else{
+                    print "NO HAY DATOS";
+                }
+
+            } catch(PDOException $ex){
+                print "ERROR".$ex -> getMessage();
+            }
+        }
+
+        return $pedidos;
+    }
+
+//RETORNA LAS DROGAS
+
+    public static function obtener_drogas($conexion){
+
+        $drogas = array();
+
+        if(isset($conexion)){
+            try{
+                $sql = "SELECT * FROM droga";
+
+                $sentencia = $conexion -> prepare($sql);
+                $sentencia -> execute();
+                $resultado = $sentencia -> fetchAll();
+
+                if(count($resultado)){
+                    foreach ($resultado as $fila){
+                    
+                            $drogas[] = new droga($fila['id_droga'], $fila['nombre'],$fila['imagen'],$fila['valor']);
+
+                        
+
+                    }
+                }else{
+                    print "NO HAY DATOS";
+                }
+
+            } catch(PDOException $ex){
+                print "ERROR".$ex -> getMessage();
+            }
+        }
+
+        return $drogas;
     }
 
     //FUNCION PARA CAMBIAR CONTRSEÑA

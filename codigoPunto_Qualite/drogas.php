@@ -168,7 +168,7 @@ if ($sesion != null || $sesion != '') {
       
 
       
-      <h2 style="margin-top:10px">Clientes</h2>
+      <h2 style="margin-top:10px">Drogas</h2>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>

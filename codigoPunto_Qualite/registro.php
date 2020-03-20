@@ -25,7 +25,7 @@ if ($_POST) {
     $real = repositorioFunciones::obtener_usuario_email(Conexion::obtener(), $email);
     if ($real == null) {
         //TIPO DE USUARIO REGISTRADO CON UNA CONTRASEÑA ESPECIAL PARA AQUELLA GENTE QUE SERA ADMINISTRADORA
-        if ($ctipo == "puntoQualite8934") {
+        if ($ctipo == "puntoqualite2019") {
             $ctipoes = 'a';
         } else {
             $ctipoes = 'c';
