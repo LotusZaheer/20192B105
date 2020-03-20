@@ -1,107 +1,6 @@
 <?php
-include_once('php-objects/conexion.inc.php');
-include_once "php-objects/usuario.inc.php";
-include_once "php-objects/repositorio.php";
-$mode = false;
-session_start();
-error_reporting(0);
-
-$sesion = $_SESSION['cliente'];
-if ($sesion != null || $sesion != '') {
-  $mode = true;
-}
-
-
+include_once $_SERVER['DOCUMENT_ROOT']."/PFW/codigoPunto_Qualite/modulos/navbar.inc.php";
 ?>
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-  <link rel="stylesheet" href="css/lux1.css">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Inicio</title>
-</head>
-
-<body>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
-    <a class="navbar-brand" href="../index.php">Punto Qualité</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarColor01">
-
-
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item ">
-          <a class="nav-link" href="shop.php">Productos</a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="our.php">Nosotros</a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="#contacto">Contactanos</a>
-        </li>
-      </ul>
-
-
-      <ul class="navbar-nav">
-        <?php
-        if ($mode) {
-          if ($sesion->getCtipado() == 'a') {
-            echo '<li class="nav-item ">
-                  <a class="nav-link" href="admin.php">admin</a>
-                </li>';
-          }
-          echo ('
-              <li class="nav-item ">
-                  <a class="nav-link" href="cuenta.php">Cuenta</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="cerrar.php">Cerrar Sesion</a>
-                </li>
-              ');
-        } else {
-
-          echo ('
-          <li class="nav-item ">
-			<a class="nav-link" id="btn-abrir-popup" class="btn-abrir-popup nav-link" href="#" >Iniciar Sesion</a>
-              </li>
-		<div class="overlay" id="overlay">
-			
-			<div class="popup" id="popup">
-				<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
-				<h1 class="h3 mb-3 font-weight-normal">Iniciar Sesion</h1>
-				<form class="form-signin" method="POST" action="' . $_SERVER['PHP-SELF'] . '">
-					<div class="contenedor-inputs">
-          <input  name="email" id="password-field1" type="password"  class="form-control">
-          <span toggle="#password-field1" class="fa fa-fw fa-eye field-icon toggle-password1"></span>
-						<input id="password-field2" type="password" class="form-control" name="password">
-              <span toggle="#password-field2" class="fa fa-fw fa-eye field-icon toggle-password2"></span>
-          </div>
-          <a href="codigoPunto_Qualite/forgot.php">¿Olvidaste tu contraseña?</a>
-          
-					<button class="btn btn-primary btn-block" type="submit" style="margin-top: 10px">Entrar</button>
-				</form>
-			</div>
-		</div>
-
-            
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="codigoPunto_Qualite/registro.php">Registrate</a>
-            </li>
-          ');
-        }
-        ?>
-      </ul>
-
-
-    </div>
-  </nav>
-
 
   <div class="row" style="padding-top: 6em">
     <nav class="col-md-2 d-none d-md-block bg-light sidebar">
@@ -237,11 +136,7 @@ if ($sesion != null || $sesion != '') {
       distance: '300px'
     });
   </script>
-  <!-- Bootstrap 4 scripts -->
-  <script src="../codigoPunto_Qualite/js/popup.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
-
-</html>
+<?php
+include_once $_SERVER['DOCUMENT_ROOT']."/PFW/codigoPunto_Qualite/modulos/b_scripts.php";
+include_once $_SERVER['DOCUMENT_ROOT']."/PFW/codigoPunto_Qualite/modulos/footer.php";
+?>
