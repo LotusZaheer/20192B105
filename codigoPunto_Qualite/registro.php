@@ -106,7 +106,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
                         </label>
                     </div>
                     <br>
-                    <div class="g-recaptcha" data-sitekey="6LewsuEUAAAAAMjgmQb7iibwZfL8kYVAS5Ono_5e"></div>
+                    <div class="g-recaptcha" data-sitekey="6Lc4BeMUAAAAAPb6CIvPL3OQnPrB2K487v_TAoJw" required></div>
                     <button type="submit" class="btn btn-primary form-group" id="topper" name="commit">Registrarse</button>
                     <form>
             </div>

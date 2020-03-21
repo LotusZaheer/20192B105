@@ -327,6 +327,34 @@ class repositorioFunciones
         return $usuario;
     }
 
+     // FUNCION PARA OBTENER LA CIUDAD
+
+     public static function obtener_ciudad($conexion, $id)
+     {
+         $ciudad = null;
+ 
+         if (isset($conexion)) {
+             try {
+                 $sql = "SELECT * FROM ciudad WHERE id_ciudad = :id";
+                 $sentencia = $conexion->prepare($sql);
+                 $sentencia->bindParam(':id', $id, PDO::PARAM_STR);
+                 $sentencia->execute();
+                 $resultado = $sentencia->fetch();
+ 
+                 if (!empty($resultado)) {
+                     $ciudad = new ciudad(
+                         $resultado['id_ciudad'],
+                         $resultado['nombre']
+                     );
+                 }
+             } catch (PDOException $ex) {
+                 print "ERROR" . $ex->getMessage();
+                 $ciudad = null;
+             }
+         }
+ 
+         return $ciudad;
+     }
     //FUNCION PARA OBTENER UN USUARIO POR SU EMAIL
 
     public static function obtener_usuario_email($conexion, $email)
@@ -363,34 +391,7 @@ class repositorioFunciones
         return $usuario;
     }
 
-    // FUNCION PARA OBTENER LA CIUDAD
-
-    public static function obtener_ciudad($conexion, $id)
-    {
-        $ciudad = null;
-
-        if (isset($conexion)) {
-            try {
-                $sql = "SELECT * FROM ciudad WHERE id_ciudad = :id";
-                $sentencia = $conexion->prepare($sql);
-                $sentencia->bindParam(':id', $id, PDO::PARAM_STR);
-                $sentencia->execute();
-                $resultado = $sentencia->fetch();
-
-                if (!empty($resultado)) {
-                    $ciudad = new ciudad(
-                        $resultado['id_ciudad'],
-                        $resultado['nombre']
-                    );
-                }
-            } catch (PDOException $ex) {
-                print "ERROR" . $ex->getMessage();
-                $ciudad = null;
-            }
-        }
-
-        return $ciudad;
-    }
+   
 
     // FUNCION PARA OBTENER LA DROGA
 

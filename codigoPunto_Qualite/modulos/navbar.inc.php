@@ -54,7 +54,10 @@ if ($_POST) {
   }
 */
   $usuario = repositorioFunciones::obtener_usuario_email(Conexion::obtener(), $email);
-
+  if($usuario==null)
+  {
+    header("Location: /20192B105/codigoPunto_Qualite/registro.php");
+  }
   if (password_verify($pass, $usuario->getContrasena())) {
     session_start();
     $_SESSION['cliente'] = $usuario;
@@ -62,7 +65,7 @@ if ($_POST) {
     header("Location: /20192B105/index.php");
   }
   else{
-    header("Location: registro.php");
+    header("Location: /20192B105/index.php");
   }
 
   Conexion::cerrar();

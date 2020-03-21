@@ -1,0 +1,4 @@
+ajaja@gmail.com | 12345678 //Es una cuenta tipo cliente el cual solo puede comprar cosas de la pagina
+mono@gmail.com | 12345678 //Es una cuenta tipo cliente el cual solo puede comprar cosas de la pagina
+keloxix974@mailezee.com |  //Es una cuenta tipo cliente el cual solo puede comprar cosas de la pagina
+Martin@gmail.com | 1234asdf //Es una cuenta tipo administrador el cual puede ver que usuarios se encuentran registrados
