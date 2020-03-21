@@ -1,7 +1,7 @@
 <head>
     <title>Registro</title>
 <?php
-
+include_once  $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/php-objects/repositorio.php";
 //Creamos una variable global para saber si el email ya fue usado
 $emailused = false;
 
@@ -124,6 +124,5 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
 </body>
 
 <?php
-include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/b_scripts.php";
 include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/footer.php";
 ?>

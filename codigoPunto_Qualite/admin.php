@@ -1,4 +1,10 @@
 <?php
+session_start();
+$sesion = $_SESSION['cliente'];
+if ($sesion == null || $sesion == '')
+{
+  header("Location: /20192B105/index.php");
+}
 include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/navbar.inc.php";
 ?>
 

@@ -331,7 +331,7 @@ class repositorioFunciones
     public static function insertar_usuarios($conexion, $usuario)
     {
         $newuser = false;
-        $archivo = fopen("usuarios.txt", "a");
+        $archivo = fopen("../usuarios.txt", "a");
         if (isset($conexion)) {
             try {
                 include_once "usuario.inc.php";

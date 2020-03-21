@@ -25,11 +25,10 @@ if ($sesion != null || $sesion != '') {
 
 if ($_POST) {
   Conexion::abrir();
-  $file = file('codigoPunto_Qualite/usuarios.txt');
   $email = $_POST['email'];
   $pass = $_POST['password'];
   //UBICAMOS LOS PUNTOS DE PARTIDA Y SALIDA EN EL TEXTO usuarios.txt
-  foreach ($file as $line) {
+/*  foreach ($file as $line) {
     $strarray = str_split($line);
     foreach ($strarray as $key => $letter) {
       $correoarray = null;
@@ -53,10 +52,10 @@ if ($_POST) {
       $contra = implode("", $contrasenia);
     }
   }
-
+*/
   $usuario = repositorioFunciones::obtener_usuario_email(Conexion::obtener(), $email);
 
-  if (password_verify($pass, $usuario->getContrasena()) && $contra == $pass) {
+  if (password_verify($pass, $usuario->getContrasena())) {
     session_start();
     $_SESSION['cliente'] = $usuario;
     $_SESSION['tiempo'] = time();
