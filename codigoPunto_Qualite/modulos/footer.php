@@ -17,7 +17,7 @@
         <p class="text-muted">
           Santiago Andrés Castro<br>
           Fredy Alejandro Mendoza<br>
-          Orlando Alberto Moncada(El mono marica)<br>
+          Orlando Alberto Moncada<br>
           Andres Felipe Uribe<br>
         </p>
       </div>
