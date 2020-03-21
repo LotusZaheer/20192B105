@@ -40,16 +40,16 @@
         <small class="d-block mb-3 text-muted">&copy; 2020</small>
         <div class="row">
           <div class="col-3 col-md">
-            <a href="https://www.facebook.com/" target="_blank"><img src="/PFW/datosPunto_Qualite/img/facebook1.png" style="width: 100%;"></a>
+            <a href="https://www.facebook.com/" target="_blank"><img src="/20192B105/datosPunto_Qualite/img/facebook1.png" style="width: 100%;"></a>
           </div>
           <div class="col-3 col-md">
-            <a href="https://www.instagram.com/" target="_blank"><img src="/PFW/datosPunto_Qualite/img/instagram1.png" style="width: 100%;"></a>
+            <a href="https://www.instagram.com/" target="_blank"><img src="/20192B105/datosPunto_Qualite/img/instagram1.png" style="width: 100%;"></a>
           </div>
           <div class="col-3 col-md">
-            <a href="https://twitter.com/PuntoQualite/" target="_blank"><img src="/PFW/datosPunto_Qualite/img/twitter1.png" style="width: 100%;"></a>
+            <a href="https://twitter.com/PuntoQualite/" target="_blank"><img src="/20192B105/datosPunto_Qualite/img/twitter1.png" style="width: 100%;"></a>
           </div>
           <div class="col-3 col-md">
-            <a href="https://www.youtube.com/" target="_blank"><img src="/PFW/datosPunto_Qualite/img/youtube1.png" style="width: 100%;"></a>
+            <a href="https://www.youtube.com/" target="_blank"><img src="/20192B105/datosPunto_Qualite/img/youtube1.png" style="width: 100%;"></a>
           </div>
         </div>
       </div>
@@ -58,6 +58,6 @@
 
   </footer>
 </body>
-<script src="/PFW/codigoPunto_Qualite/js/popup.js"></script>
+<script src="/20192B105/codigoPunto_Qualite/js/popup.js"></script>
 
 </html>

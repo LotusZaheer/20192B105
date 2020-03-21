@@ -1,7 +1,7 @@
 <head>
     <title>Nosotros</title>
 <?php
-include_once $_SERVER['DOCUMENT_ROOT']."/PFW/codigoPunto_Qualite/modulos/navbar.inc.php";
+include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/navbar.inc.php";
 ?>
 
     <section id="vision">
@@ -81,6 +81,6 @@ include_once $_SERVER['DOCUMENT_ROOT']."/PFW/codigoPunto_Qualite/modulos/navbar.
     
 
 <?php
-include_once $_SERVER['DOCUMENT_ROOT']."/PFW/codigoPunto_Qualite/modulos/b_scripts.php";
-include_once $_SERVER['DOCUMENT_ROOT']."/PFW/codigoPunto_Qualite/modulos/footer.php";
+include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/b_scripts.php";
+include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/footer.php";
 ?>

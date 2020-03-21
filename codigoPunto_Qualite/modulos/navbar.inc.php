@@ -1,7 +1,7 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'].'/PFW/codigoPunto_Qualite/php-objects/conexion.inc.php';
-include_once $_SERVER['DOCUMENT_ROOT']."/PFW/codigoPunto_Qualite/php-objects/usuario.inc.php";
-include_once  $_SERVER['DOCUMENT_ROOT']."/PFW/codigoPunto_Qualite/php-objects/repositorio.php";
+include_once $_SERVER['DOCUMENT_ROOT'].'/20192B105/codigoPunto_Qualite/php-objects/conexion.inc.php';
+include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/php-objects/usuario.inc.php";
+include_once  $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/php-objects/repositorio.php";
 $mode = false;
 session_start();
 error_reporting(0);
@@ -80,8 +80,8 @@ if ($_POST) {
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <!-- CSS -->
-  <link rel="stylesheet" href="/PFW/codigoPunto_Qualite/css/estilos.css">
-  <link rel="stylesheet" href="/PFW/codigoPunto_Qualite/css/lux1.css">
+  <link rel="stylesheet" href="/20192B105/codigoPunto_Qualite/css/estilos.css">
+  <link rel="stylesheet" href="/20192B105/codigoPunto_Qualite/css/lux1.css">
   <!-- Scrool reveal -->
   <script src="https://unpkg.com/scrollreveal"></script>
   <!-- NO TOCAR -->
@@ -91,7 +91,7 @@ if ($_POST) {
 <body>
   <!-- Navbar -->
   <nav style="z-index:40!important;" class=" navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-    <a class="navbar-brand" href="/PFW/index.php">Punto Qualité</a>
+    <a class="navbar-brand" href="/20192B105/index.php">Punto Qualité</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -106,7 +106,7 @@ if ($_POST) {
             <a class="dropdown-item" href="#">Cuidado personal</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="/PFW/codigoPunto_Qualite/our.php">Nosotros</a>
+          <a class="nav-link" href="/20192B105/codigoPunto_Qualite/our.php">Nosotros</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link" href="#contacto">Contactanos</a>
@@ -118,8 +118,8 @@ if ($_POST) {
 
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Formularios</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="/PFW/codigoPunto_Qualite/encuesta.php">Encuesta</a>
-            <a class="dropdown-item" href="/PFW/codigoPunto_Qualite/hoja_de_vida.php">Hoja de Vida</a>
+            <a class="dropdown-item" href="/20192B105/codigoPunto_Qualite/encuesta.php">Encuesta</a>
+            <a class="dropdown-item" href="/20192B105/codigoPunto_Qualite/hoja_de_vida.php">Hoja de Vida</a>
 
         </li>
       </ul>
@@ -131,15 +131,15 @@ if ($_POST) {
         if ($mode) {
           if($sesion->getCtipado()=='a'){
             echo '<li class="nav-item ">
-                  <a class="nav-link" href="/PFW/codigoPunto_Qualite/admin.php">admin</a>
+                  <a class="nav-link" href="/20192B105/codigoPunto_Qualite/admin.php">admin</a>
                 </li>';
           }
           echo ('
               <li class="nav-item ">
-                  <a class="nav-link" href="/PFW/codigoPunto_Qualite/cuenta.php">Cuenta</a>
+                  <a class="nav-link" href="/20192B105/codigoPunto_Qualite/cuenta.php">Cuenta</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/PFW/codigoPunto_Qualite/cerrar.php">Cerrar Sesion</a>
+                  <a class="nav-link" href="/20192B105/codigoPunto_Qualite/cerrar.php">Cerrar Sesion</a>
                 </li>
               ');
         } else {
@@ -160,7 +160,7 @@ if ($_POST) {
 						<input id="password-field2" type="password" class="form-control" name="password">
               <span toggle="#password-field2" class="fa fa-fw fa-eye field-icon toggle-password2"></span>
           </div>
-          <a href="/PFW/codigoPunto_Qualite/forgot.php">¿Olvidaste tu contraseña?</a>
+          <a href="/20192B105/codigoPunto_Qualite/forgot.php">¿Olvidaste tu contraseña?</a>
           
 					<button class="btn btn-primary btn-block" type="submit" style="margin-top: 10px">Entrar</button>
 				</form>
@@ -170,7 +170,7 @@ if ($_POST) {
             
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/PFW/codigoPunto_Qualite/registro.php">Registrate</a>
+              <a class="nav-link" href="/20192B105/codigoPunto_Qualite/registro.php">Registrate</a>
             </li>
           ');
         }
