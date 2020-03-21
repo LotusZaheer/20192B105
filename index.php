@@ -14,16 +14,16 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="datosPunto_Qualite/img/carousel1.png" class="d-block w-100" alt="">
+        <img src="datosPunto_Qualite/img/carousel1.jpg" class="d-block w-100" alt="">
       </div>
       <div class="carousel-item">
-        <img src="datosPunto_Qualite/img/carousel6.jpg" class="d-block w-100" alt="">
+        <img src="datosPunto_Qualite/img/carousel2.jpg" class="d-block w-100" alt="">
       </div>
       <div class="carousel-item">
-        <img src="datosPunto_Qualite/img/carousel3.jpg" class="d-block w-100" alt="">
+        <img src="datosPunto_Qualite/img/carousel3.png" class="d-block w-100" alt="">
       </div>
       <div class="carousel-item">
-        <img src="datosPunto_Qualite/img/carousel5.jpg" class="d-block w-100" alt="">
+        <img src="datosPunto_Qualite/img/carousel4.jpg" class="d-block w-100" alt="">
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

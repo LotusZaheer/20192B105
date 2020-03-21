@@ -1,3 +1,4 @@
 orlandomoncada610@gmail.com | 1234asdf //Es una cuenta tipo cliente el cual solo puede comprar cosas de la pagina
 Martin@gmail.com | 1234asdf //Es una cuenta tipo administrador el cual puede ver que usuarios se encuentran registrados
 ifredomendoza@gmail.com | alejandro12 //Es una cuenta tipo cliente el cual solo puede comprar cosas de la pagina
+ifredomendoza@gmail.com | xyq35pIfKsjR2tN //Es una cuenta tipo cliente el cual solo puede comprar cosas de la pagina
