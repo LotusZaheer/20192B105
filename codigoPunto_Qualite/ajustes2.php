@@ -16,19 +16,19 @@ Conexion::abrir();
 
   if($_POST['direccion']!="" || $_POST['direccion']!=null){
     $sesion->setDireccion($_POST['direccion']);
-    $dir=repositorioFunciones::update_direccion(Conexion::obtener(),$sesion->getId_cliente(),$_POST['direccion']);
+    $dir=repositorioFunciones::update_direccion(Conexion::obtener(),$sesion->getId(),$_POST['direccion']);
     $cambio=true;
   }
   
   if($_POST['ciudad']!="" || $_POST['ciudad']!=null){
     $sesion->setFk_id_ciudad($_POST['ciudad']);
-    $ciu=repositorioFunciones::update_ciudad(Conexion::obtener(),$sesion->getId_cliente(),$_POST['ciudad']);
+    $ciu=repositorioFunciones::update_ciudad(Conexion::obtener(),$sesion->getId(),$_POST['ciudad']);
     $cambio=true;
   }
   
   if($_POST['contra']!="" || $_POST['contra']!=null){
     $sesion->setContrasena($_POST['contra']);
-    $con=repositorioFunciones::update_contrasena(Conexion::obtener(),$sesion->getId_cliente(),$_POST['contra']);
+    $con=repositorioFunciones::update_contrasena(Conexion::obtener(),$sesion->getId(),$_POST['contra']);
     $cambio=true;
   }
 

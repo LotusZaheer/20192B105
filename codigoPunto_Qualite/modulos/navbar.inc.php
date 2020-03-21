@@ -59,18 +59,19 @@ if ($_POST) {
     session_start();
     $_SESSION['cliente'] = $usuario;
     $_SESSION['tiempo'] = time();
-    header("Location: index.php");
+    header("Location: /20192B105/index.php");
+  }
+  else{
+    header("Location: registro.php");
   }
 
   Conexion::cerrar();
 }
-
 ?>
-
-
 <!DOCTYPE html>
 
 <html lang="es">
+  <link rel="icon" type="image/jpeg" href="/20192B105/datosPunto_Qualite/img/icono.jpg" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">

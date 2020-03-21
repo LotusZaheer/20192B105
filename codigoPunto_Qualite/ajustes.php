@@ -14,8 +14,7 @@ if ($sesion != null || $sesion != '') {
 
 if($_POST){
   $pass=$_POST['pass1'];
-  
-  if($pass==$sesion->getContrasena()){
+  if(password_verify($pass,$sesion->getContrasena())){
     header('Location: ajustes2.php');
   }else{
     $dont=3;
