@@ -15,9 +15,9 @@
       <div class="col-6 col-md" id="contacto">
         <h5>Contacto</h5>
         <p class="text-muted">
-          Andrés Santiago Castro<br>
+          Santiago Andrés Castro<br>
           Fredy Alejandro Mendoza<br>
-          Orlando Alberto Moncada<br>
+          Orlando Alberto Moncada(El mono marica)<br>
           Andres Felipe Uribe<br>
         </p>
       </div>

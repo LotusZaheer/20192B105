@@ -57,7 +57,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
 
                     </div>
                     <div class="form-group col-md-2">
-                        <label for="Fecha cuando inicio">Fecha de inicio</label>
+                        <label for="Fecha cuando inicio">Fecha inicio</label>
                         <input type="number" placeholder="YYYY" min="1990" max="2100">
                         <script>
                             document.querySelector("input[type=number]")
@@ -65,7 +65,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
                         </script>
                     </div>
                     <div class="form-group col-md-2">
-                        <label for="Fecha cuando fin">Fecha de Fin</label>
+                        <label for="Fecha cuando fin">Fecha Fin</label>
                         <input type="number" placeholder="YYYY" min="1990" max="2100">
                     </div>
                     <div class="form-group col-md-9">
