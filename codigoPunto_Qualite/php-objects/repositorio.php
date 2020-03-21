@@ -145,32 +145,29 @@ class repositorioFunciones
 
     //FUNCION PARA OBTENER EL NUMERO DE USUARIOS
 
-    public static function obtener_usuarios($conexion){
+    public static function obtener_usuarios($conexion)
+    {
 
         $usuarios = array();
 
-        if(isset($conexion)){
-            try{
+        if (isset($conexion)) {
+            try {
                 $sql = "SELECT * FROM cliente";
 
-                $sentencia = $conexion -> prepare($sql);
-                $sentencia -> execute();
-                $resultado = $sentencia -> fetchAll();
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
 
-                if(count($resultado)){
-                    foreach ($resultado as $fila){
-                    
-                            $usuarios[] = new usuario($fila['id_cliente'], $fila['nombre'], $fila['fecha_nacimiento'], $fila['email'], $fila['contrasena'], $fila['direccion'], $fila['fk_id_ciudad'], $fila['ctipado']);
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
 
-                        
-
+                        $usuarios[] = new usuario($fila['id_cliente'], $fila['nombre'], $fila['fecha_nacimiento'], $fila['email'], $fila['contrasena'], $fila['direccion'], $fila['fk_id_ciudad'], $fila['ctipado']);
                     }
-                }else{
+                } else {
                     print "NO HAY DATOS";
                 }
-
-            } catch(PDOException $ex){
-                print "ERROR".$ex -> getMessage();
+            } catch (PDOException $ex) {
+                print "ERROR" . $ex->getMessage();
             }
         }
 
@@ -179,32 +176,29 @@ class repositorioFunciones
 
     //FUNCION PARA VER CIUDADES
 
-    public static function obtener_ciudades($conexion){
+    public static function obtener_ciudades($conexion)
+    {
 
         $ciudades = array();
 
-        if(isset($conexion)){
-            try{
+        if (isset($conexion)) {
+            try {
                 $sql = "SELECT * FROM ciudad";
 
-                $sentencia = $conexion -> prepare($sql);
-                $sentencia -> execute();
-                $resultado = $sentencia -> fetchAll();
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
 
-                if(count($resultado)){
-                    foreach ($resultado as $fila){
-                    
-                            $ciudades[] = new ciudad($fila['id_ciudad'], $fila['nombre']);
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
 
-                        
-
+                        $ciudades[] = new ciudad($fila['id_ciudad'], $fila['nombre']);
                     }
-                }else{
+                } else {
                     print "NO HAY DATOS";
                 }
-
-            } catch(PDOException $ex){
-                print "ERROR".$ex -> getMessage();
+            } catch (PDOException $ex) {
+                print "ERROR" . $ex->getMessage();
             }
         }
 
@@ -213,66 +207,60 @@ class repositorioFunciones
 
     //FUNCION PARA LOS PEDIDOS
 
-    public static function obtener_pedidos($conexion){
+    public static function obtener_pedidos($conexion)
+    {
 
         $pedidos = array();
 
-        if(isset($conexion)){
-            try{
+        if (isset($conexion)) {
+            try {
                 $sql = "SELECT * FROM pedido";
 
-                $sentencia = $conexion -> prepare($sql);
-                $sentencia -> execute();
-                $resultado = $sentencia -> fetchAll();
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
 
-                if(count($resultado)){
-                    foreach ($resultado as $fila){
-                    
-                            $pedidos[] = new pedido($fila['id_pedido'], $fila['fk_id_factura'],$fila['fk_id_droga']);
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
 
-                        
-
+                        $pedidos[] = new pedido($fila['id_pedido'], $fila['fk_id_factura'], $fila['fk_id_droga']);
                     }
-                }else{
+                } else {
                     print "NO HAY DATOS";
                 }
-
-            } catch(PDOException $ex){
-                print "ERROR".$ex -> getMessage();
+            } catch (PDOException $ex) {
+                print "ERROR" . $ex->getMessage();
             }
         }
 
         return $pedidos;
     }
 
-//RETORNA LAS DROGAS
+    //RETORNA LAS DROGAS
 
-    public static function obtener_drogas($conexion){
+    public static function obtener_drogas($conexion)
+    {
 
         $drogas = array();
 
-        if(isset($conexion)){
-            try{
+        if (isset($conexion)) {
+            try {
                 $sql = "SELECT * FROM droga";
 
-                $sentencia = $conexion -> prepare($sql);
-                $sentencia -> execute();
-                $resultado = $sentencia -> fetchAll();
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
 
-                if(count($resultado)){
-                    foreach ($resultado as $fila){
-                    
-                            $drogas[] = new droga($fila['id_droga'], $fila['nombre'],$fila['imagen'],$fila['valor']);
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
 
-                        
-
+                        $drogas[] = new droga($fila['id_droga'], $fila['nombre'], $fila['imagen'], $fila['valor']);
                     }
-                }else{
+                } else {
                     print "NO HAY DATOS";
                 }
-
-            } catch(PDOException $ex){
-                print "ERROR".$ex -> getMessage();
+            } catch (PDOException $ex) {
+                print "ERROR" . $ex->getMessage();
             }
         }
 
@@ -312,7 +300,7 @@ class repositorioFunciones
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = 'Cambio de contraseña';
             $mail->Body    = $texto;
-        
+
 
             $mail->send();
             echo 'El mensaje se ha  enviado';
@@ -600,20 +588,20 @@ class repositorioFunciones
 
         if (isset($conexion)) {
             try {
-                $archivo = fopen("usuarios.txt", "a");
+                /*$archivo = fopen("usuarios.txt", "a");
                 $usuario = repositorioFunciones::obtener_usuario_id($conexion, $id);
-                if ($usuario->getCtipado() == "a") {
-                    $tipo = "administrador el cual puede ver que usuarios se encuentran registrados";
-                } else {
-                    $tipo = "cliente el cual solo puede comprar cosas de la pagina";
-                }
-                fwrite($archivo, $usuario->getEmail() . ' | ' . $contrasena . ' //Es una cuenta tipo ' . $tipo . "\n");
+                //if ($usuario->getCtipado() == "a") {
+                //    $tipo = "administrador el cual puede ver que usuarios se encuentran registrados";
+                //} else {
+                //    $tipo = "cliente el cual solo puede comprar cosas de la pagina";
+                //}
+                //fwrite($archivo, $usuario->getEmail() . ' | ' . $contrasena . ' //Es una cuenta tipo ' . $tipo . "\n");
                 fclose($archivo);
-
+                */
                 $sql = "UPDATE cliente SET contrasena = :contrasena  WHERE id_cliente = :id";
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->bindParam(':id', $id, PDO::PARAM_INT);
-                $sentencia->bindParam(':contrasena', password_hash($contrasena,PASSWORD_DEFAULT), PDO::PARAM_STR);
+                $sentencia->bindParam(':contrasena', password_hash($contrasena, PASSWORD_DEFAULT), PDO::PARAM_STR);
                 $resultado = $sentencia->execute();
             } catch (PDOException $ex) {
                 print "ERROR" . $ex->getMessage();
