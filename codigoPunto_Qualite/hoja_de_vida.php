@@ -75,11 +75,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
 
                 </div>
                
-                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-8">
-                    <div class="form-group col-md-2">
-                        <button type="button" class="btn btn-info btn-sm">Añadir</button>
-                    </div>
-                </div>
+                
                 <br>
                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-4">
                     <div class="form-group col-md-9">
