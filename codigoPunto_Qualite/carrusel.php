@@ -31,8 +31,8 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
             <tr>
               <th>Id</th>
               <th>Nombre</th>
+              <th>Descripción</th>
               <th>Tipo</th>
-              <th>Size</th>
             </tr>
           </thead>
           <tbody>
@@ -55,12 +55,14 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
             ?>
           </tbody>
         </table>
-      </div>
-    
-    
-    
+      </div>  
     </main>
+    
+
+
+    
   </div>
+
 
 
   <script>
