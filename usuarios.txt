@@ -3,6 +3,10 @@ mono@gmail.com | 12345678 //Es una cuenta tipo cliente el cual solo puede compra
 keloxix974@mailezee.com |  //Es una cuenta tipo cliente el cual solo puede comprar cosas de la pagina
 Martin@gmail.com | 1234asdf //Es una cuenta tipo administrador el cual puede ver que usuarios se encuentran registrados
 And793s38@gmail.com | 01111998 //Es una cuenta tipo cliente el cual solo puede comprar cosas de la pagina
+<<<<<<< Updated upstream
 And793s38@gmail.com | 0123456789 //Es una cuenta tipo cliente el cual solo puede comprar cosas de la pagina
 andresfelipeuribe11@gmail.com | 01111998 //Es una cuenta tipo cliente el cual solo puede comprar cosas de la pagina
 123@456.com | 01111998 //Es una cuenta tipo administrador el cual puede ver que usuarios se encuentran registrados
+=======
+ifredomendoza@gmail.com | alejandro12 //Es una cuenta tipo administrador el cual puede ver que usuarios se encuentran registrados
+>>>>>>> Stashed changes

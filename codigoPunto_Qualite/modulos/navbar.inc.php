@@ -3,9 +3,12 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/20192B105/codigoPunto_Qualite/php-objec
 include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/php-objects/usuario.inc.php";
 include_once  $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/php-objects/repositorio.php";
 $mode = false;
-session_start();
-error_reporting(0);
+if(!isset($var))
+{
+  session_start();
+}
 
+error_reporting(0);
 //FREDY DE AQUI HASTA DONDE LE DIGA HACE UN MODULO QUE SE INCORPORE EN LAS DEMAS PAGINAS
 
 $sesion = $_SESSION['cliente'];
