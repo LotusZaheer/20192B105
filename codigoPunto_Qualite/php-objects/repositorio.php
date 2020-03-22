@@ -165,12 +165,12 @@ public static function creartabla($conexion)
 
                 insert into archivo
                 Values
-                (1,"carrousel1.jpg","",""),
-                (2,"carrousel2.jpg","",""),
-                (3,"carrousel3.png","",""),
-                (4,"carrousel4.jpg","",""),
-                (5,"carrousel5.jpg","",""),
-                (6,"carrousel6.jpg","","");
+                (1,"carousel1.jpg","",""),
+                (2,"carousel2.jpg","",""),
+                (3,"carousel3.png","",""),
+                (4,"carousel4.jpg","",""),
+                (5,"carousel5.jpg","",""),
+                (6,"carousel6.jpg","","");
                 ';
                 $sentencia = $conexion->prepare($sql);
 
