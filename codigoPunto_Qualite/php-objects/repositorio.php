@@ -118,9 +118,8 @@ public static function creartabla($conexion)
                     id_archivo int(11) NOT NULL,
                     name varchar(200) NOT NULL,
                     description varchar(200) NOT NULL,
-                    ruta varchar(200) NOT NULL,
                     tipo varchar(200) NOT NULL,
-                    size int(50) NOT NULL
+                    PRIMARY KEY(id_archivo)
                 );
                 CREATE TABLE hoja_de_vida (
                     name varchar(50) NOT NULL,
@@ -162,7 +161,17 @@ public static function creartabla($conexion)
                 (2,"Giron"),
                 (3,"Floridablanca"),
                 (4,"Duitama"),
-                (5,"Yopal");';
+                (5,"Yopal");
+
+                insert into archivo
+                Values
+                (1,"carrousel1.jpg","",""),
+                (2,"carrousel2.jpg","",""),
+                (3,"carrousel3.png","",""),
+                (4,"carrousel4.jpg","",""),
+                (5,"carrousel5.jpg","",""),
+                (6,"carrousel6.jpg","","");
+                ';
                 $sentencia = $conexion->prepare($sql);
 
                 $sentencia->execute();
@@ -642,7 +651,8 @@ public static function creartabla($conexion)
 
 
    //FUNCION PARA VER ARCHIVOS
-    public static function obtener_archivos($conexion){
+    public static function obtener_archivos($conexion)
+    {
 
         $archivos = array();
 
@@ -656,8 +666,7 @@ public static function creartabla($conexion)
 
                 if (count($resultado)) {
                     foreach ($resultado as $fila) {
-
-                        $archivos[] = new archivo($fila['id_archivo'], $fila['name'],$fila['description'],$fila['ruta'],$fila['tipo'],$fila['size']);
+                        $archivos[] = new archivo($fila['id_archivo'], $fila['name'], $fila['description'], $fila['tipo']);
                     }
                 } else {
                     print "NO HAY DATOS";
@@ -670,40 +679,31 @@ public static function creartabla($conexion)
         return $archivos;
     }
 
+
      // FUNCION PARA OBTENER LA ARCHIVO
 
-     public static function obtener_archivo($conexion, $id)
-     {
-         $archivo = null;
- 
-         if (isset($conexion)) {
-             try {
-                 $sql = "SELECT * FROM archivo WHERE id_archivo = :id";
-                 $sentencia = $conexion->prepare($sql);
-                 $sentencia->bindParam(':id', $id, PDO::PARAM_STR);
-                 $sentencia->execute();
-                 $resultado = $sentencia->fetch();
- 
-                 if (!empty($resultado)) {
-                     $archivo = new archivo(
-                        $resultado['id_archivo'],
-                        $resultado['name'],
-                        $resultado['description'],
-                        $resultado['ruta'],
-                        $resultado['tipo'],
-                        $resultado['size']
-                    );
-                 }
-             } catch (PDOException $ex) {
-                 print "ERROR" . $ex->getMessage();
-                 $archivo = null;
-             }
-         }
- 
-         return $archivo;
-     }
+    public static function obtener_archivo($conexion, $id_archivo)
+    {
+        $archivo = null;
 
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT * FROM archivo WHERE id_archivo = :id_archivo";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->bindParam(':id_archivo', $id_archivo, PDO::PARAM_STR);
+                $sentencia->execute();
+                $resultado = $sentencia->fetch();
 
+                if (!empty($resultado)) {
+                    $archivo = new archivo($resultado['id_archivo'],$resultado['name'],$resultado['description'],$resultado['tipo']);
+                }
+            } catch (PDOException $ex) {
+                print "ERROR" . $ex->getMessage();
+                $archivo = null;
+            }
+        }
+
+        return $archivo;
+    }
 
 }
-

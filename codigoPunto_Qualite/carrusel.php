@@ -40,13 +40,14 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
               Conexion::abrir();
               $conex=Conexion::obtener();
               $i=1;
+
               while($i<=count(repositorioFunciones::obtener_archivos($conex))){
-                $archivo=repositorioFunciones::obtener_archivo($conex,$i);
+                $ciudad=repositorioFunciones::obtener_archivo($conex,$i);
                 echo "<tr>";
-                echo '<td>'.$archivo->getId().'</td>';
-                echo '<td>'.$archivo->getName().'</td>';
-                echo '<td>'.$archivo->getTipo().'</td>';
-                echo '<td>'.$archivo->getSize().'</td>';
+                echo '<td>'.$ciudad->getId().'</td>';
+                echo '<td>'.$ciudad->getName().'</td>';
+                echo '<td>'.$ciudad->getDescription().'</td>';
+                echo '<td>'.$ciudad->getTipo().'</td>';
                 
                 $i++;
               }
@@ -60,12 +61,6 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
     
     </main>
   </div>
-    
-    
-    
-    </main>
-  </div>
-
 
 
   <script>

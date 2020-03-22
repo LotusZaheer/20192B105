@@ -1,26 +1,22 @@
 <?php
 
 class archivo{
-    private $id;
-    private $name;
-    private $description;
-    private $ruta;
-    private $tipo;
-    private $size;
+    public $id_archivo;
+    public $name;
+    public $description;
+    public $tipo;
 
-    public function __construct($id,$name,$description,$ruta,$tipo,$size)
+    public function __construct($id_archivo,$name,$description,$tipo)
     {
-        $this->id=$id;
+        $this->id_archivo=$id_archivo;
         $this->name=$name;
         $this->description=$description;
-        $this->ruta=$ruta;
         $this->tipo=$tipo;
-        $this->size=$size;
 
     }
 
     public function getId(){
-        return $this->id;
+        return $this->id_archivo;
     }
 
     public function getName(){
@@ -30,19 +26,12 @@ class archivo{
         return $this->description;
     }
 
-    public function getRuta(){
-        return $this->ruta;
-    }
     public function getTipo(){
         return $this->tipo;
     }
 
-    public function getSize(){
-        return $this->size;
-    }
-
-    public function setId($id_ciudad){
-        $this->id_ciudad=$id_ciudad;
+    public function setId($id_archivo){
+        $this->id_archivo=$id_archivo;
     }
 
     public function setName($name){
@@ -53,17 +42,10 @@ class archivo{
         $this->description=$description;
     }
 
-    public function setRuta($ruta){
-        $this->ruta=$ruta;
-    }
-
     public function setTipo($tipo){
         $this->tipo=$tipo;
     }
 
-    public function setSize($size){
-        $this->size=$size;
-    }
 }
 
 ?>

@@ -53,8 +53,7 @@ CREATE TABLE archivo (
     name varchar(200) NOT NULL,
     description varchar(200) NOT NULL,
     ruta varchar(200) NOT NULL,
-    tipo varchar(200) NOT NULL,
-    size int(50) NOT NULL
+    tipo varchar(200) NOT NULL
 );
 CREATE TABLE hoja_de_vida (
     name varchar(50) NOT NULL,
