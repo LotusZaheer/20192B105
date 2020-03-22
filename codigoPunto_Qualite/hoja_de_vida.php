@@ -1,10 +1,42 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 
 <head>
     <title>Hoja de vida</title>
     <?php
     include_once $_SERVER['DOCUMENT_ROOT'] . "/20192B105/codigoPunto_Qualite/modulos/navbar.inc.php";
     ?>
+        <!-- Bootstrap 4 -->
+
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600|Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/lux1.css">
+    <title>Registro</title>
+
+    <!-- Scrool reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <script>
+        function habilitar(value) {
+            if (value == true) {
+                // habilitamos
+                document.getElementById("universidad").disabled = false;
+                document.getElementById("carrera").disabled = false;
+                document.getElementById("promedio").disabled = false;
+            } else if (value == false) {
+                // deshabilitamos
+                document.getElementById("universidad").disabled = true;
+                document.getElementById("carrera").disabled = true;
+                document.getElementById("promedio").disabled = true;
+            }
+        }
+    </script>
+</head>
 <body>
     <div class="container cont-forms">
         <br />
