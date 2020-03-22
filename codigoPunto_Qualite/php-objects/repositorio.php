@@ -65,7 +65,7 @@ public static function creartabla($conexion)
     if (isset($conexion)) {
         try {
 
-            $sql = "use 20192B105;
+            $sql = "USE 20192B105;
                 create table ciudad(
                 id_ciudad int not null auto_increment,
                 nombre varchar(30),
@@ -122,10 +122,11 @@ public static function creartabla($conexion)
                     PRIMARY KEY(id_archivo)
                 );
                 CREATE TABLE hoja_de_vida (
+                    id_hoja_de_vida int not null auto_increment,
                     name varchar(50) NOT NULL,
                     last_name varchar(50) NOT NULL,
                     email varchar(50) NOT NULL, 
-                    tel int(15) NOT NULL,
+                    tel varchar(11) NOT NULL,
                     cargo varchar(100) NOT NULL, 
                     last_org varchar (100),
                     year_start int(4),
@@ -133,7 +134,8 @@ public static function creartabla($conexion)
                     description text NOT NULL,
                     univ varchar(100),
                     carrer varchar(70),
-                    prom FLOAT
+                    prom FLOAT,
+                    PRIMARY key(id_hoja_de_vida)
                 );
                 ";
             $sentencia = $conexion->prepare($sql);
@@ -182,7 +184,8 @@ public static function creartabla($conexion)
     }
 
     //FUNCION PARA OBTENER EL NUMERO DE USUARIOS
-
+//INSERT into hoja_de_vida(name, last_name, email,tel,cargo,last_org,year_start, year_stop, description,univ,carrer,prom)
+//values ('Santiago','Castro','sduitama@gmail.com',3102011598,'Actor Porno','UIS',2019,2020,'GO GO GO ','universidad','carrera A',4.5)
     public static function obtener_usuarios($conexion)
     {
 
