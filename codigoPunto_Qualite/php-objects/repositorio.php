@@ -120,7 +120,21 @@ public static function creartabla($conexion)
                     ruta varchar(200) NOT NULL,
                     tipo varchar(200) NOT NULL,
                     size int(50) NOT NULL
-                  )
+                );
+                CREATE TABLE hoja_de_vida (
+                    name varchar(50) NOT NULL,
+                    last_name varchar(50) NOT NULL,
+                    email varchar(50) NOT NULL, 
+                    tel int(15) NOT NULL,
+                    cargo varchar(100) NOT NULL, 
+                    last_org varchar (100),
+                    year_start int(4),
+                    year_stop int(4),
+                    description text NOT NULL,
+                    univ varchar(100),
+                    carrer varchar(70),
+                    prom FLOAT
+                );
                 ";
             $sentencia = $conexion->prepare($sql);
             $sentencia->execute();
