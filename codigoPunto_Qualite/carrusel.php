@@ -24,6 +24,42 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
       
 
     <!--Base de datos // archivos guardados-->
+
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Tipo</th>
+              <th>Size</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+              Conexion::abrir();
+              $conex=Conexion::obtener();
+              $i=1;
+              while($i<=count(repositorioFunciones::obtener_archivos($conex))){
+                $archivo=repositorioFunciones::obtener_archivo($conex,$i);
+                echo "<tr>";
+                echo '<td>'.$archivo->getId().'</td>';
+                echo '<td>'.$archivo->getName().'</td>';
+                echo '<td>'.$archivo->getTipo().'</td>';
+                echo '<td>'.$archivo->getSize().'</td>';
+                
+                $i++;
+              }
+              Conexion::cerrar();
+            ?>
+          </tbody>
+        </table>
+      </div>
+    
+    
+    
+    </main>
+  </div>
     
     
     
