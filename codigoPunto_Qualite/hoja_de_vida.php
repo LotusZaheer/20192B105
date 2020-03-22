@@ -132,12 +132,9 @@
         </div>
     </div>
 
-    <script src="ajax/jquery-3.4.1.min.js"></script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="ajax/jquery-3.4.1.min.js"></script>    
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/security.js"></script>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
 </body>
 
 <?php
@@ -150,13 +147,11 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/20192B105/codigoPunto_Qualite/modulos
     $(document).ready(function(){
         $("#btnsubir").click(function(){
             var datos = $('#form-hoja').serialize();
-            
             $.ajax({
                 type:"POST",
                 url:"insertar_hoja.php",
                 data:datos,
                 success:function(r){
-                    echo(r)
                     if(r == 1){
                         alert("Agregado con exito");
                     }else{
