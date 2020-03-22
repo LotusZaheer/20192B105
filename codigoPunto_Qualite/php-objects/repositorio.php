@@ -8,6 +8,7 @@ include_once "ciudad.inc.php";
 include_once "pedido.inc.php";
 include_once "factura.inc.php";
 include_once "conexion.inc.php";
+include_once "archivo.inc.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -113,8 +114,8 @@ public static function creartabla($conexion)
                     references factura(id_factura)
                 );
                 
-                CREATE TABLE archivos (
-                    id int(11) NOT NULL,
+                CREATE TABLE archivo (
+                    id_archivo int(11) NOT NULL,
                     name varchar(200) NOT NULL,
                     description varchar(200) NOT NULL,
                     ruta varchar(200) NOT NULL,
@@ -638,4 +639,71 @@ public static function creartabla($conexion)
         }
         return $resultado;
     }
+
+
+   //FUNCION PARA VER ARCHIVOS
+    public static function obtener_archivos($conexion){
+
+        $archivos = array();
+
+        if (isset($conexion)) {
+            try {
+                $sql = "SELECT * FROM archivo";
+
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll();
+
+                if (count($resultado)) {
+                    foreach ($resultado as $fila) {
+
+                        $archivos[] = new archivo($fila['id_archivo'], $fila['name'],$fila['description'],$fila['ruta'],$fila['tipo'],$fila['size']);
+                    }
+                } else {
+                    print "NO HAY DATOS";
+                }
+            } catch (PDOException $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+
+        return $archivos;
+    }
+
+     // FUNCION PARA OBTENER LA ARCHIVO
+
+     public static function obtener_archivo($conexion, $id)
+     {
+         $archivo = null;
+ 
+         if (isset($conexion)) {
+             try {
+                 $sql = "SELECT * FROM archivo WHERE id_archivo = :id";
+                 $sentencia = $conexion->prepare($sql);
+                 $sentencia->bindParam(':id', $id, PDO::PARAM_STR);
+                 $sentencia->execute();
+                 $resultado = $sentencia->fetch();
+ 
+                 if (!empty($resultado)) {
+                     $archivo = new archivo(
+                        $resultado['id_archivo'],
+                        $resultado['name'],
+                        $resultado['description'],
+                        $resultado['ruta'],
+                        $resultado['tipo'],
+                        $resultado['size']
+                    );
+                 }
+             } catch (PDOException $ex) {
+                 print "ERROR" . $ex->getMessage();
+                 $archivo = null;
+             }
+         }
+ 
+         return $archivo;
+     }
+
+
+
 }
+
