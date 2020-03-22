@@ -9,6 +9,7 @@ if(!isset($var))
 }
 
 error_reporting(0);
+
 //FREDY DE AQUI HASTA DONDE LE DIGA HACE UN MODULO QUE SE INCORPORE EN LAS DEMAS PAGINAS
 
 $sesion = $_SESSION['cliente'];

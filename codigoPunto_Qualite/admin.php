@@ -1,4 +1,5 @@
 <?php
+
 include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/php-objects/usuario.inc.php";
 session_start();
 $var = true;
@@ -9,6 +10,7 @@ if(($sesion==null) || ($sesion->getCtipado() != 'a'))
 }
 
 include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/navbar.inc.php";
+
 ?>
 
   <div class="row" style="padding-top: 6em">
