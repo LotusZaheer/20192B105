@@ -37,55 +37,94 @@ if($_POST){
 
 <body <?php if($dont==3){ echo('onload="alertas()"'); }?>>
 
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
-    <a class="navbar-brand" href="index.php">Punto Qualité</a>
+  <!-- Navbar -->
+  <nav style="z-index:40!important;" class=" navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <a class="navbar-brand" href="/20192B105/index.php">Punto Qualité</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarColor01">
 
-      <div class="col-8">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item ">
-            <a class="nav-link" href="shop.php">Productos</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="our.php">Nosotros</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="#contacto">Contactanos</a>
-          </li>
-        </ul>
-      </div>
-      <div class="col-4">
-        <div class="float-right">
-          <ul class="navbar-nav mr-auto">
-            <?php
-            if ($mode) {
-              echo ('
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown show ">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Productos</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Bebé y maternidad</a>
+            <a class="dropdown-item" href="#">Fitness</a>
+            <a class="dropdown-item" href="#">Cuidado personal</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="/20192B105/codigoPunto_Qualite/our.php">Nosotros</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="#contacto">Contactanos</a>
+        </li>
+
+        <li class="nav-item dropdown">
+
+
+
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Formularios</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/20192B105/codigoPunto_Qualite/encuesta.php">Encuesta</a>
+            <a class="dropdown-item" href="/20192B105/codigoPunto_Qualite/hoja_de_vida.php">Hoja de Vida</a>
+
+        </li>
+      </ul>
+
+
+
+      <ul class="navbar-nav">
+        <?php
+        if ($mode) {
+          if($sesion->getCtipado()=='a'){
+            echo '<li class="nav-item ">
+                  <a class="nav-link" href="/20192B105/codigoPunto_Qualite/admin.php">admin</a>
+                </li>';
+          }
+          echo ('
               <li class="nav-item ">
-                  <a class="nav-link" href="cuenta.php">Cuenta</a>
+                  <a class="nav-link" href="/20192B105/codigoPunto_Qualite/cuenta.php">Cuenta</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="cerrar.php">Cerrar Sesion</a>
+                  <a class="nav-link" href="/20192B105/codigoPunto_Qualite/cerrar.php">Cerrar Sesion</a>
                 </li>
               ');
-            } else {
+        } else {
 
-              echo ('
+          echo ('
           <li class="nav-item ">
-              <a class="nav-link" href="login.php">Iniciar sesión</a>
+			<a class="nav-link" id="btn-abrir-popup" class="btn-abrir-popup nav-link" href="#" >Iniciar Sesion</a>
+              </li>
+		<div class="overlay" id="overlay">
+			
+			<div class="popup" id="popup">
+				<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
+				<h1 class="h3 mb-3 font-weight-normal">Iniciar Sesion</h1>
+				<form class="form-signin" method="POST" action="' . $_SERVER['PHP-SELF'] . '">
+					<div class="contenedor-inputs">
+          <input  name="email" id="password-field1" type="password"  class="form-control">
+          <span toggle="#password-field1" class="fa fa-fw fa-eye field-icon toggle-password1"></span>
+						<input id="password-field2" type="password" class="form-control" name="password">
+              <span toggle="#password-field2" class="fa fa-fw fa-eye field-icon toggle-password2"></span>
+          </div>
+          <a href="/20192B105/codigoPunto_Qualite/forgot.php">¿Olvidaste tu contraseña?</a>
+          
+					<button class="btn btn-primary btn-block" type="submit" style="margin-top: 10px">Entrar</button>
+				</form>
+			</div>
+		</div>
+
+            
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="registro.php">Registrate</a>
+              <a class="nav-link" href="/20192B105/codigoPunto_Qualite/registro.php">Registrate</a>
             </li>
           ');
-            }
-            ?>
-          </ul>
-        </div>
-      </div>
+        }
+        ?>
+      </ul>
+
 
     </div>
   </nav>
