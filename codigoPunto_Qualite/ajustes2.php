@@ -49,7 +49,7 @@ if($cambio==true){
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Inicio</title>
+  <title>Ajustes</title>
 </head>
 
 <body>
@@ -183,7 +183,7 @@ if($cambio==true){
                 <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="contra" type="password">
 
               </div>
-              <button type="submit" class="btn btn-primary" id="topper" name="commit">Confirmar</button>
+              <button type="submit" class="btn btn-primary" id="topper" name="commit" style="margin-bottom:20px;">Confirmar</button>
             </form>
           </div>
       </div>

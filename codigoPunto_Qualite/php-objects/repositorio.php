@@ -51,7 +51,7 @@ class repositorioFunciones
         if (isset($conexion)) {
             try {
 
-                $sql = "DROP DATABASE [IF EXISTS]  20192B105;";
+                $sql = "DROP DATABASE 20192B105;";
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->execute();
             } catch (PDOException $ex) {
