@@ -759,6 +759,8 @@ public static function creartabla($conexion)
     {
         $newarchivo = false;
 
+        $text = $archivo->getName().' | '.$archivo->getDescription(). ' | ' .$archivo->getRuta(). ' | '.$archivo->getTipo().' | '.$archivo->getSize()."\n";
+        fclose($open);
         if (isset($conexion)) {
             try {
                 include_once "archivo.inc.php";
@@ -770,7 +772,9 @@ public static function creartabla($conexion)
                 $sentencia->BindParam(':tipo', $archivo->getTipo(), PDO::PARAM_STR);
                 $sentencia->BindParam(':size', $archivo->getSize(), PDO::PARAM_STR);
                 $newciudad = $sentencia->execute();
-
+                $open = fopen("../img.txt","a"); //abres el fichero en modo lectura/escritura
+                fputs($open, $text);
+                fclose($open);
 
             } catch (PDOException $ex) {
                 print "ERROR" . $ex->getMessage();
