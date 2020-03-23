@@ -115,21 +115,15 @@ public static function creartabla($conexion)
                 );
                 
                 
-                CREATE TABLE `archivos` (
-                  `id` int(11) NOT NULL,
-                  `name` varchar(200) NOT NULL,
-                  `description` varchar(200) NOT NULL,
-                  `ruta` varchar(200) NOT NULL,
-                  `tipo` varchar(200) NOT NULL,
-                  `size` int(50) NOT NULL
-                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-                
-                ALTER TABLE `archivos`
-                  ADD PRIMARY KEY (`id`);
-                
-                ALTER TABLE `archivos`
-                  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
-
+                CREATE TABLE archivos (
+                  id_archivo int NOT NULL auto_increment,
+                  name varchar(200) NOT NULL,
+                  description varchar(200) NOT NULL,
+                  ruta varchar(200) NOT NULL,
+                  tipo varchar(200) NOT NULL,
+                  size int NOT NULL,
+                  PRIMARY KEY(id_archivo)
+                );
                 
                 CREATE TABLE hoja_de_vida (
                     id_hoja_de_vida int not null auto_increment,
@@ -714,7 +708,7 @@ public static function creartabla($conexion)
 
                 if (count($resultado)) {
                     foreach ($resultado as $fila) {
-                        $archivos[] = new archivo($fila['id'], $fila['name'], $fila['description'], $fila['ruta'], $fila['tipo'], $fila['size']);
+                        $archivos[] = new archivo($fila['id_archivo'], $fila['name'], $fila['description'], $fila['ruta'], $fila['tipo'], $fila['size']);
                     }
                 } else {
                     print "NO HAY DATOS";
@@ -730,20 +724,20 @@ public static function creartabla($conexion)
 
      // FUNCION PARA OBTENER LA ARCHIVO
 
-    public static function obtener_archivo($conexion, $id)
+    public static function obtener_archivo($conexion, $id_archivo)
     {
         $archivo = null;
 
         if (isset($conexion)) {
             try {
-                $sql = "SELECT * FROM archivos WHERE id = :id";
+                $sql = "SELECT * FROM archivos WHERE id_archivo = :id_archivo";
                 $sentencia = $conexion->prepare($sql);
-                $sentencia->bindParam(':id', $id, PDO::PARAM_STR);
+                $sentencia->bindParam(':id_archivo', $id_archivo, PDO::PARAM_STR);
                 $sentencia->execute();
                 $resultado = $sentencia->fetch();
 
                 if (!empty($resultado)) {
-                    $archivo = new archivo($resultado['id'],$resultado['name'],$resultado['description'],$resultado['ruta'],$resultado['tipo'],$resultado['size']);
+                    $archivo = new archivo($resultado['id_archivo'],$resultado['name'],$resultado['description'],$resultado['ruta'],$resultado['tipo'],$resultado['size']);
                 }
             } catch (PDOException $ex) {
                 print "ERROR" . $ex->getMessage();
@@ -764,15 +758,15 @@ public static function creartabla($conexion)
         if (isset($conexion)) {
             try {
                 include_once "archivo.inc.php";
-                $sql = "INSERT INTO archivos(id,name,description,ruta,tipo,size) VALUES(:id,:name,:description,:ruta,:tipo,:size)";
+                $sql = "INSERT INTO archivos(id_archivo,name,description,ruta,tipo,size) VALUES(:id_archivo,:name,:description,:ruta,:tipo,:size)";
                 $sentencia = $conexion->prepare($sql);
-                $sentencia->BindParam(':id', $archivo->getId(), PDO::PARAM_STR);
+                $sentencia->BindParam(':id_archivo', $archivo->getId(), PDO::PARAM_STR);
                 $sentencia->BindParam(':name', $archivo->getName(), PDO::PARAM_STR);
                 $sentencia->BindParam(':description', $archivo->getDescription(), PDO::PARAM_STR);
                 $sentencia->BindParam(':ruta', $archivo->getRuta(), PDO::PARAM_STR);
                 $sentencia->BindParam(':tipo', $archivo->getTipo(), PDO::PARAM_STR);
                 $sentencia->BindParam(':size', $archivo->getSize(), PDO::PARAM_STR);
-                $newciudad = $sentencia->execute();
+                $sentencia->execute();
                 $open = fopen("../img.txt","a"); //abres el fichero en modo lectura/escritura
                 fputs($open, $text);
                 fclose($open);
@@ -788,23 +782,22 @@ public static function creartabla($conexion)
     //FUNCION PARA  INSERTAR ARCHIVO
     public static function eliminar_archivo($conexion,$archivo,$max)
     {
-        $newarchivo = false;
 
         if (isset($conexion)) {
             try {
                 include_once "archivo.inc.php";
-                $sql = "DELETE FROM archivos WHERE id=':id'";//eliminamos el archivo
+                $sql = "DELETE FROM archivos WHERE id_archivo=:id_eliminado";//eliminamos el archivo
                 $sentencia = $conexion->prepare($sql);
-                $sentencia->BindParam(':id', $archivo->getId(), PDO::PARAM_STR);
-                $newarchivo = $sentencia->execute();
+                $sentencia->BindParam(':id_eliminado',$archivo->getId(), PDO::PARAM_INT);
+                $sentencia->execute();
                 if ($archivo->getId()==$max->getId()) {
                 }else{
-                $sql = "UPDATE archivos SET id=:id_eliminado WHERE id=':id_ultimo'";
+                $sql = "UPDATE archivos SET id_archivo=:id_eliminado WHERE id_archivo=:id_ultimo";
                 $sentencia2 = $conexion->prepare($sql);
-                $sentencia2->BindParam(':id_eliminado', $archivo->getId(), PDO::PARAM_STR);
-                $sentencia2->BindParam(':id_ultimo', $max->getId(), PDO::PARAM_STR);
-                $rearchivo = $sentencia2->execute();
-                }                 
+                $sentencia2->BindParam(':id_eliminado', $archivo->getId(), PDO::PARAM_INT);
+                $sentencia2->BindParam(':id_ultimo', $max->getId(), PDO::PARAM_INT);
+                $sentencia2->execute();
+                }   
             } catch (PDOException $ex) {
                 print "ERROR" . $ex->getMessage();
             }
