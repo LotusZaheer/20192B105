@@ -108,11 +108,22 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
                         $newarchivo = repositorioFunciones::insertar_archivo(Conexion::obtener(), $archivo);
                         Conexion::cerrar();
 
-             echo "El archivo '".$name."' se ha subido con éxito <br>";       
+             echo "El archivo '".$name."' se ha subido con éxito <br>";  
+             header('Location: /20192B105/codigoPunto_Qualite/carrusel.php');     
               }  
             }  
-            header('Location: /20192B105/codigoPunto_Qualite/Carrusel.php');
           } 
+              if ($_POST['id_eliminado']!=null) {
+                $id_eliminado = $_POST['id_eliminado'];
+                Conexion::abrir();
+                $conex=Conexion::obtener();
+                $id_ultimo=count(repositorioFunciones::obtener_archivos($conex));//obtengo el ultimo id
+                $max=repositorioFunciones::obtener_archivo($conex,$id_ultimo);//obtengo el ultimo archivo
+                $eliminado=repositorioFunciones::obtener_archivo($conex,$id_eliminado);//obtengo archivo eliminado
+                repositorioFunciones::eliminar_archivo(Conexion::obtener(),$eliminado,$max);
+                Conexion::cerrar();
+                header('Location: /20192B105/codigoPunto_Qualite/carrusel.php');
+                  }
       ?> 
 
 </div></td>
@@ -122,24 +133,11 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
       <form class="table table-striped table-sm" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" >  
         <br> Id a Eliminar: <input name="id_eliminado" type="text" size="10" maxlength="40"> 
         <br>
-        <input name="submit" class="btn btn-primary form-group" type="submit" id="topper" value="SUBIR ARCHIVO">   
+        <input name="submit" class="btn btn-primary form-group" type="submit" id="topper" value="ELIMINAR ARCHIVO">   
       </form>
     </td>
   </tr>
 </table>
-<?php
-if ($_POST) {
-  $id_eliminado = $_POST['id_eliminado'];
-  Conexion::abrir();
-  $conex=Conexion::obtener();
-  $id_ultimo=count(repositorioFunciones::obtener_archivos($conex));//obtengo el ultimo id
-  $max=repositorioFunciones::obtener_archivo($conex,$id_ultimo);//obtengo el ultimo archivo
-  $eliminado=repositorioFunciones::obtener_archivo($conex,$id_eliminado);//obtengo archivo eliminado
-  $newarchivo = repositorioFunciones::eliminar_archivo(Conexion::obtener(), $eliminado,$max);
-  Conexion::cerrar();
-  header('Location: /20192B105/codigoPunto_Qualite/Carrusel.php');
-}
-?>
 
   <script>
     window.sr = ScrollReveal();
