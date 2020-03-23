@@ -2,6 +2,7 @@
 include_once $_SERVER['DOCUMENT_ROOT'].'/20192B105/codigoPunto_Qualite/php-objects/conexion.inc.php';
 include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/php-objects/usuario.inc.php";
 include_once  $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/php-objects/repositorio.php";
+
 $mode = false;
 if(!isset($var))
 {
@@ -22,6 +23,7 @@ if ($sesion != null || $sesion != '') {
     $_SESSION['tiempo'] = time();
   }
 }
+
 
 ?>
 <!DOCTYPE html>

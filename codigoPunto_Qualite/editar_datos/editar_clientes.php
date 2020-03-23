@@ -32,7 +32,6 @@ if ($_POST) {
       header('Location: /20192B105/codigoPunto_Qualite/admin.php');
   } else {
       $emailused = true;
-      
   }
 }
 ?>
@@ -111,33 +110,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
             
           </tbody>
         </table>
-        <h4 style="margin-top:10px">Agregar clientes</h4>
-        <table class="table table-striped table-sm">
-        <div>
-        <tr>
-            <td><input name="id" class="form-control" id="id"  value=<?php echo count(repositorioFunciones::obtener_usuarios($conex)) + 1; ?> required disabled> </td>
-          <form action="<?php echo ($_SERVER['PHP_SELF']);?>" method="POST">
-              <td><input name="nombre" class="form-control" id="nombre"  placeholder="Nombre" required></td>
-              <td><input name="fecha" class="form-control" id="fecha"  placeholder="Fecha de nacimiento" type="date" required></td>
-              <td><input name="email" class="form-control" id="email"  placeholder="Email" type="email" required></td>
-              <td><input name="direccion" class="form-control" id="direccion"  placeholder="Direccion" required></td>
-              <td><select class="form-control" id="ciudad" name="ciudad" aria-placeholder="ciudad" required>
-                        <option value=""></option>
-                        <option value="1">Bucaramanga</option>
-                        <option value="2">Giron</option>
-                        <option value="3">Floridablanca</option>
-                        <option value="4">Duitama</option>
-                        <option value="5">Yopal</option>
-                    </select></td>
-            </tr>
-            <tr> <td><button type="submit" class="btn btn-primary form-group" id="agregar" name="commit">Agregar</button></td></tr>
-            </form>
-            </div>
-        </table>
-      </div>
-    
-    
-    
+
     </main>
   </div>
 
