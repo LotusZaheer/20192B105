@@ -36,3 +36,10 @@ carousel6 | kjhkjhk | ../datosPunto_Qualite/img/ | image/jpeg | 179837
 carousel3 | Genericos | ../datosPunto_Qualite/img/ | image/png | 97559
 carousel2 | asdsadasd | ../datosPunto_Qualite/img/ | image/jpeg | 193493
 carousel4 | sadadadsad | ../datosPunto_Qualite/img/ | image/jpeg | 88172
+carousel4 | sadadadsad | ../datosPunto_Qualite/img/ | image/jpeg | 88172
+carousel6 | asdasdasd | ../datosPunto_Qualite/img/ | image/jpeg | 179837
+carousel1 | algo | ../datosPunto_Qualite/img/ | image/jpeg | 108993
+carousel5 | jhjh | ../datosPunto_Qualite/img/ | image/jpeg | 259657
+carousel6 |  | ../datosPunto_Qualite/img/ | image/jpeg | 179837
+carousel6 | asdsad | ../datosPunto_Qualite/img/ | image/jpeg | 179837
+carousel6 | asdsada | ../datosPunto_Qualite/img/ | image/jpeg | 179837

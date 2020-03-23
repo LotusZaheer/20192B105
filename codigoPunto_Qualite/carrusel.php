@@ -105,7 +105,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
                         $archivo = new archivo($id, $name,$description,$ruta,$tipo,$size);
                         $newarchivo = repositorioFunciones::insertar_archivo(Conexion::obtener(), $archivo);
                         Conexion::cerrar();  
-                        echo '<script language="javascript">alert("El archivo a sido cargado \n Pulse para recargar la tabla");<a href="carrusel.php"></script>';
+                        echo '<script href="carrusel.php" language="javascript">alert("El archivo a sido cargado \n Pulse para recargar la tabla");</script> <META HTTP-EQUIV="REFRESH" CONTENT="1;URL=carrusel.php">';
               }  
             }  
           } 
@@ -118,9 +118,9 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
                 $eliminado=repositorioFunciones::obtener_archivo($conex,$id_eliminado);//obtengo archivo eliminado
                 if ($id_eliminado<=$id_ultimo) {
                   repositorioFunciones::eliminar_archivo(Conexion::obtener(),$eliminado,$max);
-                  echo '<script language="javascript">alert("El archivo a sido eliminado \n Pulse para recargar la tabla");<a href="carrusel.php"></script>';
+                  echo '<script href="carrusel.php" language="javascript">alert("El archivo a sido eliminado \n Pulse para recargar la tabla");</script> <META HTTP-EQUIV="REFRESH" CONTENT="1;URL=carrusel.php">';
                 }else{
-                  echo '<script language="javascript">alert("No existe el elemento a eliminar");<a href="carrusel.php"></script>';
+                  echo '<script href="carrusel.php" language="javascript">alert("No existe el elemento a eliminar");</script> <META HTTP-EQUIV="REFRESH" CONTENT="1;URL=carrusel.php">';
                 }
                 Conexion::cerrar();
                   }
