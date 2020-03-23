@@ -764,8 +764,9 @@ public static function creartabla($conexion)
         if (isset($conexion)) {
             try {
                 include_once "archivo.inc.php";
-                $sql = "INSERT INTO archivos(name,description,ruta,tipo,size) VALUES(:name,:description,:ruta,:tipo,:size)";
+                $sql = "INSERT INTO archivos(id,name,description,ruta,tipo,size) VALUES(:id,:name,:description,:ruta,:tipo,:size)";
                 $sentencia = $conexion->prepare($sql);
+                $sentencia->BindParam(':id', $archivo->getId(), PDO::PARAM_STR);
                 $sentencia->BindParam(':name', $archivo->getName(), PDO::PARAM_STR);
                 $sentencia->BindParam(':description', $archivo->getDescription(), PDO::PARAM_STR);
                 $sentencia->BindParam(':ruta', $archivo->getRuta(), PDO::PARAM_STR);
@@ -785,24 +786,25 @@ public static function creartabla($conexion)
     }
 
     //FUNCION PARA  INSERTAR ARCHIVO
-    public static function eliminar_archivo($conexion, $archivo,$max)
+    public static function eliminar_archivo($conexion,$archivo,$max)
     {
         $newarchivo = false;
 
         if (isset($conexion)) {
             try {
                 include_once "archivo.inc.php";
-                $sql = "DELETE FROM archivos WHERE id=':id'";
+                $sql = "DELETE FROM archivos WHERE id=':id'";//eliminamos el archivo
                 $sentencia = $conexion->prepare($sql);
-                $sentencia->BindParam(':id', $archivo->getName(), PDO::PARAM_STR);
-                $newciudad = $sentencia->execute();
-
+                $sentencia->BindParam(':id', $archivo->getId(), PDO::PARAM_STR);
+                $newarchivo = $sentencia->execute();
+                if ($archivo->getId()==$max->getId()) {
+                }else{
                 $sql = "UPDATE archivos SET id=:id_eliminado WHERE id=':id_ultimo'";
-                $sentencia = $conexion->prepare($sql);
-                $sentencia->BindParam(':id_eliminado', $archivo->getId(), PDO::PARAM_STR);
-                $sentencia->BindParam(':id_ultimo', $max->getId(), PDO::PARAM_STR);
-                $newciudad = $sentencia->execute();
-                                  
+                $sentencia2 = $conexion->prepare($sql);
+                $sentencia2->BindParam(':id_eliminado', $archivo->getId(), PDO::PARAM_STR);
+                $sentencia2->BindParam(':id_ultimo', $max->getId(), PDO::PARAM_STR);
+                $rearchivo = $sentencia2->execute();
+                }                 
             } catch (PDOException $ex) {
                 print "ERROR" . $ex->getMessage();
             }
