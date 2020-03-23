@@ -1,0 +1,6 @@
+carousel1 | Virus | ../datosPunto_Qualite/img/ | image/jpeg | 108993
+carousel2 | Yox con defensis | ../datosPunto_Qualite/img/ | image/jpeg | 193493
+carousel3 | Genericos | ../datosPunto_Qualite/img/ | image/png | 97559
+carousel4 | Vick pero no Vaporu xd | ../datosPunto_Qualite/img/ | image/jpeg | 88172
+carousel5 | Colgate | ../datosPunto_Qualite/img/ | image/jpeg | 259657
+carousel6 | Azuuuuuuuucar | ../datosPunto_Qualite/img/ | image/jpeg | 179837
