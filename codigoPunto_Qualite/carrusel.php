@@ -23,6 +23,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
           <h2 style="margin-top:10px">Carrusel Inicio</h2>
       
 
+
     <!--Base de datos // archivos guardados-->
 
       <div class="table-responsive">
@@ -30,7 +31,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
           <thead>
             <tr>
               <th>Id</th>
-              <th>Nombre</th>
+              <th>Nombre (Pulse para descargar)</th>
               <th>Descripción</th>
               <th>Tipo</th>
             </tr>
@@ -59,22 +60,36 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
             ?>
           </tbody>
         </table>
-      </div>  
-    </main>
 
-</div>
-<table>
-  <tr>
-    <td><div align="center">
-<form class="table table-striped table-sm" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">  
-  <h3>Agregar archivo</h3>
-    Seleccione archivo: <input class="btn btn-primary form-group" name="fichero" type="file" size="150" maxlength="150">  
+                <!--EDICIÓN DE ARCHIVOS-->
+        <table class="table table-striped table-sm">
+          <tr>
+            <td>
+              <form class="table table-striped table-sm" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">  
+                  <h3>Agregar archivo</h3>
+                    Seleccione archivo: <input class="btn btn-primary form-group"  name="fichero" type="file" size="50" maxlength="150">  
     
-    <br> Descripcion: <input name="description" type="text" size="70" maxlength="250"> 
-    <br>
-  <input name="submit" class="btn btn-primary form-group" type="submit" id="topper" value="SUBIR ARCHIVO">   
-</form>  
+                  <br> Descripcion: <input name="description" type="text" size="50" maxlength="250"> 
+                  <br>
+                  <input name="submit" class="btn btn-primary form-group" type="submit" id="topper" value="SUBIR ARCHIVO">   
+                </form>  
+              </td>
+                  <td>
+                    <h3>Eliminar Archivo</h3>
+                      <form class="table table-striped table-sm" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" >  
+                        <br> Id a Eliminar: <input name="id_eliminado" type="text" size="10" maxlength="40"> 
+                        <br>
+                        <input name="submit" class="btn btn-primary form-group" type="submit" id="topper" value="ELIMINAR ARCHIVO"> 
+                      </form>
+                  </td>
+            </tr>
+          </table>
 
+          <!--FIN TABLA DE EDICIÓN DE ARCHIVOS-->
+
+          </div>  
+    </main>
+</div>
       <?php
       
           $cons_usuario="20192B105";
@@ -126,18 +141,10 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
                   }
       ?> 
 
-</div></td>
-  <td></td>
-    <td align="right">
-      <h3>Eliminar Archivo</h3>
-      <form class="table table-striped table-sm" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" >  
-        <br> Id a Eliminar: <input name="id_eliminado" type="text" size="10" maxlength="40"> 
-        <br>
-        <input name="submit" class="btn btn-primary form-group" type="submit" id="topper" value="ELIMINAR ARCHIVO"> 
-      </form>
-    </td>
-  </tr>
-</table>
+
+     
+
+
 
   <script>
     window.sr = ScrollReveal();
