@@ -150,6 +150,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/20192B105/codigoPunto_Qualite/modulos
             $.ajax({
                 type:"POST",
                 url:"insertar_hoja.php",
+                async:true,
                 data:datos,
                 success:function(r){
                     if(r == 1){
