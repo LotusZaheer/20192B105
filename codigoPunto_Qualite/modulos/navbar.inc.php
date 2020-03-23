@@ -76,7 +76,8 @@ if ($sesion != null || $sesion != '') {
           <div class="dropdown-menu">
             <a class="dropdown-item" href="/20192B105/codigoPunto_Qualite/encuesta.php">Encuesta</a>
             <a class="dropdown-item" href="/20192B105/codigoPunto_Qualite/hoja_de_vida.php">Hoja de Vida</a>
-            <a class="dropdown-item" href="#">Encuesta Satisfacción</a>
+            <a class="dropdown-item" href="/20192B105/codigoPunto_Qualite/matrix.php">Multiplicación de Matrices</a>
+            <a class="dropdown-item" href="#">Encuesta de Satisfacción</a>
 
         </li>
       </ul>
