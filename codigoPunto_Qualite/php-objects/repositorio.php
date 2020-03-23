@@ -175,14 +175,14 @@ public static function creartabla($conexion)
                 (4,"Duitama"),
                 (5,"Yopal");
 
-                insert into archivos (name,description,ruta,tipo,size)
+    insert into archivos (name,description,ruta,tipo,size)
                 Values
-                ("carousel1.jpg","","","",1),
-                ("carousel2.jpg","","","",1),
-                ("carousel3.png","","","",1),
-                ("carousel4.jpg","","","",1),
-                ("carousel5.jpg","","","",1),
-                ("carousel6.jpg","","","",1);
+                ("carousel1","Virus","../datosPunto_Qualite/img/","image/jpeg",108993),
+                ("carousel2","Yox con Defensis","../datosPunto_Qualite/img/","image/jpeg",193493),
+                ("carousel3","Genericos","../datosPunto_Qualite/img/","image/png",97559),
+                ("carousel4","Vick pero no Vaporu","../datosPunto_Qualite/img/","image/jpeg",88172),
+                ("carousel5","Colgate","../datosPunto_Qualite/img/","image/jpeg",259657),
+                ("carousel6","Azuuuuuucar","../datosPunto_Qualite/img/","image/jpeg",179837);
                 ';
                 $sentencia = $conexion->prepare($sql);
 
@@ -193,7 +193,9 @@ public static function creartabla($conexion)
         }
     }
 
+
     //FUNCION PARA OBTENER EL NUMERO DE USUARIOS
+
 //INSERT into hoja_de_vida(name, last_name, email,tel,cargo,last_org,year_start, year_stop, description,univ,carrer,prom)
 //values ('Santiago','Castro','sduitama@gmail.com',3102011598,'Actor Porno','UIS',2019,2020,'GO GO GO ','universidad','carrera A',4.5)
     public static function obtener_usuarios($conexion)
@@ -743,5 +745,33 @@ public static function creartabla($conexion)
 
         return $archivo;
     }
+
+    //FUNCION PARA  INSERTAR ARCHIVO
+    public static function insertar_archivo($conexion, $archivo)
+    {
+        $newarchivo = false;
+
+        if (isset($conexion)) {
+            try {
+                include_once "archivo.inc.php";
+                $sql = "INSERT INTO archivos(name,description,ruta,tipo,size) VALUES(:name,:description,:ruta,:tipo,:size)";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->BindParam(':name', $archivo->getName(), PDO::PARAM_STR);
+                $sentencia->BindParam(':description', $archivo->getDescription(), PDO::PARAM_STR);
+                $sentencia->BindParam(':ruta', $archivo->getRuta(), PDO::PARAM_STR);
+                $sentencia->BindParam(':tipo', $archivo->getTipo(), PDO::PARAM_STR);
+                $sentencia->BindParam(':size', $archivo->getSize(), PDO::PARAM_STR);
+                $newciudad = $sentencia->execute();
+
+
+            } catch (PDOException $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+
+        return $newarchivo;
+    }
+
+
 
 }

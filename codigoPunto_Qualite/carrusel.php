@@ -88,18 +88,22 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
 
         if(move_uploaded_file($_FILES['fichero']['tmp_name'], $upload)) { //movemos el archivo a su ubicacion 
                     
-                    echo "<b>Upload exitoso!. Datos:</b><br>";  
-                    echo "Nombre: <i><a href=\"".$ruta . $nombrefinal."\">".$_FILES['fichero']['name']."</a></i><br>";  
-                    echo "Tipo MIME: <i>".$_FILES['fichero']['type']."</i><br>";  
-                    echo "Peso: <i>".$_FILES['fichero']['size']." bytes</i><br>";  
-                    echo "<br><hr><br>";  
-                   $nombre  = $_POST["nombre"]; 
-                   $description  = $_POST["description"]; 
+                  echo "<b>Upload exitoso!. Datos:</b><br>";  
+                  echo "Nombre: <i><a href=\"".$ruta . $nombrefinal."\">".$_FILES['fichero']['name']."</a></i><br>";
+                  echo "Tipo MIME: <i>".$_FILES['fichero']['type']."</i><br>";  
+                  echo "Peso: <i>".$_FILES['fichero']['size']." bytes</i><br>";  
+                  echo "<br><hr><br>";  
+                  $name  = $_POST['name']; 
+                  $description  = $_POST['description']; 
+                  $tipo = $_FILES['fichero']['type'];
+                  $size = $_FILES['fichero']['size'];
+                  $id = count(repositorioFunciones::obtener_archivos($conex)) + 1;
+                  Conexion::abrir();
+                  $archivo = new archivo($id, $name,$description,$ruta,$tipo,$size);
+                  $newarchivo = repositorioFunciones::insertar_archivo(Conexion::obtener(), $archivo);
+                  Conexion::cerrar();
 
-                   $query = "INSERT INTO archivos(name,description,ruta,tipo,size) 
-    VALUES ('$nombre','$description','".$nombrefinal."','".$_FILES['fichero']['type']."','".$_FILES['fichero']['size']."')"; 
-
-       echo "El archivo '".$nombre."' se ha subido con éxito <br>";       
+       echo "El archivo '".$name."' se ha subido con éxito <br>";       
         }  
     }  
  } 

@@ -38,11 +38,10 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
               $ciudad=repositorioFunciones::obtener_archivo($conex,$i);
                 if($i==1){
                 echo '<div class="carousel-item active">
-        <img src="datosPunto_Qualite/img/'.$ciudad->getName().'" class="d-block w-100" alt=""></div>';
+        <img src="datosPunto_Qualite/img/'.$ciudad->getName().'.'.substr($ciudad->getTipo(), 6);'" class="d-block w-100" alt=""></div>';
                 }else{
                 echo '<div class="carousel-item">
-        <img src="datosPunto_Qualite/img/'.$ciudad->getName().'" class="d-block w-100" alt="">
-      </div>';
+        <img src="datosPunto_Qualite/img/'.$ciudad->getName().'.'.substr($ciudad->getTipo(), 6)'" class="d-block w-100" alt=""></div>';
                 }
 
         $i++;
