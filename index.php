@@ -36,7 +36,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
       $i=1;
         while($i<=count(repositorioFunciones::obtener_archivos($conex))){
               $ciudad=repositorioFunciones::obtener_archivo($conex,$i);
-              $extension = substr($ciudad->getTipo(), -4);
+              $extension = substr($ciudad->getTipo(), 6);
               if ($extension == "jpeg") {
                 $extension = "jpg";
               }
