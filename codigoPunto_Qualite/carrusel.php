@@ -93,12 +93,13 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
                   echo "Tipo MIME: <i>".$_FILES['fichero']['type']."</i><br>";  
                   echo "Peso: <i>".$_FILES['fichero']['size']." bytes</i><br>";  
                   echo "<br><hr><br>";  
-                  $name  = $_POST['name']; 
+                  $name  = $_FILES['fichero']['name']; 
                   $description  = $_POST['description']; 
                   $tipo = $_FILES['fichero']['type'];
                   $size = $_FILES['fichero']['size'];
                   $id = count(repositorioFunciones::obtener_archivos($conex)) + 1;
                   Conexion::abrir();
+                  $name = substr($name, 0, -4);
                   $archivo = new archivo($id, $name,$description,$ruta,$tipo,$size);
                   $newarchivo = repositorioFunciones::insertar_archivo(Conexion::obtener(), $archivo);
                   Conexion::cerrar();
