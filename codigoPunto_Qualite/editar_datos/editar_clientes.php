@@ -11,29 +11,14 @@ if(($sesion==null) || ($sesion->getCtipado() != 'a'))
 
 include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/navbar.inc.php";
 
-if ($_POST) {
-
-  //VARIABLES TOMADADAS POR EL METODO POST
-  $nombre = $_POST['nombre'];
-  $email = $_POST['email'];
-  $dir = $_POST['direccion'];
-  $ciu = $_POST['ciudad'];
-  $pass = "usuario1234";
-  $ctipoes = 'c';
-
+if($_POST){
   Conexion::abrir();
-  //VERIFICACION DEL CORREO EXISTENTE
-  $real = repositorioFunciones::obtener_usuario_email(Conexion::obtener(), $email);
-  if ($real == null) {
-      $new = date('Y-m-d', strtotime($_POST['fecha']));
-      $usuario = new usuario('', $nombre, $new, $email, $pass, $dir, $ciu, $ctipoes);
-      $newuser = repositorioFunciones::insertar_usuarios(Conexion::obtener(), $usuario);
-      Conexion::cerrar();
-      header('Location: /20192B105/codigoPunto_Qualite/admin.php');
-  } else {
-      $emailused = true;
+  $conex = Conexion::obtener();
+  $id = $_POST['id'];
+  $dire = $_POST['direccion'];
+  $newdire = repositorioFunciones::update_direccion($conex,$id,$dire);
+  header("Location: /20192B105/codigoPunto_Qualite/admin.php");
   }
-}
 ?>
 
   <div class="row" style="padding-top: 6em">
@@ -61,7 +46,6 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
           </div>
           <div class="col-md-6">
             <div style = "text-align:right">
-            <a href="editar_datos/editar_clientes.php">Editar</a>
             </div>    
           </div>
         </div>
@@ -81,36 +65,40 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
               <th>Ciudad</th>
             </tr>
           </thead>
+          <form action="<?php echo ($_SERVER['PHP_SELF']);?>" method="POST">
           <tbody>
             <?php
               Conexion::abrir();
               $conex=Conexion::obtener();
-              $i=1;
-              while($i<=count(repositorioFunciones::obtener_usuarios($conex))){
-                $usuario=repositorioFunciones::obtener_usuario_id($conex,$i);
-                echo "<tr>";
-                echo '<td>'.$usuario->getId().'</td>';
-                echo '<td>'.$usuario->getNombre().'</td>';
-                echo '<td>'.$usuario->getFecha_nacimiento().'</td>';
-                echo '<td>'.$usuario->getEmail().'</td>';
-                echo '<td>'.$usuario->getDireccion().'</td>';
-                
-                if($usuario->getCtipado()=='a'){
+              $i = $_GET['id'];
+              $usuario=repositorioFunciones::obtener_usuario_id($conex,$i);
+              echo "<tr>";
+              echo '<td>'.$usuario->getId().'</td>';
+              echo '<td>'.$usuario->getNombre().'</td>';
+              echo '<td>'.$usuario->getFecha_nacimiento().'</td>';
+              echo '<td>'.$usuario->getEmail().'</td>';
+              echo '<td> <input name="direccion" class="form-control" id="direccion" aria-describedby="emailHelp" placeholder="Bogota, Calle 53 # 27 - 08" value="'.$usuario->getDireccion().'" required></td>'; 
+              if($usuario->getCtipado()=='a'){
                 echo '<td>Administrador</td>';
-                }else{
-                  echo '<td>Cliente</td>';
-                }
-                echo '<td>'. repositorioFunciones::obtener_ciudad($conex,$usuario->getFk_id_ciudad())->getNombre().'</td>';
-                echo "</tr>";
-                
-                $i++;
+              }else{
+                echo '<td>Cliente</td>';
               }
+              echo '<td>'. repositorioFunciones::obtener_ciudad($conex,$usuario->getFk_id_ciudad())->getNombre().'</td>';
+              
+              echo "</tr>";
+              echo '<input type="hidden" id="id" name="id" value="'.$usuario->getId().'">';
               Conexion::cerrar();
             ?>
             
           </tbody>
-        </table>
-
+          <table>
+          <tr> <td><button type="submit" class="btn btn-primary form-group" id="agregar" name="commit">Agregar</button></td></tr>
+          </table>
+          </form>
+      </div>
+    
+    
+    
     </main>
   </div>
 
