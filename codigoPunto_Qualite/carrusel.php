@@ -82,7 +82,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
      
      
       // creamos las variables para subir a la db
-        $ruta = "../datosPunto_Qualite/"; 
+        $ruta = "../datosPunto_Qualite/img/"; 
         $nombrefinal= trim ($_FILES['fichero']['name']); //Eliminamos los espacios en blanco
         $upload= $ruta.$nombrefinal;  
 
