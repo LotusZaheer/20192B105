@@ -223,12 +223,12 @@
 
                             <?php
 
-                            echo "<td>$matrix_product[$contador]<td>";
+                            echo "<td>$matrix_product[$contador]</td>";
                             $contador += 1;
                             ?>
                             <?php
 
-                            echo "<td>$matrix_product[$contador]<td>";
+                            echo "<td>$matrix_product[$contador]</td>";
                             $contador += 1;
                             ?>
                             <?php
@@ -249,7 +249,6 @@
                             $contador += 1;
                             ?>
                             <?php
-
                             echo "<td>$matrix_product[$contador]</td>";
                             $contador += 1;
                             ?>
