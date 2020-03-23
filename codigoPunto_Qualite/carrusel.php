@@ -45,10 +45,14 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
                 $ciudad=repositorioFunciones::obtener_archivo($conex,$i);
                 echo "<tr>";
                 echo '<td>'.$ciudad->getId().'</td>';
-                echo '<td>'.$ciudad->getName().'</td>';
+                $extension = substr($ciudad->getTipo(), 6);
+              if ($extension == "jpeg") {
+                $extension = "jpg";
+              }
+                echo '<td><a href="../datosPunto_Qualite/img/'.$ciudad->getName().'.'.$extension.'" download="'.$ciudad->getName().'.'.$extension.'">'.$ciudad->getName().'</a>';
                 echo '<td>'.$ciudad->getDescription().'</td>';
                 echo '<td>'.$ciudad->getTipo().'</td>';
-                
+
                 $i++;
               }
               Conexion::cerrar();
@@ -91,12 +95,6 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
               $upload= $ruta.$nombrefinal;  
       
               if(move_uploaded_file($_FILES['fichero']['tmp_name'], $upload)) { //movemos el archivo a su ubicacion 
-                          
-                        echo "<b>Upload exitoso!. Datos:</b><br>";  
-                        echo "Nombre: <i><a href=\"".$ruta . $nombrefinal."\">".$_FILES['fichero']['name']."</a></i><br>";
-                        echo "Tipo MIME: <i>".$_FILES['fichero']['type']."</i><br>";  
-                        echo "Peso: <i>".$_FILES['fichero']['size']." bytes</i><br>";  
-                        echo "<br><hr><br>";  
                         $name  = $_FILES['fichero']['name']; 
                         $description  = $_POST['description']; 
                         $tipo = $_FILES['fichero']['type'];
@@ -106,10 +104,8 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
                         $name = substr($name, 0, -4);
                         $archivo = new archivo($id, $name,$description,$ruta,$tipo,$size);
                         $newarchivo = repositorioFunciones::insertar_archivo(Conexion::obtener(), $archivo);
-                        Conexion::cerrar();
-
-             echo "El archivo '".$name."' se ha subido con éxito <br>";  
-             header('Location: /20192B105/codigoPunto_Qualite/carrusel.php');     
+                        Conexion::cerrar();  
+                        echo '<script href="carrusel.php" language="javascript">alert("El archivo a sido cargado \n Pulse para recargar la tabla");</script> <META HTTP-EQUIV="REFRESH" CONTENT="1;URL=carrusel.php">';
               }  
             }  
           } 
@@ -120,9 +116,13 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
                 $id_ultimo=count(repositorioFunciones::obtener_archivos($conex));//obtengo el ultimo id
                 $max=repositorioFunciones::obtener_archivo($conex,$id_ultimo);//obtengo el ultimo archivo
                 $eliminado=repositorioFunciones::obtener_archivo($conex,$id_eliminado);//obtengo archivo eliminado
-                repositorioFunciones::eliminar_archivo(Conexion::obtener(),$eliminado,$max);
+                if ($id_eliminado<=$id_ultimo) {
+                  repositorioFunciones::eliminar_archivo(Conexion::obtener(),$eliminado,$max);
+                  echo '<script href="carrusel.php" language="javascript">alert("El archivo a sido eliminado \n Pulse para recargar la tabla");</script> <META HTTP-EQUIV="REFRESH" CONTENT="1;URL=carrusel.php">';
+                }else{
+                  echo '<script href="carrusel.php" language="javascript">alert("No existe el elemento a eliminar");</script> <META HTTP-EQUIV="REFRESH" CONTENT="1;URL=carrusel.php">';
+                }
                 Conexion::cerrar();
-                header('Location: /20192B105/codigoPunto_Qualite/carrusel.php');
                   }
       ?> 
 
@@ -133,7 +133,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
       <form class="table table-striped table-sm" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" >  
         <br> Id a Eliminar: <input name="id_eliminado" type="text" size="10" maxlength="40"> 
         <br>
-        <input name="submit" class="btn btn-primary form-group" type="submit" id="topper" value="ELIMINAR ARCHIVO">   
+        <input name="submit" class="btn btn-primary form-group" type="submit" id="topper" value="ELIMINAR ARCHIVO"> 
       </form>
     </td>
   </tr>
