@@ -13,8 +13,8 @@ class archivo{
         $this->id=$id; 
         $this->name=$name; 
         $this->description=$description; 
-        $this->tipo=$tipo; 
-        $this->ruta=$ruta; 
+        $this->ruta=$ruta;
+        $this->tipo=$tipo;  
         $this->size=$size; 
  
     } 
@@ -31,7 +31,7 @@ class archivo{
     } 
  
     public function getRuta(){ 
-        return $this->Ruta; 
+        return $this->ruta; 
     } 
  
     public function getTipo(){ 
@@ -39,7 +39,7 @@ class archivo{
     } 
  
     public function getSize(){ 
-        return $this->Size; 
+        return $this->size; 
     } 
  
     public function setId($id){ 
