@@ -62,7 +62,6 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
           </div>
           <div class="col-md-6">
             <div style = "text-align:right">
-            <a href="editar_datos/editar_clientes.php">Editar</a>
             </div>    
           </div>
         </div>
@@ -80,6 +79,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
               <th>Direccion</th>
               <th>Tipo de cliente</th>
               <th>Ciudad</th>
+              <th>Ajustes</th>
             </tr>
           </thead>
           <tbody>
@@ -102,6 +102,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
                   echo '<td>Cliente</td>';
                 }
                 echo '<td>'. repositorioFunciones::obtener_ciudad($conex,$usuario->getFk_id_ciudad())->getNombre().'</td>';
+                echo '<td> <a href ="/20192B105/codigoPunto_Qualite/editar_datos/editar_clientes.php?id='.$usuario->getId().'">Editar</a></td>';
                 echo "</tr>";
                 
                 $i++;
