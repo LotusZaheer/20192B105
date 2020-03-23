@@ -308,6 +308,8 @@ public static function creartabla($conexion)
         return $drogas;
     }
 
+
+
     //FUNCION PARA CAMBIAR CONTRSEÑA
 
     public static function olvidar_contra($email)
@@ -388,6 +390,29 @@ public static function creartabla($conexion)
             }
         }
         return $newuser;
+    }
+
+
+    //FUNCION PARA  INSERTAR CIUDAD
+    public static function insertar_ciudad($conexion, $ciudad)
+    {
+        $newciudad = false;
+
+        if (isset($conexion)) {
+            try {
+                include_once "ciudad.inc.php";
+                $sql = "INSERT INTO ciudad(nombre) VALUES(:nombre)";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->BindParam(':nombre', $ciudad->getNombre(), PDO::PARAM_STR);
+                $newciudad = $sentencia->execute();
+
+
+            } catch (PDOException $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+
+        return $newciudad;
     }
 
     //FUNCION PARA OBTENER UN USUARIO POR SU ID

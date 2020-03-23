@@ -15,65 +15,14 @@ error_reporting(0);
 $sesion = $_SESSION['cliente'];
 if ($sesion != null || $sesion != '') {
   $mode = true;
-  if ((time() - $_SESSION['tiempo']) > 300) // 300 = 5 * 60  
+  if ((time() - $_SESSION['tiempo']) > 3000) // 300 = 5 * 60  
   {
-    header("location:codigoPunto_Qualite/cerrar.php");
+    header("location: /20192B105/codigoPunto_Qualite/cerrar.php");
   } else {
     $_SESSION['tiempo'] = time();
   }
 }
 
-?>
-<?php
-
-
-if ($_POST) {
-  Conexion::abrir();
-  $email = $_POST['email'];
-  $pass = $_POST['password'];
-  //UBICAMOS LOS PUNTOS DE PARTIDA Y SALIDA EN EL TEXTO usuarios.txt
-/*  foreach ($file as $line) {
-    $strarray = str_split($line);
-    foreach ($strarray as $key => $letter) {
-      $correoarray = null;
-      if ($letter == "|") {
-        $empieza = $key;
-      }
-      if ($letter == "/") {
-        $termina = $key;
-        break;
-      }
-    }
-    for ($i = 0; $i < $empieza - 1; $i++) {
-      $correoarray[$i] = $strarray[$i];
-    }
-    $correo = implode("", $correoarray);
-
-    if ($correo == $email) {
-      for ($i = $empieza + 2; $i < $termina - 1; $i++) {
-        $contrasenia[$i] = $strarray[$i];
-      }
-      $contra = implode("", $contrasenia);
-    }
-  }
-*/
-  $usuario = repositorioFunciones::obtener_usuario_email(Conexion::obtener(), $email);
-  if($usuario==null)
-  {
-    header("Location: /20192B105/codigoPunto_Qualite/registro.php");
-  }
-  if (password_verify($pass, $usuario->getContrasena())) {
-    session_start();
-    $_SESSION['cliente'] = $usuario;
-    $_SESSION['tiempo'] = time();
-    header("Location: /20192B105/index.php");
-  }
-  else{
-    header("Location: /20192B105/index.php");
-  }
-
-  Conexion::cerrar();
-}
 ?>
 <!DOCTYPE html>
 
@@ -160,7 +109,7 @@ if ($_POST) {
 			<div class="popup" id="popup">
 				<a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
 				<h1 class="h3 mb-3 font-weight-normal">Iniciar Sesion</h1>
-				<form class="form-signin" method="POST" action="' . $_SERVER['PHP-SELF'] . '">
+				<form class="form-signin" method="POST" action="/20192B105/codigoPunto_Qualite/ingresar.php">
 					<div class="contenedor-inputs">
           <input  name="email" id="password-field1" type="password"  class="form-control">
           <span toggle="#password-field1" class="fa fa-fw fa-eye field-icon toggle-password1"></span>
