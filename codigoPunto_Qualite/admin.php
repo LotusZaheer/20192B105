@@ -32,6 +32,7 @@ if ($_POST) {
       header('Location: /20192B105/codigoPunto_Qualite/admin.php');
   } else {
       $emailused = true;
+      
   }
 }
 ?>
@@ -61,7 +62,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
           </div>
           <div class="col-md-6">
             <div style = "text-align:right">
-            <a href="">Editar</a>
+            <a href="editar_datos/editar_clientes.php">Editar</a>
             </div>    
           </div>
         </div>
@@ -94,6 +95,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
                 echo '<td>'.$usuario->getFecha_nacimiento().'</td>';
                 echo '<td>'.$usuario->getEmail().'</td>';
                 echo '<td>'.$usuario->getDireccion().'</td>';
+                
                 if($usuario->getCtipado()=='a'){
                 echo '<td>Administrador</td>';
                 }else{
@@ -106,6 +108,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
               }
               Conexion::cerrar();
             ?>
+            
           </tbody>
         </table>
         <h4 style="margin-top:10px">Agregar clientes</h4>

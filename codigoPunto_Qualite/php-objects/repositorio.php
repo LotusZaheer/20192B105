@@ -784,6 +784,31 @@ public static function creartabla($conexion)
         return $newarchivo;
     }
 
+    //FUNCION PARA  INSERTAR ARCHIVO
+    public static function eliminar_archivo($conexion, $archivo,$max)
+    {
+        $newarchivo = false;
+
+        if (isset($conexion)) {
+            try {
+                include_once "archivo.inc.php";
+                $sql = "DELETE FROM archivos WHERE id=':id'";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->BindParam(':id', $archivo->getName(), PDO::PARAM_STR);
+                $newciudad = $sentencia->execute();
+
+                $sql = "UPDATE archivos SET id=:id_eliminado WHERE id=':id_ultimo'";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->BindParam(':id_eliminado', $archivo->getId(), PDO::PARAM_STR);
+                $sentencia->BindParam(':id_ultimo', $max->getId(), PDO::PARAM_STR);
+                $newciudad = $sentencia->execute();
+                                  
+            } catch (PDOException $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+         return $newarchivo;
+    }
 
 
 }

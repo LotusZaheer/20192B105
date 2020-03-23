@@ -14,12 +14,11 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
 
               while($i<=count(repositorioFunciones::obtener_archivos($conex))){
                 $ciudad=repositorioFunciones::obtener_archivo($conex,$i);
-                
                 if($i==1){
-                echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$ciudad->getId().'" class="active"></li>';
+                echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$i.'" class="active"></li>';
 
                 }else{
-                echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$ciudad->getId().'"></li>';
+                echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$i.'"></li>';
                 }
                 
                 $i++;
@@ -43,7 +42,11 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
                 if($i==1){
                 echo '<div class="carousel-item active">
         <img src="datosPunto_Qualite/img/'.$ciudad->getName().'.'.$extension.'" class="d-block w-100" alt=""></div>';
-                }else{
+                }elseif ($extension == "mp4") {
+                   echo '<div class="carousel-item">
+        <video src="datosPunto_Qualite/img/'.$ciudad->getName().'.'.$extension.'" class="d-block w-100" alt=""></video></div>';
+                }
+                else{
                 echo '<div class="carousel-item">
         <img src="datosPunto_Qualite/img/'.$ciudad->getName().'.'.$extension.'" class="d-block w-100" alt=""></div>';
                 }

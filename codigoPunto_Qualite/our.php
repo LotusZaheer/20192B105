@@ -55,7 +55,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
     <section id="info-two">
       <div class="container" style="margin-top: 100px">
         <div class="row my-5">
-         <div class="col-md-6">
+         <div class="col-md-9">
          <div class="container" id="trabajo">
         <h2 id="type-blockquotes">Unetenos</h2>
         <blockquote class="blockquote">
@@ -63,8 +63,12 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
         </blockquote>
     </div>
           </div>
-          <div class="col-md-6">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/5W4M5KZsQ0s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div class="col-md-3">
+            <video width="320" height="240" controls>
+           <source src="/20192B105/datosPunto_Qualite/video/video_farmacia.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+            </video>
+
             </div>
           </div>
         </div>

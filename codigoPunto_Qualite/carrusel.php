@@ -20,7 +20,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
       
 
       
-      <h2 style="margin-top:10px">Carrusel Inicio</h2>
+          <h2 style="margin-top:10px">Carrusel Inicio</h2>
       
 
     <!--Base de datos // archivos guardados-->
@@ -59,56 +59,58 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
     </main>
 
 </div>
+
 <div align="center">
 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">  
     Seleccione archivo: <input name="fichero" type="file" size="150" maxlength="150">  
-    <br><br> Nombre del <?php echo count(repositorioFunciones::obtener_archivos($conex)) + 1; ?>° archivo: <input name="name" type="text" size="89" maxlength="100"> 
+    
     <br><br> Descripcion: <input name="description" type="text" size="100" maxlength="250"> 
-    <br><br> 
+    <br>
   <input name="submit" type="submit" id="topper" value="SUBIR ARCHIVO">   
 </form>  
-<?php
 
-    $cons_usuario="20192B105";
-    $cons_contra="vRYcsY25MN";
-    $cons_base_datos="20192B105";
-    $cons_equipo="localhost";
+      <?php
+      
+          $cons_usuario="20192B105";
+          $cons_contra="vRYcsY25MN";
+          $cons_base_datos="20192B105";
+          $cons_equipo="localhost";
 
-    $obj_conexion = 
-    mysqli_connect($cons_equipo,$cons_usuario,$cons_contra,$cons_base_datos);
+          $obj_conexion = 
+          mysqli_connect($cons_equipo,$cons_usuario,$cons_contra,$cons_base_datos);
     
-  if (isset($_POST['submit'])) {   
-    if(is_uploaded_file($_FILES['fichero']['tmp_name'])) { 
+          if (isset($_POST['submit'])) {   
+            if(is_uploaded_file($_FILES['fichero']['tmp_name'])) { 
      
      
-      // creamos las variables para subir a la db
-        $ruta = "../datosPunto_Qualite/img/"; 
-        $nombrefinal= trim ($_FILES['fichero']['name']); //Eliminamos los espacios en blanco
-        $upload= $ruta.$nombrefinal;  
+            // creamos las variables para subir a la db
+              $ruta = "../datosPunto_Qualite/img/"; 
+              $nombrefinal= trim ($_FILES['fichero']['name']); //Eliminamos los espacios en blanco
+              $upload= $ruta.$nombrefinal;  
+      
+              if(move_uploaded_file($_FILES['fichero']['tmp_name'], $upload)) { //movemos el archivo a su ubicacion 
+                          
+                        echo "<b>Upload exitoso!. Datos:</b><br>";  
+                        echo "Nombre: <i><a href=\"".$ruta . $nombrefinal."\">".$_FILES['fichero']['name']."</a></i><br>";
+                        echo "Tipo MIME: <i>".$_FILES['fichero']['type']."</i><br>";  
+                        echo "Peso: <i>".$_FILES['fichero']['size']." bytes</i><br>";  
+                        echo "<br><hr><br>";  
+                        $name  = $_FILES['fichero']['name']; 
+                        $description  = $_POST['description']; 
+                        $tipo = $_FILES['fichero']['type'];
+                        $size = $_FILES['fichero']['size'];
+                        $id = count(repositorioFunciones::obtener_archivos($conex)) + 1;
+                        Conexion::abrir();
+                        $name = substr($name, 0, -4);
+                        $archivo = new archivo($id, $name,$description,$ruta,$tipo,$size);
+                        $newarchivo = repositorioFunciones::insertar_archivo(Conexion::obtener(), $archivo);
+                        Conexion::cerrar();
 
-        if(move_uploaded_file($_FILES['fichero']['tmp_name'], $upload)) { //movemos el archivo a su ubicacion 
-                    
-                  echo "<b>Upload exitoso!. Datos:</b><br>";  
-                  echo "Nombre: <i><a href=\"".$ruta . $nombrefinal."\">".$_FILES['fichero']['name']."</a></i><br>";
-                  echo "Tipo MIME: <i>".$_FILES['fichero']['type']."</i><br>";  
-                  echo "Peso: <i>".$_FILES['fichero']['size']." bytes</i><br>";  
-                  echo "<br><hr><br>";  
-                  $name  = $_FILES['fichero']['name']; 
-                  $description  = $_POST['description']; 
-                  $tipo = $_FILES['fichero']['type'];
-                  $size = $_FILES['fichero']['size'];
-                  $id = count(repositorioFunciones::obtener_archivos($conex)) + 1;
-                  Conexion::abrir();
-                  $name = substr($name, 0, -4);
-                  $archivo = new archivo($id, $name,$description,$ruta,$tipo,$size);
-                  $newarchivo = repositorioFunciones::insertar_archivo(Conexion::obtener(), $archivo);
-                  Conexion::cerrar();
-
-       echo "El archivo '".$name."' se ha subido con éxito <br>";       
-        }  
-    }  
- } 
-?> 
+             echo "El archivo '".$name."' se ha subido con éxito <br>";       
+              }  
+            }  
+          } 
+      ?> 
 
 </div>
   <script>
