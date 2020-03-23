@@ -21,10 +21,10 @@
         <div class="row">
             <div class="col-sm">
                 <table class="table ">
-                <thead class="thead-light">
+                    <thead class="thead-light">
                         <tr>
                             <th colspan="8">Matriz 1</th>
-                            
+
                         </tr>
                     </thead>
                     <tbody>
@@ -44,18 +44,18 @@
                             <?php
                             $num = random_int(-1000, 1000);
                             $matrix1[1][] = $num;
-                            echo "<td>$num<td>";
+                            echo "<td>$num</td>";
                             ?>
 
                             <?php
                             $num = random_int(-1000, 1000);
                             $matrix1[1][] = $num;
-                            echo "<td>$num<td>";
+                            echo "<td>$num</td>";
                             ?>
                             <?php
                             $num = random_int(-1000, 1000);
                             $matrix1[1][] = $num;
-                            echo "<td>$num<td>";
+                            echo "<td>$num</td>";
                             ?>
                         </tr>
                         <tr>
@@ -63,35 +63,35 @@
                             <?php
                             $num = random_int(-1000, 1000);
                             $matrix1[2][] = $num;
-                            echo "<td>$num<td>";
+                            echo "<td>$num</td>";
 
                             ?>
                             <?php
                             $num = random_int(-1000, 1000);
                             $matrix1[2][] = $num;
-                            echo "<td>$num<td>";
+                            echo "<td>$num</td>";
                             ?>
                             <?php
                             $num = random_int(-1000, 1000);
                             $matrix1[2][] = $num;
-                            echo "<td>$num<td>";
+                            echo "<td>$num</td>";
                             ?>
                         </tr>
                         <tr>
                             <?php
                             $num = random_int(-1000, 1000);
                             $matrix1[3][] = $num;
-                            echo "<td>$num<td>";
+                            echo "<td>$num</td>";
                             ?>
                             <?php
                             $num = random_int(-1000, 1000);
                             $matrix1[3][] = $num;
-                            echo "<td>$num<td>";
+                            echo "<td>$num</td>";
                             ?>
                             <?php
                             $num = random_int(-1000, 1000);
                             $matrix1[3][] = $num;
-                            echo "<td>$num<td>";
+                            echo "<td>$num</td>";
                             ?>
                         </tr>
                     </tbody>
@@ -99,10 +99,11 @@
             </div>
             <div class="col-sm">
                 <table class="table">
-                <thead class="thead-light">
+                    <thead class="thead-light">
                         <tr>
-                            <th colspan="8">Matriz 2</th>                            <th scope="col"></th>
-                            
+                            <th colspan="8">Matriz 2</th>
+                            <th scope="col"></th>
+
                         </tr>
 
                     </thead>
@@ -118,51 +119,51 @@
                         <tr>
                             <?php
                             $matrix2[] = random_int(-1000, 1000);
-                            echo "<td>$matrix2[$contador]<td>";
+                            echo "<td>$matrix2[$contador]</td>";
                             $contador += 1;
                             ?>
                             <?php
                             $matrix2[] = random_int(-1000, 1000);
-                            echo "<td>$matrix2[$contador]<td>";
+                            echo "<td>$matrix2[$contador]</td>";
                             $contador += 1;
                             ?>
                             <?php
                             $matrix2[] = random_int(-1000, 1000);
-                            echo "<td>$matrix2[$contador]<td>";
-                            $contador += 1;
-                            ?>
-                        </tr>
-                        <tr>
-                            <?php
-                            $matrix2[] = random_int(-1000, 1000);
-                            echo "<td>$matrix2[$contador]<td>";
-                            $contador += 1;
-                            ?>
-                            <?php
-                            $matrix2[] = random_int(-1000, 1000);
-                            echo "<td>$matrix2[$contador]<td>";
-                            $contador += 1;
-                            ?>
-                            <?php
-                            $matrix2[] = random_int(-1000, 1000);
-                            echo "<td>$matrix2[$contador]<td>";
+                            echo "<td>$matrix2[$contador]</td>";
                             $contador += 1;
                             ?>
                         </tr>
                         <tr>
                             <?php
                             $matrix2[] = random_int(-1000, 1000);
-                            echo "<td>$matrix2[$contador]<td>";
+                            echo "<td>$matrix2[$contador]</td>";
                             $contador += 1;
                             ?>
                             <?php
                             $matrix2[] = random_int(-1000, 1000);
-                            echo "<td>$matrix2[$contador]<td>";
+                            echo "<td>$matrix2[$contador]</td>";
                             $contador += 1;
                             ?>
                             <?php
                             $matrix2[] = random_int(-1000, 1000);
-                            echo "<td>$matrix2[$contador]<td>";
+                            echo "<td>$matrix2[$contador]</td>";
+                            $contador += 1;
+                            ?>
+                        </tr>
+                        <tr>
+                            <?php
+                            $matrix2[] = random_int(-1000, 1000);
+                            echo "<td>$matrix2[$contador]</td>";
+                            $contador += 1;
+                            ?>
+                            <?php
+                            $matrix2[] = random_int(-1000, 1000);
+                            echo "<td>$matrix2[$contador]</td>";
+                            $contador += 1;
+                            ?>
+                            <?php
+                            $matrix2[] = random_int(-1000, 1000);
+                            echo "<td>$matrix2[$contador]</td>";
                             $contador += 1;
                             ?>
                         </tr>
@@ -176,10 +177,10 @@
 
             <div class="col-sm">
                 <table class="table">
-                <thead class="thead-light">
+                    <thead class="thead-light">
                         <tr>
                             <th colspan="8">Matriz_1*Matriz_2</th>
-                           
+
                         </tr>
                     </thead>
                     <tbody>
@@ -188,7 +189,7 @@
                             <?php
                             // Se hace el producto de la matriz 1 y matriz 2
                             $matrix_product = array();
-                            $result=0;
+                            $result = 0;
                             for ($i = 1; $i < 4; $i++) {
                                 for ($j = 0; $j < 3; $j++) {
                                     $f = $j;
@@ -203,40 +204,23 @@
                             $contador = 0;
                             ?>
                             <?php
-                            echo "<td>$matrix_product[$contador]<td>";
+                            echo "<td>$matrix_product[$contador]</td>";
                             $contador += 1;
                             ?>
 
                             <?php
 
-                            echo "<td>$matrix_product[$contador]<td>";
+                            echo "<td>$matrix_product[$contador]</td>";
                             $contador += 1;
                             ?>
                             <?php
 
-                            echo "<td>$matrix_product[$contador]<td>";
-                            $contador += 1;
-                            ?>
-                        </tr>
-                        <tr>
-
-                            <?php
-
-                            echo "<td>$matrix_product[$contador]<td>";
-                            $contador += 1;
-                            ?>
-                            <?php
-
-                            echo "<td>$matrix_product[$contador]<td>";
-                            $contador += 1;
-                            ?>
-                            <?php
-
-                            echo "<td>$matrix_product[$contador]<td>";
+                            echo "<td>$matrix_product[$contador]</td>";
                             $contador += 1;
                             ?>
                         </tr>
                         <tr>
+
                             <?php
 
                             echo "<td>$matrix_product[$contador]<td>";
@@ -249,7 +233,24 @@
                             ?>
                             <?php
 
-                            echo "<td>$matrix_product[$contador]<td>";
+                            echo "<td>$matrix_product[$contador]</td>";
+                            $contador += 1;
+                            ?>
+                        </tr>
+                        <tr>
+                            <?php
+
+                            echo "<td>$matrix_product[$contador]</td>";
+                            $contador += 1;
+                            ?>
+                            <?php
+
+                            echo "<td>$matrix_product[$contador]</td>";
+                            $contador += 1;
+                            ?>
+                            <?php
+
+                            echo "<td>$matrix_product[$contador]</td>";
                             $contador += 1;
                             ?>
                         </tr>
