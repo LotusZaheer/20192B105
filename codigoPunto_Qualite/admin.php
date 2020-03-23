@@ -51,9 +51,23 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
         </div>
       </div>
       
+      <section id="admin">
+      <div class="container">
+        <div class="row my-3">
+          <div class="col-md-6">
+            <div class="vision">
+            <h2 id="type-blockquotes">Clientes</h2>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div style = "text-align:right">
+            <a href="">Editar</a>
+            </div>    
+          </div>
+        </div>
+      </div>
+    </section>
 
-      
-      <h2 style="margin-top:10px">Clientes</h2>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
