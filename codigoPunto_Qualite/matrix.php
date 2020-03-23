@@ -188,6 +188,7 @@
                             <?php
                             // Se hace el producto de la matriz 1 y matriz 2
                             $matrix_product = array();
+                            $result=0;
                             for ($i = 1; $i < 4; $i++) {
                                 for ($j = 0; $j < 3; $j++) {
                                     $f = $j;
