@@ -36,13 +36,16 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
       $i=1;
         while($i<=count(repositorioFunciones::obtener_archivos($conex))){
               $ciudad=repositorioFunciones::obtener_archivo($conex,$i);
+              $extension = substr($ciudad->getTipo(), 6);
+              if ($extension == "jpeg") {
+                $extension = "jpg";
+              }
                 if($i==1){
                 echo '<div class="carousel-item active">
-        <img src="datosPunto_Qualite/img/'.$ciudad->getName().'" class="d-block w-100" alt=""></div>';
+        <img src="datosPunto_Qualite/img/'.$ciudad->getName().'.'.$extension.'" class="d-block w-100" alt=""></div>';
                 }else{
                 echo '<div class="carousel-item">
-        <img src="datosPunto_Qualite/img/'.$ciudad->getName().'" class="d-block w-100" alt="">
-      </div>';
+        <img src="datosPunto_Qualite/img/'.$ciudad->getName().'.'.$extension.'" class="d-block w-100" alt=""></div>';
                 }
 
         $i++;

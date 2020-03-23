@@ -1,9 +1,20 @@
 <?php
+include_once $_SERVER['DOCUMENT_ROOT'].'/20192B105/codigoPunto_Qualite/php-objects/conexion.inc.php';
+include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/php-objects/ciudad.inc.php";
+include_once  $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/php-objects/repositorio.php";
 include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/navbar.inc.php";
 ?>
 <?php
-$saber = 1;
+if ($_POST) {
+  $nombre = $_POST['nombre'];
+  Conexion::abrir();
+  $ciudad = new ciudad('', $nombre);
+  $newciudad = repositorioFunciones::insertar_ciudad(Conexion::obtener(), $ciudad);
+  Conexion::cerrar();
+  header('Location: /20192B105/codigoPunto_Qualite/ciudad.php');
+}
 ?>
+
 
   <div class="row" style="padding-top: 6em">
 <?php
@@ -53,8 +64,8 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
         <div>
         <tr>
             <td><input name="id" class="form-control" id="id"  value=<?php echo count(repositorioFunciones::obtener_ciudades($conex)) + 1; ?> required disabled> </td>
-          <form action="<?php echo ($_SERVER['PHP_SELF']); ?>" method="POST">
-              <td><input name="ciudad" class="form-control" id="ciudad"  placeholder="Ciudad" required></td>
+          <form action="<?php echo ($_SERVER['PHP_SELF']);?>" method="POST">
+              <td><input name="nombre" class="form-control" id="nombre"  placeholder="Ciudad" required></td>
               <td></td>
         </tr>
             <tr> <td><button type="submit" class="btn btn-primary form-group" id="agregar" name="commit">Agregar</button></td></tr>

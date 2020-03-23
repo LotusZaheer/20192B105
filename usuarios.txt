@@ -1,1 +1,12 @@
 alejandro@gmail.com | aledrofun12 //Es una cuenta tipo cliente el cual solo puede comprar cosas de la pagina
+<<<<<<< Updated upstream
+prueba@gmail.com | 12345678 //Es una cuenta tipo cliente el cual solo puede comprar cosas de la pagina
+=======
+123@456.com | 01111998 //Es una cuenta tipo administrador el cual puede ver que usuarios se encuentran registrados
+>>>>>>> Stashed changes
+<<<<<<< Updated upstream
+123@456.com | 01111998 //Es una cuenta tipo administrador el cual puede ver que usuarios se encuentran registrados
+=======
+alejo@gmail.com | usuario1234 //Es una cuenta tipo cliente el cual solo puede comprar cosas de la pagina
+>>>>>>> Stashed changes
+nelsonalexiscacerescarreo@gmail.com | usuario1234 //Es una cuenta tipo cliente el cual solo puede comprar cosas de la pagina

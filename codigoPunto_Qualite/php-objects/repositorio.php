@@ -114,13 +114,23 @@ public static function creartabla($conexion)
                     references factura(id_factura)
                 );
                 
-                CREATE TABLE archivo (
-                    id_archivo int(11) NOT NULL,
-                    name varchar(200) NOT NULL,
-                    description varchar(200) NOT NULL,
-                    tipo varchar(200) NOT NULL,
-                    PRIMARY KEY(id_archivo)
-                );
+                
+                CREATE TABLE `archivos` (
+                  `id` int(11) NOT NULL,
+                  `name` varchar(200) NOT NULL,
+                  `description` varchar(200) NOT NULL,
+                  `ruta` varchar(200) NOT NULL,
+                  `tipo` varchar(200) NOT NULL,
+                  `size` int(50) NOT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+                
+                ALTER TABLE `archivos`
+                  ADD PRIMARY KEY (`id`);
+                
+                ALTER TABLE `archivos`
+                  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+                
                 CREATE TABLE hoja_de_vida (
                     id_hoja_de_vida int not null auto_increment,
                     name varchar(50) NOT NULL,
@@ -165,15 +175,23 @@ public static function creartabla($conexion)
                 (4,"Duitama"),
                 (5,"Yopal");
 
-                insert into archivo
+    insert into archivos (name,description,ruta,tipo,size)
                 Values
-                (1,"carousel1.jpg","",""),
-                (2,"carousel2.jpg","",""),
-                (3,"carousel3.png","",""),
-                (4,"carousel4.jpg","",""),
-                (5,"carousel5.jpg","",""),
-                (6,"carousel6.jpg","","");
+                ("carousel1","Virus","../datosPunto_Qualite/img/","image/jpeg",108993),
+                ("carousel2","Yox con Defensis","../datosPunto_Qualite/img/","image/jpeg",193493),
+                ("carousel3","Genericos","../datosPunto_Qualite/img/","image/png",97559),
+                ("carousel4","Vick pero no Vaporu","../datosPunto_Qualite/img/","image/jpeg",88172),
+                ("carousel5","Colgate","../datosPunto_Qualite/img/","image/jpeg",259657),
+                ("carousel6","Azuuuuuucar","../datosPunto_Qualite/img/","image/jpeg",179837);
+                
+                insert into cliente (nombre, fecha_nacimiento, email, contrasena, direccion, ctipado, fk_id_ciudad)
+                Values
+                ("Fredy Alejandro Mendoza", "2000-02-02", "ifredomendoza@gmail.com","root1234","cra 9b w #44-09", "a", 1),
+                ("German Cardenas", "1998-12-23", "germancardenas@gmail.com","german1234","Cra 9 #43-22", "c", 1),
+                ("Jenny Marcela Santamaría Rincón", "1999-09-06", "jennysantamaria06@gmail.com","jenny0906","cra 1 w #44-29", "c", 1);
                 ';
+
+                
                 $sentencia = $conexion->prepare($sql);
 
                 $sentencia->execute();
@@ -183,7 +201,9 @@ public static function creartabla($conexion)
         }
     }
 
+
     //FUNCION PARA OBTENER EL NUMERO DE USUARIOS
+
 //INSERT into hoja_de_vida(name, last_name, email,tel,cargo,last_org,year_start, year_stop, description,univ,carrer,prom)
 //values ('Santiago','Castro','sduitama@gmail.com',3102011598,'Actor Porno','UIS',2019,2020,'GO GO GO ','universidad','carrera A',4.5)
     public static function obtener_usuarios($conexion)
@@ -308,6 +328,8 @@ public static function creartabla($conexion)
         return $drogas;
     }
 
+
+
     //FUNCION PARA CAMBIAR CONTRSEÑA
 
     public static function olvidar_contra($email)
@@ -388,6 +410,29 @@ public static function creartabla($conexion)
             }
         }
         return $newuser;
+    }
+
+
+    //FUNCION PARA  INSERTAR CIUDAD
+    public static function insertar_ciudad($conexion, $ciudad)
+    {
+        $newciudad = false;
+
+        if (isset($conexion)) {
+            try {
+                include_once "ciudad.inc.php";
+                $sql = "INSERT INTO ciudad(nombre) VALUES(:nombre)";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->BindParam(':nombre', $ciudad->getNombre(), PDO::PARAM_STR);
+                $newciudad = $sentencia->execute();
+
+
+            } catch (PDOException $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+
+        return $newciudad;
     }
 
     //FUNCION PARA OBTENER UN USUARIO POR SU ID
@@ -653,7 +698,7 @@ public static function creartabla($conexion)
     }
 
 
-   //FUNCION PARA VER ARCHIVOS
+  //FUNCION PARA VER ARCHIVOS
     public static function obtener_archivos($conexion)
     {
 
@@ -661,7 +706,7 @@ public static function creartabla($conexion)
 
         if (isset($conexion)) {
             try {
-                $sql = "SELECT * FROM archivo";
+                $sql = "SELECT * FROM archivos";
 
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->execute();
@@ -669,7 +714,7 @@ public static function creartabla($conexion)
 
                 if (count($resultado)) {
                     foreach ($resultado as $fila) {
-                        $archivos[] = new archivo($fila['id_archivo'], $fila['name'], $fila['description'], $fila['tipo']);
+                        $archivos[] = new archivo($fila['id'], $fila['name'], $fila['description'], $fila['ruta'], $fila['tipo'], $fila['size']);
                     }
                 } else {
                     print "NO HAY DATOS";
@@ -685,20 +730,20 @@ public static function creartabla($conexion)
 
      // FUNCION PARA OBTENER LA ARCHIVO
 
-    public static function obtener_archivo($conexion, $id_archivo)
+    public static function obtener_archivo($conexion, $id)
     {
         $archivo = null;
 
         if (isset($conexion)) {
             try {
-                $sql = "SELECT * FROM archivo WHERE id_archivo = :id_archivo";
+                $sql = "SELECT * FROM archivos WHERE id = :id";
                 $sentencia = $conexion->prepare($sql);
-                $sentencia->bindParam(':id_archivo', $id_archivo, PDO::PARAM_STR);
+                $sentencia->bindParam(':id', $id, PDO::PARAM_STR);
                 $sentencia->execute();
                 $resultado = $sentencia->fetch();
 
                 if (!empty($resultado)) {
-                    $archivo = new archivo($resultado['id_archivo'],$resultado['name'],$resultado['description'],$resultado['tipo']);
+                    $archivo = new archivo($resultado['id'],$resultado['name'],$resultado['description'],$resultado['ruta'],$resultado['tipo'],$resultado['size']);
                 }
             } catch (PDOException $ex) {
                 print "ERROR" . $ex->getMessage();
@@ -708,5 +753,33 @@ public static function creartabla($conexion)
 
         return $archivo;
     }
+
+    //FUNCION PARA  INSERTAR ARCHIVO
+    public static function insertar_archivo($conexion, $archivo)
+    {
+        $newarchivo = false;
+
+        if (isset($conexion)) {
+            try {
+                include_once "archivo.inc.php";
+                $sql = "INSERT INTO archivos(name,description,ruta,tipo,size) VALUES(:name,:description,:ruta,:tipo,:size)";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->BindParam(':name', $archivo->getName(), PDO::PARAM_STR);
+                $sentencia->BindParam(':description', $archivo->getDescription(), PDO::PARAM_STR);
+                $sentencia->BindParam(':ruta', $archivo->getRuta(), PDO::PARAM_STR);
+                $sentencia->BindParam(':tipo', $archivo->getTipo(), PDO::PARAM_STR);
+                $sentencia->BindParam(':size', $archivo->getSize(), PDO::PARAM_STR);
+                $newciudad = $sentencia->execute();
+
+
+            } catch (PDOException $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+
+        return $newarchivo;
+    }
+
+
 
 }
