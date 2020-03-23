@@ -6,3 +6,5 @@ carousel5 | Colgate | ../datosPunto_Qualite/img/ | image/jpeg | 259657
 carousel6 | Azuuuuuuuucar | ../datosPunto_Qualite/img/ | image/jpeg | 179837
 carrusel8 | Medicamentos | ../datosPunto_Qualite/img/ | image/jpeg | 43819
 carrusel8 | Medicamentos | ../datosPunto_Qualite/img/ | image/jpeg | 43819
+carousel6 | nbmhk | ../datosPunto_Qualite/img/ | image/jpeg | 179837
+carrusel8 | nbbnmbn | ../datosPunto_Qualite/img/ | image/jpeg | 43819
