@@ -54,7 +54,7 @@ class archivo{
         $this->description=$description; 
     } 
  
-    public function setRuta($Ruta){ 
+    public function setRuta($ruta){ 
         $this->ruta=$ruta; 
     } 
  

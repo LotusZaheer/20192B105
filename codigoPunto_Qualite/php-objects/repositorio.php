@@ -186,9 +186,9 @@ public static function creartabla($conexion)
                 
                 insert into cliente (nombre, fecha_nacimiento, email, contrasena, direccion, ctipado, fk_id_ciudad)
                 Values
-                ("Fredy Alejandro Mendoza", "2000-02-02", "ifredomendoza@gmail.com","root1234","cra 9b w #44-09", "a", 1),
-                ("German Cardenas", "1998-12-23", "germancardenas@gmail.com","german1234","Cra 9 #43-22", "c", 1),
-                ("Jenny Marcela Santamaría Rincón", "1999-09-06", "jennysantamaria06@gmail.com","jenny0906","cra 1 w #44-29", "c", 1);
+                ("Fredy Alejandro Mendoza", "2000-02-02", "ifredomendoza@gmail.com","'.password_hash('root1234',PASSWORD_DEFAULT).'","cra 9b w #44-09", "a", 1),
+                ("German Cardenas", "1998-12-23", "germancardenas@gmail.com","'.password_hash('german1234',PASSWORD_DEFAULT).'","Cra 9 #43-22", "c", 1),
+                ("Jenny Marcela Santamaría Rincón", "1999-09-06", "jennysantamaria06@gmail.com","'.password_hash('jenny0906',PASSWORD_DEFAULT).'","cra 1 w #44-29", "c", 1);
                 ';
 
                 
