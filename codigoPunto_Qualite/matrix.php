@@ -20,10 +20,11 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <table class="table">
-                    <thead>
+                <table class="table ">
+                <thead class="thead-light">
                         <tr>
-                            <th scope="col">Matriz 1</th>
+                            <th colspan="8">Matriz 1</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -98,10 +99,12 @@
             </div>
             <div class="col-sm">
                 <table class="table">
-                    <thead>
+                <thead class="thead-light">
                         <tr>
-                            <th scope="col">Matriz 2</th>
+                            <th colspan="8">Matriz 2</th>                            <th scope="col"></th>
+                            
                         </tr>
+
                     </thead>
                     <tbody>
                         <?php
@@ -173,9 +176,10 @@
 
             <div class="col-sm">
                 <table class="table">
-                    <thead>
+                <thead class="thead-light">
                         <tr>
-                            <th scope="col">Matriz_1*Matriz_2</th>
+                            <th colspan="8">Matriz_1*Matriz_2</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
