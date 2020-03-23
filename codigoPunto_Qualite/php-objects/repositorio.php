@@ -114,13 +114,23 @@ public static function creartabla($conexion)
                     references factura(id_factura)
                 );
                 
-                CREATE TABLE archivo (
-                    id_archivo int(11) NOT NULL,
-                    name varchar(200) NOT NULL,
-                    description varchar(200) NOT NULL,
-                    tipo varchar(200) NOT NULL,
-                    PRIMARY KEY(id_archivo)
-                );
+                
+                CREATE TABLE `archivos` (
+                  `id` int(11) NOT NULL,
+                  `name` varchar(200) NOT NULL,
+                  `description` varchar(200) NOT NULL,
+                  `ruta` varchar(200) NOT NULL,
+                  `tipo` varchar(200) NOT NULL,
+                  `size` int(50) NOT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+                
+                ALTER TABLE `archivos`
+                  ADD PRIMARY KEY (`id`);
+                
+                ALTER TABLE `archivos`
+                  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+                
                 CREATE TABLE hoja_de_vida (
                     id_hoja_de_vida int not null auto_increment,
                     name varchar(50) NOT NULL,
@@ -165,14 +175,14 @@ public static function creartabla($conexion)
                 (4,"Duitama"),
                 (5,"Yopal");
 
-                insert into archivo
+                insert into archivos (name,description,ruta,tipo,size)
                 Values
-                (1,"carousel1.jpg","",""),
-                (2,"carousel2.jpg","",""),
-                (3,"carousel3.png","",""),
-                (4,"carousel4.jpg","",""),
-                (5,"carousel5.jpg","",""),
-                (6,"carousel6.jpg","","");
+                ("carousel1.jpg","","","",1),
+                ("carousel2.jpg","","","",1),
+                ("carousel3.png","","","",1),
+                ("carousel4.jpg","","","",1),
+                ("carousel5.jpg","","","",1),
+                ("carousel6.jpg","","","",1);
                 ';
                 $sentencia = $conexion->prepare($sql);
 
@@ -678,7 +688,7 @@ public static function creartabla($conexion)
     }
 
 
-   //FUNCION PARA VER ARCHIVOS
+  //FUNCION PARA VER ARCHIVOS
     public static function obtener_archivos($conexion)
     {
 
@@ -686,7 +696,7 @@ public static function creartabla($conexion)
 
         if (isset($conexion)) {
             try {
-                $sql = "SELECT * FROM archivo";
+                $sql = "SELECT * FROM archivos";
 
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->execute();
@@ -694,7 +704,7 @@ public static function creartabla($conexion)
 
                 if (count($resultado)) {
                     foreach ($resultado as $fila) {
-                        $archivos[] = new archivo($fila['id_archivo'], $fila['name'], $fila['description'], $fila['tipo']);
+                        $archivos[] = new archivo($fila['id'], $fila['name'], $fila['description'], $fila['ruta'], $fila['tipo'], $fila['size']);
                     }
                 } else {
                     print "NO HAY DATOS";
@@ -710,20 +720,20 @@ public static function creartabla($conexion)
 
      // FUNCION PARA OBTENER LA ARCHIVO
 
-    public static function obtener_archivo($conexion, $id_archivo)
+    public static function obtener_archivo($conexion, $id)
     {
         $archivo = null;
 
         if (isset($conexion)) {
             try {
-                $sql = "SELECT * FROM archivo WHERE id_archivo = :id_archivo";
+                $sql = "SELECT * FROM archivos WHERE id = :id";
                 $sentencia = $conexion->prepare($sql);
-                $sentencia->bindParam(':id_archivo', $id_archivo, PDO::PARAM_STR);
+                $sentencia->bindParam(':id', $id, PDO::PARAM_STR);
                 $sentencia->execute();
                 $resultado = $sentencia->fetch();
 
                 if (!empty($resultado)) {
-                    $archivo = new archivo($resultado['id_archivo'],$resultado['name'],$resultado['description'],$resultado['tipo']);
+                    $archivo = new archivo($resultado['id'],$resultado['name'],$resultado['description'],$resultado['ruta'],$resultado['tipo'],$resultado['size']);
                 }
             } catch (PDOException $ex) {
                 print "ERROR" . $ex->getMessage();
