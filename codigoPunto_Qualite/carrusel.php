@@ -45,10 +45,14 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
                 $ciudad=repositorioFunciones::obtener_archivo($conex,$i);
                 echo "<tr>";
                 echo '<td>'.$ciudad->getId().'</td>';
-                echo '<td>'.$ciudad->getName().'</td>';
+                $extension = substr($ciudad->getTipo(), 6);
+              if ($extension == "jpeg") {
+                $extension = "jpg";
+              }
+                echo '<td><a href="../datosPunto_Qualite/img/'.$ciudad->getName().'.'.$extension.'" download="'.$ciudad->getName().'.'.$extension.'">'.$ciudad->getName().'</a>';
                 echo '<td>'.$ciudad->getDescription().'</td>';
                 echo '<td>'.$ciudad->getTipo().'</td>';
-                
+
                 $i++;
               }
               Conexion::cerrar();
