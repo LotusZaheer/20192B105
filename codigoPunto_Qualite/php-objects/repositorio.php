@@ -760,7 +760,7 @@ public static function creartabla($conexion)
         $newarchivo = false;
 
         $text = $archivo->getName().' | '.$archivo->getDescription(). ' | ' .$archivo->getRuta(). ' | '.$archivo->getTipo().' | '.$archivo->getSize()."\n";
-        fclose($open);
+        
         if (isset($conexion)) {
             try {
                 include_once "archivo.inc.php";
