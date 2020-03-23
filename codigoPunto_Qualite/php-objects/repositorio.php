@@ -141,6 +141,15 @@ public static function creartabla($conexion)
                     prom FLOAT,
                     PRIMARY key(id_hoja_de_vida)
                 );
+                CREATE TABLE encuesta_sati(
+                    cedula INT not null,
+                    experiencia VARCHAR(10),
+                    entrega_tiempo VARCHAR(10),
+                    profecionalismo VARCHAR(10),
+                    expe_compra VARCHAR(10),
+                    calidad VARCHAR(10),
+                    PRIMARY key(cedula)                    
+                );
                 ";
             $sentencia = $conexion->prepare($sql);
             $sentencia->execute();
