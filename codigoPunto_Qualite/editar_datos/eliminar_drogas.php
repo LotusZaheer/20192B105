@@ -1,8 +1,7 @@
 <head>
-    <title>Administrar ciudades</title>
+    <title>Eliminar producto</title>
 <?php
 
-include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/php-objects/ciudad.inc.php";
 include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/php-objects/usuario.inc.php";
 session_start();
 $var = true;
@@ -13,22 +12,21 @@ if(($sesion==null) || ($sesion->getCtipado() != 'a'))
 }
 
 include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/navbar.inc.php";
-if ($_POST) {
-  $nombre = $_POST['nombre'];
+
+if($_POST){
   Conexion::abrir();
-  $ciudad = new ciudad('', $nombre);
-  $newciudad = repositorioFunciones::insertar_ciudad(Conexion::obtener(), $ciudad);
-  Conexion::cerrar();
-  header('Location: /20192B105/codigoPunto_Qualite/ciudad.php');
-}
+  $conex = Conexion::obtener();
+  $id = $_POST['id'];
+  $eliminar_droga = repositorioFunciones::eliminar_droga($conex,$id);
+  header("Location: /20192B105/codigoPunto_Qualite/drogas.php"); 
+  }
 ?>
 
-
   <div class="row" style="padding-top: 6em">
+    
 <?php
 include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/nav.php";
 ?>
-
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor">
         <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
@@ -39,61 +37,61 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
         </div>
       </div>
       
+      <section id="admin">
+      <div class="container">
+        <div class="row my-3">
+          <div class="col-md-6">
+            <div class="vision">
+            <h2 id="type-blockquotes">Productos</h2>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div style = "text-align:right">
+            </div>    
+          </div>
+        </div>
+      </div>
+    </section>
 
-      
-      <h2 style="margin-top:10px">Ciudades</h2>
+    <h3 style= "text-align:center;">¿Seguro que desea eliminar este producto?</h3>
+
       <div class="table-responsive">
-        <table class="table table-striped table-sm">
+        <table class="table table-striped table-sm" style="text-align:center;">
           <thead>
             <tr>
               <th>Id</th>
               <th>Nombre</th>
+              <th>Precio</th>
             </tr>
           </thead>
+          <form action="<?php echo ($_SERVER['PHP_SELF']);?>" method="POST">
           <tbody>
             <?php
               Conexion::abrir();
               $conex=Conexion::obtener();
-              $ciudades = repositorioFunciones::obtener_ciudades($conex);
-              $ultimo = end($ciudades);
-              $numero = $ultimo->getId();
-              $i=1;
-              while($i<=$numero){
-                $ciudad=repositorioFunciones::obtener_ciudad($conex,$i);
-                if($ciudad!=null)
-                {
-                  echo "<tr>";
-                  echo '<td>'.$ciudad->getId().'</td>';
-                  echo '<td>'.$ciudad->getNombre().'</td>';
-                  echo '<td> <a href ="/20192B105/codigoPunto_Qualite/editar_datos/eliminar_ciudad.php?id='.$ciudad->getId().'">Eliminar</a></td>';
-                  echo "</tr>";
-                  $ciudades = repositorioFunciones::obtener_ciudades($conex);
-                  $ultimo = end($ciudades);
-                  $numero = $ultimo->getId();
-                  $i++;
-                }
-                else{
-                  $i++;
-                }
-               
-              }
+              $i = $_GET['id'];
+              $droga=repositorioFunciones::obtener_droga($conex,$i);
+              echo "<tr>";
+              echo '<td>'.$droga->getId_droga().'</td>';
+              echo '<td>'.$droga->getNombre().'</td>';
+              echo '<td>'.$droga->getValor().'</td>';
+              echo '<td><button type="submit"  id="agregar" name="commit">Eliminar</button> <a href="/20192B105/codigoPunto_Qualite/drogas.php">Volver</a> </td>';
+              echo "</tr>";
+              echo '<input type="hidden" id="id" name="id" value="'.$droga->getId_droga().'">';
+              
               Conexion::cerrar();
             ?>
+
           </tbody>
-        </table>
-        <h4 style="margin-top:10px">Agregar ciudad</h4>
-        <table class="table table-striped table-sm">
-        <div>
-        <tr>
-          <form action="<?php echo ($_SERVER['PHP_SELF']);?>" method="POST">
-              <td><input name="nombre" class="form-control" id="nombre"  placeholder="Ciudad" required></td>
-              <td></td>
-        </tr>
-            <tr> <td><button type="submit" class="btn btn-primary form-group" id="agregar" name="commit">Agregar</button></td></tr>
-            </form>
-            </div>
-        </table>
-            </div>
+          <table style="text-align:center;">
+          <tr> 
+            </tr>
+          </table>
+          </form>
+      </div>
+    
+    
+    
     </main>
   </div>
 
@@ -120,5 +118,4 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
   </script>
 <?php
 include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/b_scripts.php";
-include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/footer.php";
 ?>

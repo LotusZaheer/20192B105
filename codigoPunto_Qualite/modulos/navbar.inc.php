@@ -16,7 +16,7 @@ error_reporting(0);
 $sesion = $_SESSION['cliente'];
 if ($sesion != null || $sesion != '') {
   $mode = true;
-  if ((time() - $_SESSION['tiempo']) > 300) // 300 = 5 * 60  
+  if ((time() - $_SESSION['tiempo']) > 3000) // 300 = 5 * 60  
   {
     header("location: /20192B105/codigoPunto_Qualite/cerrar.php");
   } else {

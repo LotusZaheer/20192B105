@@ -1,5 +1,5 @@
 <head>
-    <title>Administrar clientes</title>
+    <title>Editar clientes</title>
 <?php
 
 include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/php-objects/usuario.inc.php";

@@ -130,7 +130,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
         <table class="table table-striped table-sm">
         <div>
         <tr>
-            <td><input name="id" class="form-control" id="id"  value=<?php echo $numero+1?> required disabled> </td>
+
           <form action="<?php echo ($_SERVER['PHP_SELF']);?>" method="POST">
               <td><input name="nombre" class="form-control" id="nombre"  placeholder="Nombre" required></td>
               <td><input name="fecha" class="form-control" id="fecha"  placeholder="Fecha de nacimiento" type="date" required></td>

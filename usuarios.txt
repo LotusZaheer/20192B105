@@ -21,3 +21,5 @@ feltri08@gmail.com | usuario1234 //Es una cuenta tipo cliente el cual solo puede
 123@456.com | 01111998 //Es una cuenta tipo cliente el cual solo puede comprar cosas de la pagina
 nelsonelsonalexiscacerzcarreo37@gmail.com | usuario1234 //Es una cuenta tipo cliente el cual solo puede comprar cosas de la pagina
 ejemplo@gmail.com | usuario1234 //Es una cuenta tipo cliente el cual solo puede comprar cosas de la pagina
+frree@gmail.com | usuario1234 //Es una cuenta tipo cliente el cual solo puede comprar cosas de la pagina
+190@gmail.com | usuario1234 //Es una cuenta tipo cliente el cual solo puede comprar cosas de la pagina

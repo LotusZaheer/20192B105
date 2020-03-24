@@ -178,6 +178,14 @@ public static function creartabla($conexion)
                 (4,"Duitama"),
                 (5,"Yopal");
 
+                insert into droga (nombre,valor)
+                Values
+                ("acetaminofen", 800),
+                ("vick vaporub", 3000),
+                ("yox", 2000),
+                ("colgate triple accion", 1200),
+                ("loratadinax10", 3000);
+
     insert into archivos (name,description,ruta,tipo,size)
                 Values
                 ("carousel1","Virus","../datosPunto_Qualite/img/","image/jpeg",108993),
@@ -440,6 +448,28 @@ public static function creartabla($conexion)
         return $newciudad;
     }
 
+    public static function insertar_droga($conexion, $droga)
+    {
+        $newdroga = false;
+
+        if (isset($conexion)) {
+            try {
+                include_once "droga.inc.php";
+                $sql = "INSERT INTO droga(nombre, valor) VALUES(:nombre, :valor)";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->BindParam(':nombre', $droga->getNombre(), PDO::PARAM_STR);
+                $sentencia->BindParam(':valor', $droga->getValor(), PDO::PARAM_STR);
+                $newdroga = $sentencia->execute();
+
+
+            } catch (PDOException $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+
+        return $newdroga;
+    }
+
     //FUNCION PARA OBTENER UN USUARIO POR SU ID
 
     public static function obtener_usuario_id($conexion, $id)
@@ -557,7 +587,7 @@ public static function creartabla($conexion)
                 $resultado = $sentencia->fetch();
 
                 if (!empty($resultado)) {
-                    $droga = new ciudad(
+                    $droga = new droga(
                         $resultado['id_droga'],
                         $resultado['nombre'],
                         $resultado['imagen'],
@@ -653,6 +683,47 @@ public static function creartabla($conexion)
         return $resultado;
     }
 
+
+    //UPDATE DEL NOMBRE DE LA DROGA
+    public static function update_nombre_droga($conexion, $id, $nombre)
+    {
+        $resultado = null;
+        if (isset($conexion)) {
+            try {
+                $sql = "UPDATE droga SET nombre = :nombre  WHERE id_droga = :id";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->bindParam(':id', $id, PDO::PARAM_INT);
+                $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+                $resultado = $sentencia->execute();
+            } catch (PDOException $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+
+    //UPDATE PRECIO DROGA
+
+    public static function update_precio_droga($conexion, $id, $valor)
+    {
+        $resultado = null;
+        if (isset($conexion)) {
+            try {
+                $sql = "UPDATE droga SET valor = :valor  WHERE id_droga = :id";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->bindParam(':id', $id, PDO::PARAM_INT);
+                $sentencia->bindParam(':valor', $valor, PDO::PARAM_STR);
+                $resultado = $sentencia->execute();
+            } catch (PDOException $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+
+
+    
+
     // FUNCION PARA ACTUALIZAR LA DIRECCION DONDE VIVE EL CLIENTE
 
     public static function update_direccion($conexion, $id, $direccion)
@@ -712,6 +783,38 @@ public static function creartabla($conexion)
         if (isset($conexion)) {
             try {
                 $sql = "DELETE FROM cliente WHERE id_cliente = :id";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->bindParam(':id', $id, PDO::PARAM_INT);
+                $eliminar = $sentencia->execute();
+            } catch (PDOException $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+        return $eliminar;
+    }
+    //ELIMINAR DROGA POR ID
+    public static function eliminar_droga($conexion, $id)
+    {
+        $eliminar = null;
+        if (isset($conexion)) {
+            try {
+                $sql = "DELETE FROM droga WHERE id_droga = :id";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->bindParam(':id', $id, PDO::PARAM_INT);
+                $eliminar = $sentencia->execute();
+            } catch (PDOException $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+        return $eliminar;
+    }
+    //ELIMINAR CIUDAD
+    public static function eliminar_ciudad($conexion, $id)
+    {
+        $eliminar = null;
+        if (isset($conexion)) {
+            try {
+                $sql = "DELETE FROM ciudad WHERE id_ciudad = :id";
                 $sentencia = $conexion->prepare($sql);
                 $sentencia->bindParam(':id', $id, PDO::PARAM_INT);
                 $eliminar = $sentencia->execute();
