@@ -4,39 +4,39 @@ include_once "php-objects/usuario.inc.php";
 include_once "php-objects/repositorio.php";
 $mode = false;
 session_start();
-$cambio=false;
+$cambio = false;
 
 $sesion = $_SESSION['cliente'];
 if ($sesion != null || $sesion != '') {
   $mode = true;
 }
 
-if($_POST){
-Conexion::abrir();
+if ($_POST) {
+  Conexion::abrir();
 
-  if($_POST['direccion']!="" || $_POST['direccion']!=null){
+  if ($_POST['direccion'] != "" || $_POST['direccion'] != null) {
     $sesion->setDireccion($_POST['direccion']);
-    $dir=repositorioFunciones::update_direccion(Conexion::obtener(),$sesion->getId(),$_POST['direccion']);
-    $cambio=true;
+    $dir = repositorioFunciones::update_direccion(Conexion::obtener(), $sesion->getId(), $_POST['direccion']);
+    $cambio = true;
   }
-  
-  if($_POST['ciudad']!="" || $_POST['ciudad']!=null){
+
+  if ($_POST['ciudad'] != "" || $_POST['ciudad'] != null) {
     $sesion->setFk_id_ciudad($_POST['ciudad']);
-    $ciu=repositorioFunciones::update_ciudad(Conexion::obtener(),$sesion->getId(),$_POST['ciudad']);
-    $cambio=true;
+    $ciu = repositorioFunciones::update_ciudad(Conexion::obtener(), $sesion->getId(), $_POST['ciudad']);
+    $cambio = true;
   }
-  
-  if($_POST['contra']!="" || $_POST['contra']!=null){
+
+  if ($_POST['contra'] != "" || $_POST['contra'] != null) {
     $sesion->setContrasena($_POST['contra']);
-    $con=repositorioFunciones::update_contrasena(Conexion::obtener(),$sesion->getId(),$_POST['contra']);
-    $cambio=true;
+    $con = repositorioFunciones::update_contrasena(Conexion::obtener(), $sesion->getId(), $_POST['contra']);
+    $cambio = true;
   }
 
-Conexion::cerrar();
+  Conexion::cerrar();
 
-if($cambio==true){
-  header('Location: cuenta.php');
-}
+  if ($cambio == true) {
+    header('Location: cuenta.php');
+  }
 }
 
 
@@ -53,8 +53,8 @@ if($cambio==true){
 </head>
 
 <body>
- <!-- Navbar -->
- <nav style="z-index:40!important;" class=" navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+  <!-- Navbar -->
+  <nav style="z-index:40!important;" class=" navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
     <a class="navbar-brand" href="/20192B105/index.php">Punto Qualité</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -93,7 +93,7 @@ if($cambio==true){
       <ul class="navbar-nav">
         <?php
         if ($mode) {
-          if($sesion->getCtipado()=='a'){
+          if ($sesion->getCtipado() == 'a') {
             echo '<li class="nav-item ">
                   <a class="nav-link" href="/20192B105/codigoPunto_Qualite/admin.php">admin</a>
                 </li>';
@@ -144,6 +144,7 @@ if($cambio==true){
 
     </div>
   </nav>
+
   <body>
     <div id="wrapper">
       <div id="maincontent" style="padding-top:89.25px">
@@ -157,35 +158,35 @@ if($cambio==true){
             <h5 style="padding-top:5px; color:#13284a"><?php echo ($sesion->getEmail()) ?></h5>
           </div>
         </div>
-        
-          <br>
 
-          <div id="ajustes">
-            <form method="POST" action="<?php echo ($_SERVER['PHP_SELF']) ?>">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Nueva direccion</label>
-                <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nueva direccion" name="direccion">
-                
-              </div>
-              <div class="form-group">
+        <br>
+
+        <div id="ajustes">
+          <form method="POST" action="<?php echo ($_SERVER['PHP_SELF']) ?>">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Nueva direccion</label>
+              <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nueva direccion" name="direccion">
+
+            </div>
+            <div class="form-group">
               <label for="exampleInputEmail1">Nueva ciudad</label>
               <select class="form-control" id="exampleSelect1" name="ciudad">
-                  <option value=""></option>
-                  <option value="1">Bucaramanga</option>
-                  <option value="2">Giron</option>
-                  <option value="3">Floridablanca</option>
-                  <option value="4">Duitama</option>
-                  <option value="5">Yopal</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Nueva contraseña</label>
-                <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="contra" type="password">
+                <option value=""></option>
+                <option value="1">Bucaramanga</option>
+                <option value="2">Giron</option>
+                <option value="3">Floridablanca</option>
+                <option value="4">Duitama</option>
+                <option value="5">Yopal</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Nueva contraseña</label>
+              <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="contra" type="password">
 
-              </div>
-              <button type="submit" class="btn btn-primary" id="topper" name="commit" style="margin-bottom:20px;">Confirmar</button>
-            </form>
-          </div>
+            </div>
+            <button type="submit" class="btn btn-primary" id="topper" name="commit" style="margin-bottom:20px;">Confirmar</button>
+          </form>
+        </div>
       </div>
       <div id="leftmenu" class="bg-light">
         <div style="padding-top:89.25px">

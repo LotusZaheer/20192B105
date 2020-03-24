@@ -1,46 +1,46 @@
 <head>
     <title>Registro</title>
-<?php
-include_once  $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/php-objects/repositorio.php";
-//Creamos una variable global para saber si el email ya fue usado
-$emailused = false;
+    <?php
+    include_once  $_SERVER['DOCUMENT_ROOT'] . "/20192B105/codigoPunto_Qualite/php-objects/repositorio.php";
+    //Creamos una variable global para saber si el email ya fue usado
+    $emailused = false;
 
-//METODO POST DEL FORMULARIO DE REGISTRO
-if ($_POST) {
+    //METODO POST DEL FORMULARIO DE REGISTRO
+    if ($_POST) {
 
-    //VARIABLES TOMADADAS POR EL METODO POST
-    $nombre = $_POST['nombre'];
-    $email = $_POST['email'];
-    $pass = $_POST['password1'];
-    $dir = $_POST['direccion'];
-    $ciu = $_POST['ciudad'];
-    $ctipo = $_POST['ctipo'];
+        //VARIABLES TOMADADAS POR EL METODO POST
+        $nombre = $_POST['nombre'];
+        $email = $_POST['email'];
+        $pass = $_POST['password1'];
+        $dir = $_POST['direccion'];
+        $ciu = $_POST['ciudad'];
+        $ctipo = $_POST['ctipo'];
 
 
-    Conexion::abrir();
-    //VERIFICACION DEL CORREO EXISTENTE
-    $real = repositorioFunciones::obtener_usuario_email(Conexion::obtener(), $email);
-    if ($real == null) {
-        //TIPO DE USUARIO REGISTRADO CON UNA CONTRASEÑA ESPECIAL PARA AQUELLA GENTE QUE SERA ADMINISTRADORA
-        if ($ctipo == "puntoqualite2019") {
-            $ctipoes = 'a';
+        Conexion::abrir();
+        //VERIFICACION DEL CORREO EXISTENTE
+        $real = repositorioFunciones::obtener_usuario_email(Conexion::obtener(), $email);
+        if ($real == null) {
+            //TIPO DE USUARIO REGISTRADO CON UNA CONTRASEÑA ESPECIAL PARA AQUELLA GENTE QUE SERA ADMINISTRADORA
+            if ($ctipo == "puntoqualite2019") {
+                $ctipoes = 'a';
+            } else {
+                $ctipoes = 'c';
+            }
+            $new = date('Y-m-d', strtotime($_POST['fecha_nacimiento']));
+            $usuario = new usuario('', $nombre, $new, $email, $pass, $dir, $ciu, $ctipoes);
+            $newuser = repositorioFunciones::insertar_usuarios(Conexion::obtener(), $usuario);
+            Conexion::cerrar();
+            header('Location: ../index.php');
         } else {
-            $ctipoes = 'c';
+            $emailused = true;
         }
-        $new = date('Y-m-d', strtotime($_POST['fecha_nacimiento']));
-        $usuario = new usuario('', $nombre, $new, $email, $pass, $dir, $ciu, $ctipoes);
-        $newuser = repositorioFunciones::insertar_usuarios(Conexion::obtener(), $usuario);
-        Conexion::cerrar();
-        header('Location: ../index.php');
-    } else {
-        $emailused = true;
     }
-}
 
-?>
-<?php
-include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/navbar.inc.php";
-?>
+    ?>
+    <?php
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/20192B105/codigoPunto_Qualite/modulos/navbar.inc.php";
+    ?>
 
     <div class="container-registro">
         <div class="row">
@@ -50,14 +50,14 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
                 </div>
             </div>
             <div class="col-9">
-                
-                <h4 id="titles1" >Datos personales </h4>
+
+                <h4 id="titles1">Datos personales </h4>
                 <?php if ($emailused == true) {
                     echo ('<div id="alertas">
                 
                     </div>');
-                } ?> 
-                
+                } ?>
+
                 <form method="POST" id="formregister" action="<?php echo ($_SERVER['PHP_SELF']); ?>">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Correo Electronico</label>
@@ -121,8 +121,8 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
     <script type="text/javascript" src="js/singup.js"></script>
 
     <script src='https://www.google.com/recaptcha/api.js'></script>
-</body>
+    </body>
 
-<?php
-include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/footer.php";
-?>
+    <?php
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/20192B105/codigoPunto_Qualite/modulos/footer.php";
+    ?>

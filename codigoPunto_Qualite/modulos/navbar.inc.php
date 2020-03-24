@@ -1,11 +1,10 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'].'/20192B105/codigoPunto_Qualite/php-objects/conexion.inc.php';
-include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/php-objects/usuario.inc.php";
-include_once  $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/php-objects/repositorio.php";
+include_once $_SERVER['DOCUMENT_ROOT'] . '/20192B105/codigoPunto_Qualite/php-objects/conexion.inc.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . "/20192B105/codigoPunto_Qualite/php-objects/usuario.inc.php";
+include_once  $_SERVER['DOCUMENT_ROOT'] . "/20192B105/codigoPunto_Qualite/php-objects/repositorio.php";
 
 $mode = false;
-if(!isset($var))
-{
+if (!isset($var)) {
   session_start();
 }
 
@@ -29,21 +28,21 @@ if ($sesion != null || $sesion != '') {
 <!DOCTYPE html>
 
 <html lang="es">
-  <link rel="icon" type="image/jpeg" href="/20192B105/datosPunto_Qualite/img/icono.jpg" />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600|Open+Sans" rel="stylesheet">
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <!-- CSS -->
-  <link rel="stylesheet" href="/20192B105/codigoPunto_Qualite/css/estilos.css">
-  <link rel="stylesheet" href="/20192B105/codigoPunto_Qualite/css/lux1.css">
-  <!-- Scrool reveal -->
-  <script src="https://unpkg.com/scrollreveal"></script>
-  <!-- NO TOCAR -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+<link rel="icon" type="image/jpeg" href="/20192B105/datosPunto_Qualite/img/icono.jpg" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600|Open+Sans" rel="stylesheet">
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- CSS -->
+<link rel="stylesheet" href="/20192B105/codigoPunto_Qualite/css/estilos.css">
+<link rel="stylesheet" href="/20192B105/codigoPunto_Qualite/css/lux1.css">
+<!-- Scrool reveal -->
+<script src="https://unpkg.com/scrollreveal"></script>
+<!-- NO TOCAR -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
 </head>
 
 <body>
@@ -89,7 +88,7 @@ if ($sesion != null || $sesion != '') {
       <ul class="navbar-nav">
         <?php
         if ($mode) {
-          if($sesion->getCtipado()=='a'){
+          if ($sesion->getCtipado() == 'a') {
             echo '<li class="nav-item ">
                   <a class="nav-link" href="/20192B105/codigoPunto_Qualite/admin.php">admin</a>
                 </li>';

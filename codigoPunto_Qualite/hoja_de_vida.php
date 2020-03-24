@@ -1,4 +1,3 @@
-
 <html lang="es">
 
 <head>
@@ -6,9 +5,9 @@
     <?php
     include_once $_SERVER['DOCUMENT_ROOT'] . "/20192B105/codigoPunto_Qualite/modulos/navbar.inc.php";
     ?>
-        <!-- Bootstrap 4 -->
+    <!-- Bootstrap 4 -->
 
-        <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600|Open+Sans" rel="stylesheet">
@@ -37,6 +36,7 @@
         }
     </script>
 </head>
+
 <body>
     <div class="container cont-forms">
         <br />
@@ -127,12 +127,12 @@
                 </div>
                 <br>
                 <br>
-                <button type="button" class="btn btn-success" id ="btnsubir">Subir</button>
+                <button type="button" class="btn btn-success" id="btnsubir">Subir</button>
             </form>
         </div>
     </div>
 
-    <script src="ajax/jquery-3.4.1.min.js"></script>    
+    <script src="ajax/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/security.js"></script>
 </body>
@@ -142,20 +142,20 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/20192B105/codigoPunto_Qualite/modulos
 ?>
 
 </html>
- <!-- Script parte de ajax -->
+<!-- Script parte de ajax -->
 <script type="text/javascript">
-    $(document).ready(function(){
-        $("#btnsubir").click(function(){
+    $(document).ready(function() {
+        $("#btnsubir").click(function() {
             var datos = $('#form-hoja').serialize();
             $.ajax({
-                type:"POST",
-                url:"insertar_hoja.php",
-                async:true,
-                data:datos,
-                success:function(r){
-                    if(r == 1){
+                type: "POST",
+                url: "insertar_hoja.php",
+                async: true,
+                data: datos,
+                success: function(r) {
+                    if (r == 1) {
                         alert("Agregado con exito");
-                    }else{
+                    } else {
                         alert("Fallo el server");
                     }
                 }

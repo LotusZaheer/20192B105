@@ -1,32 +1,31 @@
 <head>
-    <title>Eliminar producto</title>
-<?php
+  <title>Eliminar producto</title>
+  <?php
 
-include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/php-objects/usuario.inc.php";
-session_start();
-$var = true;
-$sesion = $_SESSION['cliente'];
-if(($sesion==null) || ($sesion->getCtipado() != 'a'))
-{
-  header("Location: /20192B105/index.php");
-}
-
-include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/navbar.inc.php";
-
-if($_POST){
-  Conexion::abrir();
-  $conex = Conexion::obtener();
-  $id = $_POST['id'];
-  $eliminar_droga = repositorioFunciones::eliminar_droga($conex,$id);
-  header("Location: /20192B105/codigoPunto_Qualite/drogas.php"); 
+  include_once $_SERVER['DOCUMENT_ROOT'] . "/20192B105/codigoPunto_Qualite/php-objects/usuario.inc.php";
+  session_start();
+  $var = true;
+  $sesion = $_SESSION['cliente'];
+  if (($sesion == null) || ($sesion->getCtipado() != 'a')) {
+    header("Location: /20192B105/index.php");
   }
-?>
+
+  include_once $_SERVER['DOCUMENT_ROOT'] . "/20192B105/codigoPunto_Qualite/modulos/navbar.inc.php";
+
+  if ($_POST) {
+    Conexion::abrir();
+    $conex = Conexion::obtener();
+    $id = $_POST['id'];
+    $eliminar_droga = repositorioFunciones::eliminar_droga($conex, $id);
+    header("Location: /20192B105/codigoPunto_Qualite/drogas.php");
+  }
+  ?>
 
   <div class="row" style="padding-top: 6em">
-    
-<?php
-include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/nav.php";
-?>
+
+    <?php
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/20192B105/codigoPunto_Qualite/modulos/nav.php";
+    ?>
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor">
         <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
@@ -36,24 +35,24 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
           <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
         </div>
       </div>
-      
+
       <section id="admin">
-      <div class="container">
-        <div class="row my-3">
-          <div class="col-md-6">
-            <div class="vision">
-            <h2 id="type-blockquotes">Productos</h2>
+        <div class="container">
+          <div class="row my-3">
+            <div class="col-md-6">
+              <div class="vision">
+                <h2 id="type-blockquotes">Productos</h2>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div style="text-align:right">
+              </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div style = "text-align:right">
-            </div>    
-          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <h3 style= "text-align:center;">¿Seguro que desea eliminar este producto?</h3>
+      <h3 style="text-align:center;">¿Seguro que desea eliminar este producto?</h3>
 
       <div class="table-responsive">
         <table class="table table-striped table-sm" style="text-align:center;">
@@ -64,34 +63,34 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
               <th>Precio</th>
             </tr>
           </thead>
-          <form action="<?php echo ($_SERVER['PHP_SELF']);?>" method="POST">
-          <tbody>
-            <?php
+          <form action="<?php echo ($_SERVER['PHP_SELF']); ?>" method="POST">
+            <tbody>
+              <?php
               Conexion::abrir();
-              $conex=Conexion::obtener();
+              $conex = Conexion::obtener();
               $i = $_GET['id'];
-              $droga=repositorioFunciones::obtener_droga($conex,$i);
+              $droga = repositorioFunciones::obtener_droga($conex, $i);
               echo "<tr>";
-              echo '<td>'.$droga->getId_droga().'</td>';
-              echo '<td>'.$droga->getNombre().'</td>';
-              echo '<td>'.$droga->getValor().'</td>';
+              echo '<td>' . $droga->getId_droga() . '</td>';
+              echo '<td>' . $droga->getNombre() . '</td>';
+              echo '<td>' . $droga->getValor() . '</td>';
               echo '<td><button type="submit"  id="agregar" name="commit">Eliminar</button> <a href="/20192B105/codigoPunto_Qualite/drogas.php">Volver</a> </td>';
               echo "</tr>";
-              echo '<input type="hidden" id="id" name="id" value="'.$droga->getId_droga().'">';
-              
-              Conexion::cerrar();
-            ?>
+              echo '<input type="hidden" id="id" name="id" value="' . $droga->getId_droga() . '">';
 
-          </tbody>
-          <table style="text-align:center;">
-          <tr> 
-            </tr>
-          </table>
+              Conexion::cerrar();
+              ?>
+
+            </tbody>
+            <table style="text-align:center;">
+              <tr>
+              </tr>
+            </table>
           </form>
       </div>
-    
-    
-    
+
+
+
     </main>
   </div>
 
@@ -116,6 +115,6 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
       distance: '300px'
     });
   </script>
-<?php
-include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/b_scripts.php";
-?>
+  <?php
+  include_once $_SERVER['DOCUMENT_ROOT'] . "/20192B105/codigoPunto_Qualite/modulos/b_scripts.php";
+  ?>

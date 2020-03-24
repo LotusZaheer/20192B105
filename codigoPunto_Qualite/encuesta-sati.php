@@ -205,7 +205,7 @@
             </div>
         </div>
     </form>
-    <script src="ajax/jquery-3.4.1.min.js"></script>    
+    <script src="ajax/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/security.js"></script>
 
@@ -226,11 +226,11 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/20192B105/codigoPunto_Qualite/modulos
                 $(".form-check-input").removeAttr("disabled");
                 var datos = $("#encuesta").serialize();
                 $.ajax({
-                    url:"insertar_encuesta.php",
-                    type:"POST",                    
-                    data:datos,
-                    success:function(r) {
-                        
+                    url: "insertar_encuesta.php",
+                    type: "POST",
+                    data: datos,
+                    success: function(r) {
+
                         if (r == 1) {
                             alert("Agregado con exito");
                         } else {
@@ -242,23 +242,21 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/20192B105/codigoPunto_Qualite/modulos
         });
         $(".form-check-input").change(function() {
             var datos = $("#encuesta").serialize();
-            
+
             $.ajax({
-                    url:"insertar-r-encuesta.php",
-                    type:"POST",                    
-                    data:datos,
-                    success:function(r) {
-                        
-                        if (r == 1) {
-                            
-                        } else {
-                            alert("Fallo el server");
-                        }
+                url: "insertar-r-encuesta.php",
+                type: "POST",
+                data: datos,
+                success: function(r) {
+
+                    if (r == 1) {
+
+                    } else {
+                        alert("Fallo el server");
                     }
+                }
             });
         });
 
     });
 </script>
-
-

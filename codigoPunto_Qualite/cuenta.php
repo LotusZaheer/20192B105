@@ -33,21 +33,21 @@ if ($sesion != null || $sesion != '') {
 
     <div class="collapse navbar-collapse" id="navbarColor01">
 
-      
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item ">
-            <a class="nav-link" href="shop.php">Productos</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="our.php">Nosotros</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="#contacto">Contactanos</a>
-          </li>
-        </ul>
-      
-      
-        <ul class="navbar-nav">
+
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link" href="shop.php">Productos</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="our.php">Nosotros</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="#contacto">Contactanos</a>
+        </li>
+      </ul>
+
+
+      <ul class="navbar-nav">
         <?php
         if ($mode) {
           if ($sesion->getCtipado() == 'a') {
@@ -115,37 +115,37 @@ if ($sesion != null || $sesion != '') {
           </div>
         </div>
         <blockquote class="blockquote text-right">
-   <br>
-    <div class="col-md-12">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">Medicina</strong>
-          <h3 class="mb-0">¿Piel humana para pruebas de productos cosméticos? </h3>
-          <div class="mb-1 text-muted">13 Noviembre</div>
-          <p class="card-text mb-auto">Una piel humana artificial fue creada por unos científicos de Singapur. Este es un esfuerzo para disminuir pruebas cosméticas en animales. Esta piel está hecha por células de la piel de donantes y colágeno, y tiene las mismas propiedades químicas y biológicas que la piel humana. El doctor Elmer Huerta, experto en salud pública, explica cómo fue creada esta piel.</p>
-          <a href="https://cnnespanol.cnn.com/video/salud-doctor-huerta-piel-humana-artificial-prueba-productos-cosmeticos-encuentro-cnne-entrevista/" class="stretched-link">Seguir leyendo</a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-        <img width="400" height="100%" src="https://misabogados.com.mx/blog/wp-content/uploads/2016/02/Negligencia-m%C3%A9dica.jpg" >
+          <br>
+          <div class="col-md-12">
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+              <div class="col p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-primary">Medicina</strong>
+                <h3 class="mb-0">¿Piel humana para pruebas de productos cosméticos? </h3>
+                <div class="mb-1 text-muted">13 Noviembre</div>
+                <p class="card-text mb-auto">Una piel humana artificial fue creada por unos científicos de Singapur. Este es un esfuerzo para disminuir pruebas cosméticas en animales. Esta piel está hecha por células de la piel de donantes y colágeno, y tiene las mismas propiedades químicas y biológicas que la piel humana. El doctor Elmer Huerta, experto en salud pública, explica cómo fue creada esta piel.</p>
+                <a href="https://cnnespanol.cnn.com/video/salud-doctor-huerta-piel-humana-artificial-prueba-productos-cosmeticos-encuentro-cnne-entrevista/" class="stretched-link">Seguir leyendo</a>
+              </div>
+              <div class="col-auto d-none d-lg-block">
+                <img width="400" height="100%" src="https://misabogados.com.mx/blog/wp-content/uploads/2016/02/Negligencia-m%C3%A9dica.jpg">
 
-        </div>
-      </div>
-    </div>
-    <div class="col-md-12">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-success">Medicinas y Vacunas</strong>
-          <h3 class="mb-0">Cómo cambiarán nuestra salud el clima, los antivacunas y las bacterias resistentes</h3>
-          <div class="mb-1 text-muted">14 Noviembre</div>
-          <p class="mb-auto">Tres científicos hablan del regreso de enfermedades, los antibióticos ineficaces y los desastres naturales que marcarán los problemas sanitarios del futuro. De hecho, ya está pasando</p>
-          <a href="https://elpais.com/elpais/2019/10/31/planeta_futuro/1572551722_084098.html" class="stretched-link">Seguir leyendo</a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-          <img width="400" height="100%" src="https://ep01.epimg.net/elpais/imagenes/2019/10/31/planeta_futuro/1572551722_084098_1572553924_noticia_normal_recorte1.jpg" >
-        </div>
-      </div>
-    </div>
-  
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+              <div class="col p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-success">Medicinas y Vacunas</strong>
+                <h3 class="mb-0">Cómo cambiarán nuestra salud el clima, los antivacunas y las bacterias resistentes</h3>
+                <div class="mb-1 text-muted">14 Noviembre</div>
+                <p class="mb-auto">Tres científicos hablan del regreso de enfermedades, los antibióticos ineficaces y los desastres naturales que marcarán los problemas sanitarios del futuro. De hecho, ya está pasando</p>
+                <a href="https://elpais.com/elpais/2019/10/31/planeta_futuro/1572551722_084098.html" class="stretched-link">Seguir leyendo</a>
+              </div>
+              <div class="col-auto d-none d-lg-block">
+                <img width="400" height="100%" src="https://ep01.epimg.net/elpais/imagenes/2019/10/31/planeta_futuro/1572551722_084098_1572553924_noticia_normal_recorte1.jpg">
+              </div>
+            </div>
+          </div>
+
       </div>
       <div id="leftmenu" class="bg-light">
         <div style="padding-top:89.25px">

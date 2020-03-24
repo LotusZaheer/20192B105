@@ -28,7 +28,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+
                         <?php
                         $matriz1 = array(
                             0 => array(),
@@ -37,11 +37,11 @@
                         );
                         for ($i = 0; $i <= 2; $i++) {
                             echo '<tr>';
-                            
+
                             for ($j = 0; $j <= 2; $j++) {
                                 $num = rand(0, 10);
                                 $matriz1[$i][$j] = $num;
-                                
+
                                 echo '<td>' . $matriz1[$i][$j] . '</td>';
                             }
                             echo '</tr>';
@@ -75,21 +75,21 @@
                         ?>
                     </tbody>
                 </table>
-               
-                        <?php
-                        $matrizaux = array(
-                            0 => array(),
-                            1 => array(),
-                            2 => array()
-                        );
-                        for ($i = 0; $i <= 2; $i++) {
 
-                            for ($j = 0; $j <= 2; $j++) {
-                                $matrizaux[$i][$j] = $matriz2[$j][$i];
-                            }
-                        }
-                        ?>
-                    
+                <?php
+                $matrizaux = array(
+                    0 => array(),
+                    1 => array(),
+                    2 => array()
+                );
+                for ($i = 0; $i <= 2; $i++) {
+
+                    for ($j = 0; $j <= 2; $j++) {
+                        $matrizaux[$i][$j] = $matriz2[$j][$i];
+                    }
+                }
+                ?>
+
                 <table class="table ">
                     <thead class="thead-light">
                         <tr>
@@ -107,13 +107,12 @@
                         for ($i = 0; $i <= 2; $i++) {
                             echo "<tr>";
                             for ($j = 0; $j <= 2; $j++) {
-                                $matrizm[$i][$j] =0;
+                                $matrizm[$i][$j] = 0;
                                 for ($h = 0; $h <= 2; $h++) {
-                                
-                                    $matrizm[$i][$j] +=$matriz1[$i][$h]*$matrizaux[$j][$h];
-                                    
+
+                                    $matrizm[$i][$j] += $matriz1[$i][$h] * $matrizaux[$j][$h];
                                 }
-                                
+
                                 echo '<td>' . $matrizm[$i][$j] . '</td>';
                             }
                             echo "</tr>";

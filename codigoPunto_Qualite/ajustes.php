@@ -5,21 +5,20 @@ include_once "php-objects/repositorio.php";
 $mode = false;
 session_start();
 error_reporting(0);
-$dont=4;
+$dont = 4;
 
 $sesion = $_SESSION['cliente'];
 if ($sesion != null || $sesion != '') {
   $mode = true;
 }
 
-if($_POST){
-  $pass=$_POST['pass1'];
-  if(password_verify($pass,$sesion->getContrasena())){
+if ($_POST) {
+  $pass = $_POST['pass1'];
+  if (password_verify($pass, $sesion->getContrasena())) {
     header('Location: ajustes2.php');
-  }else{
-    $dont=3;
+  } else {
+    $dont = 3;
   }
-
 }
 
 ?>
@@ -35,7 +34,9 @@ if($_POST){
   <script type="text/javascript" src="js/security.js"></script>
 </head>
 
-<body <?php if($dont==3){ echo('onload="alertas()"'); }?>>
+<body <?php if ($dont == 3) {
+        echo ('onload="alertas()"');
+      } ?>>
 
   <!-- Navbar -->
   <nav style="z-index:40!important;" class=" navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
@@ -77,7 +78,7 @@ if($_POST){
       <ul class="navbar-nav">
         <?php
         if ($mode) {
-          if($sesion->getCtipado()=='a'){
+          if ($sesion->getCtipado() == 'a') {
             echo '<li class="nav-item ">
                   <a class="nav-link" href="/20192B105/codigoPunto_Qualite/admin.php">admin</a>
                 </li>';
@@ -142,23 +143,23 @@ if($_POST){
             <h5 style="padding-top:5px; color:#13284a"><?php echo ($sesion->getEmail()) ?></h5>
           </div>
         </div>
-        
-          <br>
 
-          <div id="ajustes">
-            <form method="POST" action="<?php echo ($_SERVER['PHP_SELF']) ?>">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Contraseña</label>
-                <input type="password" class="form-control" id="pass1" name="pass1" id="exampleInputEmail1" aria-describedby="emailHelp" >
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Confirmar contraseña</label>
-                <input type="password" class="form-control" id="pass2" oninput="equalpassword()" name="pass2" id="exampleInputEmail1" aria-describedby="emailHelp" >
+        <br>
 
-              </div>
-              <button type="submit" class="btn btn-primary"  id="topper" name="commit">Confirmar</button>
-            </form>
-          </div>
+        <div id="ajustes">
+          <form method="POST" action="<?php echo ($_SERVER['PHP_SELF']) ?>">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Contraseña</label>
+              <input type="password" class="form-control" id="pass1" name="pass1" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Confirmar contraseña</label>
+              <input type="password" class="form-control" id="pass2" oninput="equalpassword()" name="pass2" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+            </div>
+            <button type="submit" class="btn btn-primary" id="topper" name="commit">Confirmar</button>
+          </form>
+        </div>
       </div>
       <div id="leftmenu" class="bg-light">
         <div style="padding-top:89.25px">

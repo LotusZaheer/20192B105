@@ -1,64 +1,62 @@
 <head>
-    <title>Inicio</title>
-<?php
-include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/navbar.inc.php";
-?>
+  <title>Inicio</title>
+  <?php
+  include_once $_SERVER['DOCUMENT_ROOT'] . "/20192B105/codigoPunto_Qualite/modulos/navbar.inc.php";
+  ?>
 
   <!-- Carousel -->
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-top: 80px">
     <ol class="carousel-indicators">
-            <?php
-              Conexion::abrir();
-              $conex=Conexion::obtener();
-              $i=1;
+      <?php
+      Conexion::abrir();
+      $conex = Conexion::obtener();
+      $i = 1;
 
-              while($i<=count(repositorioFunciones::obtener_archivos($conex))){
-                $ciudad=repositorioFunciones::obtener_archivo($conex,$i);
-                if($i==1){
-                echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$i.'" class="active"></li>';
+      while ($i <= count(repositorioFunciones::obtener_archivos($conex))) {
+        $ciudad = repositorioFunciones::obtener_archivo($conex, $i);
+        if ($i == 1) {
+          echo '<li data-target="#carouselExampleIndicators" data-slide-to="' . $i . '" class="active"></li>';
+        } else {
+          echo '<li data-target="#carouselExampleIndicators" data-slide-to="' . $i . '"></li>';
+        }
 
-                }else{
-                echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$i.'"></li>';
-                }
-                
-                $i++;
-              }
-              Conexion::cerrar();
-            ?>
+        $i++;
+      }
+      Conexion::cerrar();
+      ?>
     </ol>
 
     <div class="carousel-inner">
 
-    <?php
+      <?php
       Conexion::abrir();
-      $conex=Conexion::obtener();
-      $i=1;
-        while($i<=count(repositorioFunciones::obtener_archivos($conex))){
-              $ciudad=repositorioFunciones::obtener_archivo($conex,$i);
-              $extension = substr($ciudad->getTipo(), 6);
-              if ($extension == "jpeg") {
-                $extension = "jpg";
-              }
-                if($i==1){
-                echo '<div class="carousel-item active">
-        <img src="datosPunto_Qualite/img/'.$ciudad->getName().'.'.$extension.'" class="d-block w-100" alt=""></div>';
-                }elseif ($extension == "mp4") {
-                   echo '<div class="carousel-item">
-        <video src="datosPunto_Qualite/img/'.$ciudad->getName().'.'.$extension.'" class="d-block w-100" alt=""></video></div>';
-                }
-                else{
-                echo '<div class="carousel-item">
-        <img src="datosPunto_Qualite/img/'.$ciudad->getName().'.'.$extension.'" class="d-block w-100" alt=""></div>';
-                }
+      $conex = Conexion::obtener();
+      $i = 1;
+      while ($i <= count(repositorioFunciones::obtener_archivos($conex))) {
+        $ciudad = repositorioFunciones::obtener_archivo($conex, $i);
+        $extension = substr($ciudad->getTipo(), 6);
+        if ($extension == "jpeg") {
+          $extension = "jpg";
+        }
+        if ($i == 1) {
+          echo '<div class="carousel-item active">
+        <img src="datosPunto_Qualite/img/' . $ciudad->getName() . '.' . $extension . '" class="d-block w-100" alt=""></div>';
+        } elseif ($extension == "mp4") {
+          echo '<div class="carousel-item">
+        <video src="datosPunto_Qualite/img/' . $ciudad->getName() . '.' . $extension . '" class="d-block w-100" alt=""></video></div>';
+        } else {
+          echo '<div class="carousel-item">
+        <img src="datosPunto_Qualite/img/' . $ciudad->getName() . '.' . $extension . '" class="d-block w-100" alt=""></div>';
+        }
 
         $i++;
       }
-        Conexion::cerrar();
+      Conexion::cerrar();
       ?>
 
     </div>
 
-    
+
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
@@ -158,8 +156,8 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
       distance: '300px'
     });
   </script>
-  
+
   <?php
-include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/b_scripts.php";
-include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/footer.php";
-?>
+  include_once $_SERVER['DOCUMENT_ROOT'] . "/20192B105/codigoPunto_Qualite/modulos/b_scripts.php";
+  include_once $_SERVER['DOCUMENT_ROOT'] . "/20192B105/codigoPunto_Qualite/modulos/footer.php";
+  ?>
