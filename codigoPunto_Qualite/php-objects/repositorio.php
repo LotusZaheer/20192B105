@@ -191,8 +191,10 @@ public static function creartabla($conexion)
                 Values
                 ("Fredy Alejandro Mendoza", "2000-02-02", "ifredomendoza@gmail.com","'.password_hash('root1234',PASSWORD_DEFAULT).'","cra 9b w #44-09", "a", 1),
                 ("German Cardenas", "1998-12-23", "germancardenas@gmail.com","'.password_hash('german1234',PASSWORD_DEFAULT).'","Cra 9 #43-22", "c", 1),
-                ("Jenny Marcela Santamaría Rincón", "1999-09-06", "jennysantamaria06@gmail.com","'.password_hash('jenny0906',PASSWORD_DEFAULT).'","cra 1 w #44-29", "c", 1);
-                ';
+                ("Orlando Alberto Moncada", "2000-06-22", "orlandomoncada610@gmail.com","'.password_hash('albertouis',PASSWORD_DEFAULT).'","Cll 105 #44-23", "c", 2),
+                ("Andres Felipe Uribe", "1998-03-12", "andresfelipeuribe@gmail.com","'.password_hash('andresuribe',PASSWORD_DEFAULT).'","Cra 24 #7-23", "c", 1),
+                ("Felipe Ortiz Trillos ", "1999-12-24", "feltri08@gmail.com","'.password_hash('peñimovil123',PASSWORD_DEFAULT).'","Cll 9 #37-23", "c", 1),
+                ("Jenny Marcela Santamaría Rincón", "1999-09-06", "jennysantamaria06@gmail.com","'.password_hash('jenny0906',PASSWORD_DEFAULT).'","cra 1 w #44-29", "c", 1);';
 
                 
                 $sentencia = $conexion->prepare($sql);
@@ -668,6 +670,56 @@ public static function creartabla($conexion)
             }
         }
         return $resultado;
+    }
+    // CAMBIAR CORREO ELECTRÓNICO DEL USUARIO
+    public static function update_correo($conexion, $id, $email)
+    {
+        $resultado = null;
+        if (isset($conexion)) {
+            try {
+                $sql = "UPDATE cliente SET email = :email  WHERE id_cliente = :id";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->bindParam(':id', $id, PDO::PARAM_INT);
+                $sentencia->bindParam(':email', $email, PDO::PARAM_STR);
+                $resultado = $sentencia->execute();
+            } catch (PDOException $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+
+    public static function update_nombre($conexion, $id, $nombre)
+    {
+        $resultado = null;
+        if (isset($conexion)) {
+            try {
+                $sql = "UPDATE cliente SET nombre = :nombre  WHERE id_cliente = :id";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->bindParam(':id', $id, PDO::PARAM_INT);
+                $sentencia->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+                $resultado = $sentencia->execute();
+            } catch (PDOException $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+        return $resultado;
+    }
+
+    public static function eliminar_usuario($conexion, $id)
+    {
+        $eliminar = null;
+        if (isset($conexion)) {
+            try {
+                $sql = "DELETE FROM cliente WHERE id_cliente = :id";
+                $sentencia = $conexion->prepare($sql);
+                $sentencia->bindParam(':id', $id, PDO::PARAM_INT);
+                $eliminar = $sentencia->execute();
+            } catch (PDOException $ex) {
+                print "ERROR" . $ex->getMessage();
+            }
+        }
+        return $eliminar;
     }
 
     //FUNCION PARA ACTUALIZAR LA CONTRASEÑA

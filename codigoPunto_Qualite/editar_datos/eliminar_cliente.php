@@ -17,21 +17,8 @@ if($_POST){
   Conexion::abrir();
   $conex = Conexion::obtener();
   $id = $_POST['id'];
-    if($_POST['direccion']!="" || $_POST['direccion']!=null){
-    $dire = $_POST['direccion'];
-    $newdire = repositorioFunciones::update_direccion($conex,$id,$dire);
-    header("Location: /20192B105/codigoPunto_Qualite/admin.php");
-    }
-    if($_POST['email']!="" || $_POST['email']!=null){
-      $email = $_POST['email'];
-      $newemail = repositorioFunciones::update_correo($conex,$id,$email);
-      header("Location: /20192B105/codigoPunto_Qualite/admin.php");
-      }
-      if($_POST['nombre']!="" || $_POST['nombre']!=null){
-        $nombre = $_POST['nombre'];
-        $newnombre = repositorioFunciones::update_nombre($conex,$id,$nombre);
-        header("Location: /20192B105/codigoPunto_Qualite/admin.php");
-        }
+  $eliminar_usuario = repositorioFunciones::eliminar_usuario($conex,$id);
+  header("Location: /20192B105/codigoPunto_Qualite/admin.php"); 
   }
 ?>
 
@@ -66,17 +53,15 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
       </div>
     </section>
 
+    <h3 style= "text-align:center;">¿Seguro que desea eliminar este cliente?</h3>
+
       <div class="table-responsive">
-        <table class="table table-striped table-sm">
+        <table class="table table-striped table-sm" style="text-align:center;">
           <thead>
             <tr>
               <th>Id</th>
               <th>Nombre</th>
-              <th>Fecha de Nacimiento</th>
-              <th>Email</th>
-              <th>Direccion</th>
               <th>Tipo de cliente</th>
-              <th>Ciudad</th>
             </tr>
           </thead>
           <form action="<?php echo ($_SERVER['PHP_SELF']);?>" method="POST">
@@ -88,25 +73,23 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
               $usuario=repositorioFunciones::obtener_usuario_id($conex,$i);
               echo "<tr>";
               echo '<td>'.$usuario->getId().'</td>';
-              echo '<td> <input name="nombre" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Nombre" value="'.$usuario->getNombre().'" required></td>'; ;
-              echo '<td>'.$usuario->getFecha_nacimiento().'</td>';
-              echo '<td> <input name="email" class="form-control" id="email" aria-describedby="emailHelp" type="email" placeholder="E-mail" value="'.$usuario->getEmail().'" required></td>'; 
-              echo '<td> <input name="direccion" class="form-control" id="direccion" aria-describedby="emailHelp" placeholder="Dirección" value="'.$usuario->getDireccion().'" required></td>'; 
+              echo '<td>'.$usuario->getNombre().'</td>';
               if($usuario->getCtipado()=='a'){
                 echo '<td>Administrador</td>';
               }else{
                 echo '<td>Cliente</td>';
               }
-              echo '<td>'. repositorioFunciones::obtener_ciudad($conex,$usuario->getFk_id_ciudad())->getNombre().'</td>';
-              
+              echo '<td><button type="submit"  id="agregar" name="commit">Eliminar</button> <a href="/20192B105/codigoPunto_Qualite/admin.php">Volver</a> </td>';
               echo "</tr>";
               echo '<input type="hidden" id="id" name="id" value="'.$usuario->getId().'">';
+              
               Conexion::cerrar();
             ?>
-            
+
           </tbody>
-          <table>
-          <tr> <td><button type="submit" class="btn btn-primary form-group" id="agregar" name="commit">Guardar</button></td></tr>
+          <table style="text-align:center;">
+          <tr> 
+            </tr>
           </table>
           </form>
       </div>

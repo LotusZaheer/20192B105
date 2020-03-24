@@ -1,3 +1,5 @@
+<head>
+    <title>Admin</title>
 <?php
 
 include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/php-objects/usuario.inc.php";
@@ -86,26 +88,38 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
             <?php
               Conexion::abrir();
               $conex=Conexion::obtener();
+              $usuarios = repositorioFunciones::obtener_usuarios($conex);
+              $ultimo = end($usuarios);
+              $numero = $ultimo->getId();
               $i=1;
-              while($i<=count(repositorioFunciones::obtener_usuarios($conex))){
+              while($i<=$numero){
                 $usuario=repositorioFunciones::obtener_usuario_id($conex,$i);
-                echo "<tr>";
-                echo '<td>'.$usuario->getId().'</td>';
-                echo '<td>'.$usuario->getNombre().'</td>';
-                echo '<td>'.$usuario->getFecha_nacimiento().'</td>';
-                echo '<td>'.$usuario->getEmail().'</td>';
-                echo '<td>'.$usuario->getDireccion().'</td>';
-                
-                if($usuario->getCtipado()=='a'){
-                echo '<td>Administrador</td>';
-                }else{
-                  echo '<td>Cliente</td>';
+                if($usuario!=null)
+                {
+                  echo "<tr>";
+                  echo '<td>'.$usuario->getId().'</td>';
+                  echo '<td>'.$usuario->getNombre().'</td>';
+                  echo '<td>'.$usuario->getFecha_nacimiento().'</td>';
+                  echo '<td>'.$usuario->getEmail().'</td>';
+                  echo '<td>'.$usuario->getDireccion().'</td>';
+                  
+                  if($usuario->getCtipado()=='a'){
+                  echo '<td>Administrador</td>';
+                  }else{
+                    echo '<td>Cliente</td>';
+                  }
+                  echo '<td>'. repositorioFunciones::obtener_ciudad($conex,$usuario->getFk_id_ciudad())->getNombre().'</td>';
+                  echo '<td> <a href ="/20192B105/codigoPunto_Qualite/editar_datos/editar_clientes.php?id='.$usuario->getId().'">Editar</a>  <a href ="/20192B105/codigoPunto_Qualite/editar_datos/eliminar_cliente.php?id='.$usuario->getId().'">Eliminar</a></td>';
+                  echo "</tr>";
+                  $usuarios = repositorioFunciones::obtener_usuarios($conex);
+                  $ultimo = end($usuarios);
+                  $numero = $ultimo->getId();
+                  $i++;
                 }
-                echo '<td>'. repositorioFunciones::obtener_ciudad($conex,$usuario->getFk_id_ciudad())->getNombre().'</td>';
-                echo '<td> <a href ="/20192B105/codigoPunto_Qualite/editar_datos/editar_clientes.php?id='.$usuario->getId().'">Editar</a></td>';
-                echo "</tr>";
-                
-                $i++;
+                else{
+                  $i++;
+                }
+               
               }
               Conexion::cerrar();
             ?>
@@ -116,7 +130,7 @@ include_once $_SERVER['DOCUMENT_ROOT']."/20192B105/codigoPunto_Qualite/modulos/n
         <table class="table table-striped table-sm">
         <div>
         <tr>
-            <td><input name="id" class="form-control" id="id"  value=<?php echo count(repositorioFunciones::obtener_usuarios($conex)) + 1; ?> required disabled> </td>
+            <td><input name="id" class="form-control" id="id"  value=<?php echo $numero+1?> required disabled> </td>
           <form action="<?php echo ($_SERVER['PHP_SELF']);?>" method="POST">
               <td><input name="nombre" class="form-control" id="nombre"  placeholder="Nombre" required></td>
               <td><input name="fecha" class="form-control" id="fecha"  placeholder="Fecha de nacimiento" type="date" required></td>

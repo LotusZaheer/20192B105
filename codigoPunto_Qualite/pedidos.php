@@ -5,12 +5,22 @@ include_once "php-objects/repositorio.php";
 $mode = false;
 session_start();
 error_reporting(0);
+$dont=4;
 
 $sesion = $_SESSION['cliente'];
 if ($sesion != null || $sesion != '') {
   $mode = true;
 }
 
+if($_POST){
+  $pass=$_POST['pass1'];
+  if(password_verify($pass,$sesion->getContrasena())){
+    header('Location: ajustes2.php');
+  }else{
+    $dont=3;
+  }
+
+}
 
 ?>
 <!DOCTYPE html>
@@ -21,46 +31,63 @@ if ($sesion != null || $sesion != '') {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Inicio</title>
+  <title>Ajustes</title>
+  <script type="text/javascript" src="js/security.js"></script>
 </head>
 
-<body>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
-    <a class="navbar-brand" href="../index.php">Punto Qualité</a>
+<body <?php if($dont==3){ echo('onload="alertas()"'); }?>>
+
+  <!-- Navbar -->
+  <nav style="z-index:40!important;" class=" navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <a class="navbar-brand" href="/20192B105/index.php">Punto Qualité</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarColor01">
 
-
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item ">
-          <a class="nav-link" href="shop.php">Productos</a>
+        <li class="nav-item dropdown show ">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Productos</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Bebé y maternidad</a>
+            <a class="dropdown-item" href="#">Fitness</a>
+            <a class="dropdown-item" href="#">Cuidado personal</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="our.php">Nosotros</a>
+          <a class="nav-link" href="/20192B105/codigoPunto_Qualite/our.php">Nosotros</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link" href="#contacto">Contactanos</a>
         </li>
+
+        <li class="nav-item dropdown">
+
+
+
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Formularios</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/20192B105/codigoPunto_Qualite/encuesta.php">Encuesta</a>
+            <a class="dropdown-item" href="/20192B105/codigoPunto_Qualite/hoja_de_vida.php">Hoja de Vida</a>
+
+        </li>
       </ul>
+
 
 
       <ul class="navbar-nav">
         <?php
         if ($mode) {
-          if ($sesion->getCtipado() == 'a') {
+          if($sesion->getCtipado()=='a'){
             echo '<li class="nav-item ">
-                  <a class="nav-link" href="admin.php">admin</a>
+                  <a class="nav-link" href="/20192B105/codigoPunto_Qualite/admin.php">admin</a>
                 </li>';
           }
           echo ('
               <li class="nav-item ">
-                  <a class="nav-link" href="cuenta.php">Cuenta</a>
+                  <a class="nav-link" href="/20192B105/codigoPunto_Qualite/cuenta.php">Cuenta</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="cerrar.php">Cerrar Sesion</a>
+                  <a class="nav-link" href="/20192B105/codigoPunto_Qualite/cerrar.php">Cerrar Sesion</a>
                 </li>
               ');
         } else {
@@ -81,7 +108,7 @@ if ($sesion != null || $sesion != '') {
 						<input id="password-field2" type="password" class="form-control" name="password">
               <span toggle="#password-field2" class="fa fa-fw fa-eye field-icon toggle-password2"></span>
           </div>
-          <a href="codigoPunto_Qualite/forgot.php">¿Olvidaste tu contraseña?</a>
+          <a href="/20192B105/codigoPunto_Qualite/forgot.php">¿Olvidaste tu contraseña?</a>
           
 					<button class="btn btn-primary btn-block" type="submit" style="margin-top: 10px">Entrar</button>
 				</form>
@@ -91,7 +118,7 @@ if ($sesion != null || $sesion != '') {
             
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="codigoPunto_Qualite/registro.php">Registrate</a>
+              <a class="nav-link" href="/20192B105/codigoPunto_Qualite/registro.php">Registrate</a>
             </li>
           ');
         }
@@ -102,131 +129,59 @@ if ($sesion != null || $sesion != '') {
     </div>
   </nav>
 
+  <body>
+      <div id="leftmenu" class="bg-light">
+        <div style="padding-top:89.25px">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="ajustes.php">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                  <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                Ajustes <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pedidos.php">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                  <polyline points="13 2 13 9 20 9"></polyline>
+                </svg>
+                Pedidos
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="shop.php">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                Compre
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cerrar.php">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                Cerrar sesion
+              </a>
+            </li>
 
-  <div class="row" style="padding-top: 6em">
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-      <li class="sidebar-sticky">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                <polyline points="9 22 9 12 15 12 15 22"></polyline>
-              </svg>
-              Ciudad 
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart">
-                <circle cx="9" cy="21" r="1"></circle>
-                <circle cx="20" cy="21" r="1"></circle>
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-              </svg>
-              Drogas
-            </a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2">
-                <line x1="18" y1="20" x2="18" y2="10"></line>
-                <line x1="12" y1="20" x2="12" y2="4"></line>
-                <line x1="6" y1="20" x2="6" y2="14"></line>
-              </svg>
-              Pedidos
-            </a>
-          </li>
-          
-        </ul>
-
-
-      </li>
-    </nav>
-
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      <div style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor">
-        <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-          <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+          </ul>
         </div>
-        <div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-          <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-        </div>
+        
       </div>
       
-
-      
-      <h2 style="margin-top:10px">Pedidos</h2>
-      <div class="table-responsive">
-        <table class="table table-striped table-sm">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Nombre</th>
-              <th>Fecha de Nacimiento</th>
-              <th>Email</th>
-              <th>Direccion</th>
-              <th>Tipo de cliente</th>
-              <th>Ciudad</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-              Conexion::abrir();
-              $conex=Conexion::obtener();
-              $i=1;
-              while($i<=count(repositorioFunciones::obtener_usuarios($conex))){
-                $usuario=repositorioFunciones::obtener_usuario_id($conex,$i);
-                echo "<tr>";
-                echo '<td>'.$usuario->getId().'</td>';
-                echo '<td>'.$usuario->getNombre().'</td>';
-                echo '<td>'.$usuario->getFecha_nacimiento().'</td>';
-                echo '<td>'.$usuario->getEmail().'</td>';
-                echo '<td>'.$usuario->getDireccion().'</td>';
-                if($usuario->getCtipado()=='a'){
-                echo '<td>Administrador</td>';
-                }else{
-                  echo '<td>Cliente</td>';
-                }
-                echo '<td>'. repositorioFunciones::obtener_ciudad($conex,$usuario->getFk_id_ciudad())->getNombre().'</td>';
-                echo "</tr>";
-                
-                $i++;
-              }
-              Conexion::cerrar();
-            ?>
-          </tbody>
-        </table>
-      </div>
+    </div>
     
-    
-    
-    </main>
-  </div>
+  </body>
 
-
-
-  <script>
-    window.sr = ScrollReveal();
-
-    sr.reveal('.categoria-2', {
-      duration: 2000,
-      origin: 'left',
-      distance: '300px'
-    });
-    sr.reveal('.imagen1-categoria1', {
-      duration: 2000,
-      origin: 'bottom',
-      distance: '300px'
-    });
-    sr.reveal('.imagen2-categoria1', {
-      duration: 2000,
-      origin: 'bottom',
-      distance: '300px'
-    });
-  </script>
-  <!-- Bootstrap 4 scripts -->
-  <script src="../codigoPunto_Qualite/js/popup.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
